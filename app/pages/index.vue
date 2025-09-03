@@ -5,7 +5,9 @@ import { Carousel, Slide } from 'vue3-carousel';
 
 <template>
 <div class="min-h-screen flex flex-col">
-
+    <header class="p-2 bg-gray-200 text-center">
+      <h1 class="text-[28px] font-bold m-0">INFO</h1>
+    </header>
 
  <main class="flex-1">
   <div class="mt-[3vh] h-[10vh] p-4 max-w-screen-lg mx-auto">
@@ -37,7 +39,7 @@ import { Carousel, Slide } from 'vue3-carousel';
         </div>
         <div class="flex-1 flex gap-4">
           <div class="w-1/2 bg-black/50 rounded-md">분쟁/환통 미래시</div>
-          <div class="w-1/2 bg-black/50 rounded-md"></div>
+          <div class="w-1/2 bg-black/50 rounded-md">TIPS</div>
         </div>
       </div>
 
@@ -46,9 +48,6 @@ import { Carousel, Slide } from 'vue3-carousel';
       </div>
   </div>
  </main>
-
-
-
 
   <footer class="p-2 bg-gray-200 text-center">
     © 2025

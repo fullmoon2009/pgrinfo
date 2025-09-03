@@ -1,8 +1,12 @@
+<script setup>
+import { useRoute } from 'vue-router'
+const route = useRoute()
+</script>
+
 <template>
-  <header class="p-2 bg-gray-200 place-items-center">
-    <h1 class="text-[28px] font-bold">INFO</h1>
-  </header>
-    <main class="flex-1">
+  <main class="flex-1">
+    <div :class="route.name" class="min-h-dvh">
       <NuxtPage />
-    </main>
+    </div>
+  </main>
 </template>
