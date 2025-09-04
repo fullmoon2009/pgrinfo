@@ -56,14 +56,14 @@ const filtered = computed(() => {
   />
  </section>
 
-  <section class="grid grid-cols-5 md:grid-cols-5 py-2 px-11 md:px-6 bg-black/50 rounded-md border-2 border-ghostwhite">
+  <section class="grid grid-cols-6 md:grid-cols-6 py-3 md:px-2 px-10 bg-black/50 rounded-md border-2 border-ghostwhite">
     <img
-    v-for="type in ['ultima','burn','plazma','freeze','abyss']"
+    v-for="type in ['ultima','burn','plazma','freeze','abyss', 'lightnoise']"
     :key="type"
     :src="`assets/types/${type}.png`"
     :alt="type"
     @click="toggle(type)"
-    class="w-10 h-10 md:w-16 md:h-16 mx-auto rounded-md cursor-pointer transform transition-transform duration-200"
+    class="w-10 h-10 md:w-[55px] md:h-[55px] mx-auto rounded-md cursor-pointer transform transition-transform duration-200"
       :class="[
         selected === type ? 'scale-110 ring-2 ring-blue-500' : 'scale-100','hover:scale-110'
       ]"
@@ -75,7 +75,8 @@ const filtered = computed(() => {
     <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
         <CharacterCard
             v-for="c in filtered"
-            :key="c.name"
+            :key="c.slug"
+            :slug="c.slug"
             :name="c.name"
             :portrait="c.portrait"
             :types="c.types"
