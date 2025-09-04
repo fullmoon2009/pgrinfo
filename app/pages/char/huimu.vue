@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+
+
+const leftTab  = ref<'tabA'|'tabB'>('tabA')
+const rightTab = ref<'tabA'|'tabB'>('tabA')
+</script>
+
 <template>
   <div class="min-h-screen bg-[#383838] text-white">
     <nav class="bg-gray-800 text-white p-4 flex justify-between items-center">
@@ -12,7 +21,7 @@
   
     <section class="p-6 mx-auto">
       
-      <div class="grid grid-cols-2 md:grid-cols-2 gap-3 h-[28vh] max-w-xs mx-auto px-8">
+      <div class="grid grid-cols-2 md:grid-cols-2 gap-3 h-[27vh] max-w-xs mx-auto px-8">
         
         <div class="grid grid-rows-2 gap-3">
           <div class="relative rounded-lg overflow-hidden border-2 border-gray-100">
@@ -21,7 +30,7 @@
               <img
                 src="/assets/portrait/huimu1.png"
                 alt=""
-                class="w-full h-full object-cover"
+                class="w-full h-[122px] object-cover"
               />
             </div>
           </div>
@@ -30,7 +39,7 @@
               <img
                 src="/assets/portrait/huimu2.png"
                 alt=""
-                class="w-full h-full object-cover"
+                class="w-full h-[122px] object-cover"
               />
             </div>
           </div>
@@ -46,7 +55,7 @@
         </div>
       </div>
 
-      <div class="flex justify-center">
+      <div class="flex justify-center py-">
         <span>aa</span>
       </div>
 
@@ -75,89 +84,181 @@
 
       <div class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 px-6 py-3 rounded-md bg-white/50">
         <div class="col-span-2 bg-black/50 rounded-md p-4 text-white">
-          <!-- 1:2 레이아웃 (모바일 1열, md 이상 3열로 두고 좌1 : 우2) -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-            <!-- 왼쪽: 이미지 + 텍스트 (md에서 1칸) -->
-            <div class="md:col-span-1 flex flex-col items-center">
-              <img 
-                src="/assets/arms/orora.png" 
-                alt=""
-                class="w-[120px] h-[250px] object-cover mb-2 rounded-md border-2 border-orange-500"
-              />
-              <span class="text-sm">★6 오로라</span>
-            </div>
 
-            <!-- 오른쪽: 3행, 각 행 3:7 비율 + 행 구분선 -->
-            <div class="md:col-span-2 rounded-md ">
-              <!-- 행들 사이 구분선; 컨테이너 위/아래에도 선 주고 싶으면 border-y 추가 -->
-              <div class="divide-y divide-white/20 border-y border-white/10">
+    <!-- 탭 헤더 -->
+    <div role="tablist" class="flex gap-2 mb-4 border-b border-white/20">
+      <button
+        role="tab"
+        :aria-selected="leftTab === 'tabA'"
+        @click="leftTab = 'tabA'"
+        class="px-4 py-2 rounded-t-md"
+        :class="leftTab === 'tabA' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
+      >
+        무기
+      </button>
+      <button
+        role="tab"
+        :aria-selected="leftTab === 'tabB'"
+        @click="leftTab = 'tabB'"
+        class="px-4 py-2 rounded-t-md"
+        :class="leftTab === 'tabB' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
+      >
+        보조기
+      </button>
+    </div>
 
-                <!-- Row 1 -->
-                <div class="grid grid-cols-10 gap-2 py-3 px-6">
-                  <!-- 왼쪽: 아이콘 -->
-                  <div class="col-span-3 flex items-center">
-                    <img src="/assets/wskills/count.png"
-                        alt="img1"
-                        class="w-12 h-12 object-cover rounded-md" />
-                  </div>
-                  <!-- 오른쪽: 텍스트 (세로 중앙 정렬) -->
-                  <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
-                    죽음의 카운트다운
-                  </div>
+    <!-- 탭 콘텐츠 -->
+    <div class="rounded-md bg-black/30 p-3">
+      <!-- 탭 A: 현재 있는 콘텐츠 -->
+      <div v-if="leftTab === 'tabA'">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+          <!-- 왼쪽: 이미지 + 텍스트 -->
+          <div class="md:col-span-1 flex flex-col items-center">
+            <img 
+              src="/assets/arms/orora.png" 
+              alt=""
+              class="w-[100px] h-[200px] object-cover mb-2 rounded-md border-2 border-orange-500"
+            />
+            <span class="text-sm">★6 오로라</span>
+          </div>
+
+          <!-- 오른쪽: 3행 -->
+          <div class="md:col-span-2 rounded-md">
+            <div class="divide-y divide-white/20 border-y border-white/10">
+              <!-- Row 1 -->
+              <div class="grid grid-cols-10 gap-2 py-2 px-6">
+                <div class="col-span-3 flex items-center">
+                  <img src="/assets/wskills/count.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
                 </div>
-
-                <!-- Row 2 -->
-                <div class="grid grid-cols-10 gap-2 py-6 px-6">
-                  <div class="col-span-3 text-sm text-gray-200">항목 2</div>
-                  <div class="col-span-7 text-sm">값/설명 2</div>
+                <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
+                  죽음의 카운트다운
                 </div>
-
-                <!-- Row 3 -->
-                <div class="grid grid-cols-10 gap-2 py-6 px-6">
-                  <div class="col-span-3 text-sm text-gray-200">항목 3</div>
-                  <div class="col-span-7 text-sm">값/설명 3</div>
+              </div>
+              <!-- Row 2 -->
+              <div class="grid grid-cols-10 gap-2 py-2 px-6">
+                <div class="col-span-3 flex items-center">
+                  <img src="/assets/wskills/sunset.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
                 </div>
-
+                <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
+                  석양
+                </div>
+              </div>
+              <!-- Row 3 -->
+              <div class="grid grid-cols-10 gap-2 py-2 px-6">
+                <div class="col-span-3 flex items-center">
+                  <img src="/assets/wskills/light.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
+                </div>
+                <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
+                  휘광
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- 탭 B: 새로 만들 콘텐츠 -->
+      <div v-else>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-black/40 rounded-md p-4">
+            <h3 class="font-semibold mb-2">title</h3>
+            <p class="text-sm text-white/80">aa</p>
+          </div>
+          <div class="bg-black/40 rounded-md p-4">
+            <h3 class="font-semibold mb-2">title</h3>
+            <p class="text-sm text-white/80">bb</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
         <!-- <div class="col-span-1 bg-black/50 rounded-md p-4 text-center text-white">
           box2
         </div> -->
-        <div class="col-span-2 bg-black/50 rounded-md p-4 text-center text-white">
-          <Carousel
-            :items-to-show="1"
-            :wrap-around="true"
-            :autoplay="0"              
-            :pause-autoplay-on-hover="false"
-          >
-            <Slide>
-              <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
-                Page 1
-              </div>
-            </Slide>
+        <div class="col-span-2 bg-black/50 rounded-md p-4 text-white">
+          <!-- 탭 헤더 -->
+          <div role="tablist" class="flex gap-2 mb-4 border-b border-white/20">
+            <button
+              role="tab"
+              :aria-selected="rightTab === 'tabA'"
+              @click="rightTab = 'tabA'"
+              class="px-4 py-2 rounded-t-md"
+              :class="rightTab === 'tabA'
+                ? 'bg-white/10 text-white'
+                : 'text-white/70 hover:text-white/90'"
+            >
+              분쟁
+            </button>
+            <button
+              role="tab"
+              :aria-selected="rightTab === 'tabB'"
+              @click="rightTab = 'tabB'"
+              class="px-4 py-2 rounded-t-md"
+              :class="rightTab === 'tabB'
+                ? 'bg-white/10 text-white'
+                : 'text-white/70 hover:text-white/90'"
+            >
+              환통/격전점
+            </button>
+          </div>
 
-            <Slide>
-              <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
-                Page 2
-              </div>
-            </Slide>
+          <!-- 탭 콘텐츠: 높이 출렁임을 막고 싶으면 고정 높이/최소 높이 지정 -->
+          <div class="rounded-md bg-black/30 h-[252px] p-3 pt-10">
+              <!-- 탭 A: 캐러셀 1 -->
+              <div v-if="rightTab === 'tabA'">
+                <Carousel :items-to-show="1" :wrap-around="true" :autoplay="0" :pause-autoplay-on-hover="false">
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
+                      A - Page 1
+                    </div>
+                  </Slide>
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
+                      A - Page 2
+                    </div>
+                  </Slide>
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
+                      A - Page 3
+                    </div>
+                  </Slide>
 
-            <Slide>
-              <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
-                Page 3
+                  <template #addons>
+                    <Navigation />
+                  </template>
+                </Carousel>
               </div>
-            </Slide>
 
-            <!-- Addons: 좌우 화살표 -->
-            <template #addons>
-              <Navigation />
-            </template>
-          </Carousel>
+              <!-- 탭 B: 캐러셀 2 (또는 전혀 다른 내용) -->
+              <div v-else>
+                <Carousel :items-to-show="1" :wrap-around="true" :autoplay="0" :pause-autoplay-on-hover="false">
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-indigo-700 rounded-md">
+                      B - Page 1
+                    </div>
+                  </Slide>
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-indigo-700 rounded-md">
+                      B - Page 2
+                    </div>
+                  </Slide>
+                  <Slide>
+                    <div class="h-40 flex items-center justify-center bg-indigo-700 rounded-md">
+                      B - Page 3
+                    </div>
+                  </Slide>
+
+                  <template #addons>
+                    <Navigation />
+                  </template>
+                </Carousel>
+                <!-- 캐러셀 대신 일반 그리드/텍스트 등 다른 콘텐츠를 넣어도 됩니다 -->
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
       <div class="max-w-4xl w-full mx-auto mt-6 rounded-md bg-white/50">
         <div class="divide-y">
