@@ -22,39 +22,31 @@ const cycleTab = ref<'tabA'|'tabB'>('tabA')
   
     <section class="p-6 mx-auto">
       
-      <div class="grid grid-cols-2 md:grid-cols-2 gap-3 h-[27vh] max-w-xs mx-auto px-8 mb-7">
-        
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xs mx-auto px-8 mb-7">
+        <!-- 왼쪽: 1:1 두 장 -->
         <div class="grid grid-rows-2 gap-3">
           <div class="relative rounded-lg overflow-hidden border-2 border-gray-100">
-            
             <div class="aspect-square">
-              <img
-                src="/assets/portrait/huimu1.png"
-                alt=""
-                class="w-full h-[122px] object-cover"
-              />
+              <img src="/assets/portrait/huimu1.png" alt=""
+                  class="w-full h-full object-cover" />
             </div>
           </div>
           <div class="relative rounded-lg overflow-hidden border-2 border-gray-100">
             <div class="aspect-square">
-              <img
-                src="/assets/portrait/huimu2.png"
-                alt=""
-                class="w-full h-[122px] object-cover"
-              />
+              <img src="/assets/portrait/huimu2.png" alt=""
+                  class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
 
-        
-        <div class="relative rounded-lg overflow-hidden border-2 border-gray-100">
-          <img
-            src="/assets/standings/huimuS.webp"
-            alt=""
-            class="absolute inset-0 w-full h-[50vh] mt-[-20px] object-cover"
-          />
+        <div class="relative rounded-lg overflow-hidden border-2 border-gray-100 w-[125px] h-[256px]">
+            <img 
+              src="/assets/standings/huimuS.webp"
+              alt=""
+              class="w-full h-[400px] object-cover" />
+          </div>
         </div>
-      </div>
+
 
       <div class="flex justify-center py-2">
         <span class="inline-block px-3 py-1 rounded-md border-2 border-white/40 font-bold text-white text-[20px]">
@@ -918,11 +910,6 @@ const cycleTab = ref<'tabA'|'tabB'>('tabA')
                           <img src="/assets/skillball/huimured.png" alt="" class="w-7 h-7 md:w-[50px] md:h-[50px] rounded-md object-cover" />
                         </div>
                         <span class="mt-2 text-[10px] whitespace-nowrap">빨볼 3체인 (찌르기 모션 본 후)</span>
-                      </div>
-
-                      <div class="inline-flex flex-col items-center">
-                        <img src="/assets/skillball/arrow.png" alt="→"
-                            class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain" />
                       </div>
                     </div>
                   

@@ -119,7 +119,13 @@ export const characters: Character[] = [
     name: '아이라 · 만화',
     portrait: '/assets/portrait/kaleido2.png',
     types: ['ice']
-  }
+  },
+  {
+    slug: "scire",
+    name: '카레니나 · 휘효',
+    portrait: '/assets/portrait/scire2.png',
+    types: ['dark', 'plazma']
+  },
 
   
 ]
