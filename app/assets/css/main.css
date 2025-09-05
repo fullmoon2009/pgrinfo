@@ -4,7 +4,7 @@ html, body {
 }
 
 .char {
-    background-color: #383838;
+    background-color: rgba(51, 51, 51);
 }
 
 .huimu {
@@ -13,4 +13,12 @@ html, body {
 
 .events {
 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 엣지 */
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;     /* Firefox */
 }
