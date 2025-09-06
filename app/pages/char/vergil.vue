@@ -368,7 +368,7 @@ const outerTabs = [
 
   <!-- 파티 구성 -->
   <div id="party" class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30 party">
-    <div class="col-span-full flex justify-center mb-3">
+    <div class="col-span-full flex justify-center mb-4">
       <span class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-[15px] font-bold
                   bg-[#0A0A23]/40 text-white border-2 border-black mt-2 md:mt-3">파티 구성</span>
     </div>

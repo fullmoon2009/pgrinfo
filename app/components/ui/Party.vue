@@ -53,7 +53,7 @@ const typeIconBorderClass = computed(() =>
 </script>
 
 <template>
-  <div class="bg-black/50 rounded-md p-3 text-white">
+  <div class="bg-black/50 rounded-md p-4 text-white">
     <!-- 상단: 속성 아이콘 -->
     <div class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50">
       <img
