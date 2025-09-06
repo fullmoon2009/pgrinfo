@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel'
 
 
 const leftTab  = ref<'tabA'|'tabB'>('tabA')
@@ -64,7 +64,7 @@ const pillClass = (name) =>
     </nav>
 
   
-    <section class="p-6 mx-auto">
+    <section class="p-3 md:p-6 mx-auto">
       
       <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 max-w-xs mx-auto px-8 mb-7">
         <!-- 왼쪽: 1:1 두 장 -->
@@ -142,35 +142,53 @@ const pillClass = (name) =>
       
 
 
-      <div class="max-w-md w-full mx-auto mt-6 grid grid-cols-3 md:grid-cols-3 gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30">
-        <div class="col-span-2 bg-black/50 rounded-md p-4 text-center text-white">
-          <div class="flex justify-center gap-2 md:gap-6">
-            <div class="flex flex-col items-center">
-              <img src="/assets/types/dark.png" alt="img1" class="w-20 h-20 object-cover rounded-md border-2 border-purple-400" />
-              <span class="mt-2 text-xs">암속성</span>
+      <!-- 컨테이너: 모바일 70vw, md↑에서는 w-full / max-w-md -->
+      <div class="mx-auto mt-6 w-[70vw] md:w-full max-w-md rounded-md bg-[#0A0A23]/30 px-4 py-3">
+        <div class="grid grid-cols-3 gap-1 md:gap-2">
+
+          <!-- (좌) 카드: 암속성 + 습광 (2칸 차지) -->
+          <div class="col-span-2 bg-black/50 rounded-xl p-3 md:p-4 text-white">
+            <div class="grid grid-cols-2 place-items-center">
+              <!-- 암속성 -->
+              <div class="w-full aspect-square max-w-[64px] md:max-w-[90px]">
+                <img src="/assets/types/dark.png"
+                    alt="암속성"
+                    class="w-full h-full object-contain rounded-md border-2 border-purple-400" />
+              </div>
+              <!-- 습광 -->
+              <div class="w-full aspect-square max-w-[64px] md:max-w-[90px]">
+                <img src="/assets/types/lightnoise.png"
+                    alt="습광"
+                    class="w-full h-full object-contain rounded-md border-2 border-yellow-200" />
+              </div>
             </div>
-            <div class="flex flex-col items-center">
-              <img src="/assets/types/lightnoise.png" alt="img2" class="w-20 h-20 object-cover rounded-md border-2 border-yellow-200" />
-              <span class="mt-2 text-xs">습광</span>
+            <div class="mt-2 grid grid-cols-2 text-center text-[10px] md:text-xs">
+              <span>암속성</span>
+              <span>습광</span>
             </div>
           </div>
-        </div>
-        <div class="col-span-1 bg-black/50 rounded-md p-[17px] text-center text-white
-                    grid place-items-center">
-          <div class="flex flex-col items-center">
-            <img src="/assets/roleIcons/atk.png" alt="img1"
-                class="block w-[77px] h-[77px] object-contain rounded-md ring-2 ring-white p-2" />
-            <span class="mt-2 text-xs py-[2px]">공격형</span>
+
+          <!-- (우) 카드: 공격형 (1칸) -->
+          <div class="col-span-1 bg-black/50 rounded-xl p-3 md:p-4 grid place-items-center text-white">
+            <div class="w-full aspect-square max-w-[64px] md:max-w-[87px]">
+              <img src="/assets/roleIcons/atk.png"
+                  alt="공격형"
+                  class="w-full h-full object-contain rounded-md ring-2 ring-white p-1" />
+            </div>
+            <span class="mt-2 text-[10px] md:text-xs">공격형</span>
           </div>
+
         </div>
       </div>
 
-      <div id="equip" class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30">
+
+
+      <div id="equip" class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 px-2 py-1 md:px-6 md:py-3 rounded-md bg-[#0A0A23]/30">
         
         
-        <div class="col-span-2 md:col-span-4 flex justify-center mb-4">
+        <div class="col-span-2 md:col-span-4 flex justify-center mb-1 md:mb-4">
           <div>
-                <span class="inline-flex items-center gap-1 sm:gap-2 rounded-md px-3 py-1.5 sm:px-4 sm:py-2 text-[15px]  font-bold
+                <span class="inline-flex items-center gap-1 sm:gap-2 rounded-md md:px-3 md:py-1.5 px-3 py-1.5 text-[15px]  font-bold
                       bg-[#0A0A23]/40 text-white border-2 border-black hover:bg-white/15 hover:border-white/30
                       focus:outline-none focus:ring-2 focus:ring-white/40 active:scale-[0.98] transition mt-3">
                     장비 & 의식 세팅</span>
@@ -178,92 +196,148 @@ const pillClass = (name) =>
         </div>
         
         
-        <div class="col-span-2 bg-black/50 rounded-md p-4 text-white">
+        <div class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4">
 
-            <!-- 탭 헤더 -->
-            <div role="tablist" class="flex gap-2 mb-4 border-b border-white/20">
-              <button
-                role="tab"
-                :aria-selected="leftTab === 'tabA'"
-                @click="leftTab = 'tabA'"
-                class="px-4 py-2 rounded-t-md"
-                :class="leftTab === 'tabA' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
-              >
-                무기
-              </button>
-              <button
-                role="tab"
-                :aria-selected="leftTab === 'tabB'"
-                @click="leftTab = 'tabB'"
-                class="px-4 py-2 rounded-t-md"
-                :class="leftTab === 'tabB' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
-              >
-                보조기
-              </button>
-            </div>
 
-            <!-- 탭 콘텐츠 -->
+           
             <div class="rounded-md bg-black/30 p-3">
-              <!-- 탭 A: 현재 있는 콘텐츠 -->
-              <div v-if="leftTab === 'tabA'">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center pt-5 pb-5">
-                  <!-- 왼쪽: 이미지 + 텍스트 -->
-                  <div class="md:col-span-1 flex flex-col items-center">
-                    <img 
-                      src="/assets/arms/orora.png" 
-                      alt=""
-                      class="w-[120px] h-[300px] object-cover mb-2 rounded-md border-2 border-orange-500"
-                    />
-                    <span class="text-sm">★6 오로라</span>
-                  </div>
+                <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 md:pb-5 md:h-full">
+                    <!-- 왼쪽: 이미지 + 텍스트 -->
+                    <div class="md:col-span-1 flex flex-col items-center">
+                      <img 
+                        src="/assets/arms/orora.png" 
+                        alt=""
+                        class="w-[100px] h-[170px] md:w-[110px] md:h-[220px] object-cover mb-2 rounded-md border-2 border-orange-500"
+                      />
+                      <span class="text-sm">★6 오로라</span>
+                    </div>
 
-                  <!-- 오른쪽: 3행 -->
-                  <div class="md:col-span-2 rounded-md">
-                    <div class="divide-y divide-white/20 border-y border-white/10">
-                      <!-- Row 1 -->
-                      <div class="grid grid-cols-10 gap-2 py-2 px-6">
-                        <div class="col-span-3 flex items-center">
-                          <img src="/assets/wskills/count.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
-                        </div>
-                        <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
-                          죽음의 카운트다운
-                        </div>
+                    <!-- 오른쪽: 3행 -->
+                    <div class="col-span-2 rounded-md relative">
+                      <!-- 상단 중앙 텍스트 상자 -->
+                      <div class="absolute -top-1 left-1/2 -translate-x-1/2">
+                        <span
+                          class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]
+                                bg-white/10 text-white border border-white/20 backdrop-blur-[2px] shadow whitespace-nowrap"
+                        >
+                          무기 공명 추천
+                        </span>
                       </div>
-                      <!-- Row 2 -->
-                      <div class="grid grid-cols-10 gap-2 py-2 px-6">
-                        <div class="col-span-3 flex items-center">
-                          <img src="/assets/wskills/sunset.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
+
+                      <!-- 리스트 본문: 상단 pill과 겹치지 않도록 패딩 추가 -->
+                      <div class="divide-y divide-white/20  md:w-full pt-5 md:pt-7">
+                        <!-- Row 1 -->
+                        <div class="grid grid-cols-10 gap-2 md:gap-6 py-2 px-6">
+                          <div class="col-span-3 flex items-center -ml-4 md:-ml-0">
+                            <div class="relative w-[40px] md:w-14 aspect-square rounded-md border-2 border-white/30 shrink-0">
+                              <img src="/assets/wskills/count.png" alt="img1"
+                                  class="w-full h-full object-cover" />
+                              <!-- 번호 배지 -->
+                              <span class="absolute -top-1 -left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none shadow">
+                                1
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-span-7 flex items-center text-[12px] md:text-sm whitespace-nowrap">
+                            죽음의 카운트다운
+                          </div>
                         </div>
-                        <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
-                          눈부신 석양
+
+                        <!-- Row 2 -->
+                        <div class="grid grid-cols-10 gap-2 md:gap-6 py-2 px-6">
+                          <div class="col-span-3 flex items-center -ml-4 md:-ml-0">
+                            <div class="relative w-[40px] md:w-14 aspect-square rounded-md border-2 border-white/30 shrink-0">
+                              <img src="/assets/wskills/sunset.png" alt="img1"
+                                  class="w-full h-full object-cover" />
+                              <span class="absolute -top-1 -left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none shadow">
+                                2
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-span-7 flex items-center text-[12px] md:text-sm whitespace-nowrap">
+                            눈부신 석양
+                          </div>
                         </div>
-                      </div>
-                      <!-- Row 3 -->
-                      <div class="grid grid-cols-10 gap-2 py-2 px-6">
-                        <div class="col-span-3 flex items-center">
-                          <img src="/assets/wskills/light.png" alt="img1" class="w-14 h-14 object-cover rounded-md" />
-                        </div>
-                        <div class="col-span-7 flex items-center text-sm whitespace-nowrap">
-                          광휘의 파편
+
+                        <!-- Row 3 -->
+                        <div class="grid grid-cols-10 gap-2 md:gap-6 py-2 px-6">
+                          <div class="col-span-3 flex items-center -ml-4 md:-ml-0">
+                            <div class="relative w-[40px] md:w-14 aspect-square rounded-md border-2 border-white/30 shrink-0">
+                              <img src="/assets/wskills/light.png" alt="img1"
+                                  class="w-full h-full object-cover" />
+                              <span class="absolute -top-1 -left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none shadow">
+                                3
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-span-7 flex items-center text-[12px] md:text-sm whitespace-nowrap">
+                            광휘의 파편
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+
               </div>
 
-              <!-- 탭 B: 새로 만들 콘텐츠 -->
-              <div v-else>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div class="bg-black/40 rounded-md p-4">
-                    <h3 class="font-semibold mb-2">title</h3>
-                    <p class="text-sm text-white/80">aa</p>
+              <div class="rounded-md bg-black/30 p-3">
+              <div class="grid grid-cols-3 gap-3 py-[13px]">
+                <!-- 왼쪽(1) : 정사각형 이미지 + 이름 -->
+                <div class="col-span-1 flex flex-col items-center">
+                  <div class="w-full max-w-[120px] aspect-square overflow-hidden rounded-md border-2 border-red-500">
+                    <img src="/assets/pets/jellyfish.png" alt=""
+                        class="w-full h-[200px] object-cover object-[55%_0%] -translate-y-[12%]" />
                   </div>
-                  <div class="bg-black/40 rounded-md p-4">
-                    <h3 class="font-semibold mb-2">title</h3>
-                    <p class="text-sm text-white/80">bb</p>
-                  </div>
+                  <span class="mt-2 text-xs md:text-sm text-white/90 text-center">S · 탁리</span>
                 </div>
+
+                <!-- 오른쪽(2) : 가로로 정사각형 3개 + 각 텍스트 -->
+            <div class="col-span-2 flex flex-col justify-center">
+              <!-- 상단 중앙 라벨 -->
+              <div class="text-center text-xs md:text-[12px] text-white/90 mb-2 md:mb-3">
+                <span
+                    class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]
+                          bg-white/10 text-white border border-white/20 backdrop-blur-[2px] shadow"
+                  >
+                  보조기 스킬 추천
+                </span>
+              </div>
+
+              <!-- 이미지 3개: 크기 축소 + 중앙정렬 -->
+              <div class="grid grid-cols-3 gap-3 place-items-center">
+                <!-- 카드 1 -->
+                <div class="flex flex-col items-center">
+                  <div class="relative w-full max-w-[90px] md:max-w-[100px] aspect-square rounded-md overflow-hidden border border-white/20">
+                    <!-- 좌상단 번호 배지 -->
+                    <span class="absolute top-1 left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none">1</span>
+                    <img src="/assets/petskills/jellyfish1.png" alt=""
+                        class="w-full h-full object-cover object-center" />
+                  </div>
+                  <span class="mt-1 text-[11px] md:text-xs text-white/90 text-center">꿈의 찬가</span>
+                </div>
+
+                <!-- 카드 2 -->
+                <div class="flex flex-col items-center">
+                  <div class="relative w-full max-w-[90px] md:max-w-[100px] aspect-square rounded-md overflow-hidden border border-white/20">
+                    <span class="absolute top-1 left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none">2</span>
+                    <img src="/assets/petskills/jellyfish2.png" alt=""
+                        class="w-full h-full object-cover object-center" />
+                  </div>
+                  <span class="mt-1 text-[11px] md:text-xs text-white/90 text-center">가시의 공명</span>
+                </div>
+
+                <!-- 카드 3 -->
+                <div class="flex flex-col items-center">
+                  <div class="relative w-full max-w-[90px] md:max-w-[100px] aspect-square rounded-md overflow-hidden border border-white/20">
+                    <span class="absolute top-1 left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none">3</span>
+                    <img src="/assets/petskills/jellyfish3.png" alt=""
+                        class="w-full h-full object-cover object-center" />
+                  </div>
+                  <span class="mt-1 text-[11px] md:text-xs text-white/90 text-center">얼음의 예찬</span>
+                </div>
+              </div>
+            </div>
+
               </div>
             </div>
 
@@ -279,7 +353,7 @@ const pillClass = (name) =>
               role="tab"
               :aria-selected="rightTab === 'tabA'"
               @click="rightTab = 'tabA'"
-              class="px-4 py-2 rounded-t-md"
+              class="px-3 py-2 md:px-4 md:py-[10px] rounded-t-md text-sm md:text-[16px]"
               :class="rightTab === 'tabA'
                 ? 'bg-white/10 text-white'
                 : 'text-white/70 hover:text-white/90'"
@@ -290,7 +364,7 @@ const pillClass = (name) =>
               role="tab"
               :aria-selected="rightTab === 'tabB'"
               @click="rightTab = 'tabB'"
-              class="px-4 py-2 rounded-t-md"
+              class="px-3 py-2 md:px-4 md:py-[10px] rounded-t-md text-sm md:text-[16px]"
               :class="rightTab === 'tabB'
                 ? 'bg-white/10 text-white'
                 : 'text-white/70 hover:text-white/90'"
@@ -301,7 +375,7 @@ const pillClass = (name) =>
           
 
           <!-- 탭 콘텐츠: 높이 출렁임을 막고 싶으면 고정 높이/최소 높이 지정 -->
-          <div class="rounded-md bg-black/30 h-[345px] md:h-[391px] p-3">
+          <div class="rounded-md bg-black/30 p-3">
               <!-- 탭 A: 캐러셀 1 -->
               <div v-if="rightTab === 'tabA'" class="grid grid-cols-1">
                 <Carousel :items-to-show="1" :wrap-around="true" :autoplay="0" :pause-autoplay-on-hover="false" class="memory">
@@ -365,6 +439,34 @@ const pillClass = (name) =>
                         </div>
                       </div>
 
+                      <!-- 하단 라벨 위: 3:1 라벨 -->
+                        <div class="mt-3 -mx-1 md:-mx-2">
+                          <div class="rounded-md px-2">
+                            <div class="grid grid-cols-4 items-center gap-2">
+                              <div class="col-span-3">
+                                <div class="flex items-center justify-center gap-2">
+                                  <img src="/assets/memory/memoryatk1.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class=" text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk2.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class=" text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk3.png" class="w-10 h-10 object-contain" alt="">
+                                  
+                                </div>
+                                <div class="mt-1 text-center text-[11px] md:text-xs text-white/85">공격력</div>
+                              </div>
+
+                              <div class="col-span-1 relative pl-3">
+                                <span class="absolute left-0 top-1/2 -translate-y-1/2 h-[70%] w-px bg-white/20"></span>
+
+                                <div class="flex flex-col items-center">
+                                  <img src="/assets/skillball/huimuult.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">필살기</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       <!-- 하단 라벨 -->
                       <div class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap">
                         <span class="inline-flex items-center gap-1 sm:gap-2 rounded-full px-3 py-1 font-semibold
@@ -381,12 +483,12 @@ const pillClass = (name) =>
                     </div>
                   </Slide>
                   <Slide>
-                    <div class="w-full flex flex-col items-center">
-                      <!-- 맨 위: 암속성 -->
-                      <div class="mb-3 flex flex-col items-center">
-                        <img src="/assets/types/dark.png" alt="img1"
-                            class="w-10 h-10 object-cover rounded-md border-2 border-purple-400" />
-                    </div>
+                  <div class="w-full flex flex-col items-center">
+                    <!-- 맨 위: 암속성 -->
+                    <div class="mb-3 flex flex-col items-center">
+                      <img src="/assets/types/dark.png" alt="img1"
+                          class="w-10 h-10 object-cover rounded-md border-2 border-purple-400" />
+                  </div>
                     <div class="w-full max-w-[310px] mx-auto bg-[#1E1E2F] rounded-md border border-white/10 p-3">
                       <!-- 3 × 2 그리드 -->
                       <div class="grid grid-cols-3 gap-3">
@@ -439,6 +541,34 @@ const pillClass = (name) =>
                         </div>
                       </div>
 
+                      <!-- 하단 라벨 위: 3:1 라벨 -->
+                        <div class="mt-3 -mx-1 md:-mx-2">
+                          <div class="rounded-md px-2">
+                            <div class="grid grid-cols-4 items-center gap-2">
+                              <div class="col-span-3">
+                                <div class="flex items-center justify-center gap-2">
+                                  <img src="/assets/memory/memoryatk1.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk2.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk3.png" class="w-10 h-10 object-contain" alt="">
+                                  
+                                </div>
+                                <div class="mt-1 text-center text-[11px] md:text-xs text-white/85">공격력</div>
+                              </div>
+
+                              <div class="col-span-1 relative pl-3">
+                                <span class="absolute left-0 top-1/2 -translate-y-1/2 h-[70%] w-px bg-white/20"></span>
+
+                                <div class="flex flex-col items-center">
+                                  <img src="/assets/skillball/huimuult.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">필살기</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       <!-- 하단 라벨 -->
                       <div class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap">
                         <span class="inline-flex items-center gap-1 sm:gap-2 rounded-full px-3 py-1 font-semibold
@@ -454,11 +584,7 @@ const pillClass = (name) =>
                     </div>
                    </div> 
                   </Slide>
-                  <Slide>
-                    <div class="h-40 flex items-center justify-center bg-gray-700 rounded-md">
-                      A - Page 3
-                    </div>
-                  </Slide>
+                  
 
                   <template #addons>
                     <Navigation />
@@ -529,6 +655,34 @@ const pillClass = (name) =>
                           </div>
                         </div>
                       </div>
+
+                      <!-- 하단 라벨 위: 3:1 라벨 -->
+                        <div class="mt-3 -mx-1 md:-mx-2">
+                          <div class="rounded-md px-2">
+                            <div class="grid grid-cols-4 items-center gap-2">
+                              <div class="col-span-3">
+                                <div class="flex items-center justify-center gap-2">
+                                  <img src="/assets/memory/memoryatk1.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk2.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk3.png" class="w-10 h-10 object-contain" alt="">
+                                  
+                                </div>
+                                <div class="mt-1 text-center text-[11px] md:text-xs text-white/85">공격력</div>
+                              </div>
+
+                              <div class="col-span-1 relative pl-3">
+                                <span class="absolute left-0 top-1/2 -translate-y-1/2 h-[70%] w-px bg-white/20"></span>
+
+                                <div class="flex flex-col items-center">
+                                  <img src="/assets/skillball/huimuult.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">필살기</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                       <!-- 하단 라벨 -->
                       <div class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap">
@@ -604,6 +758,34 @@ const pillClass = (name) =>
                         </div>
                       </div>
 
+                      <!-- 하단 라벨 위: 3:1 라벨 -->
+                        <div class="mt-3 -mx-1 md:-mx-2">
+                          <div class="rounded-md px-2">
+                            <div class="grid grid-cols-4 items-center gap-2">
+                              <div class="col-span-3">
+                                <div class="flex items-center justify-center gap-2">
+                                  <img src="/assets/memory/memoryatk1.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk2.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">or</div>
+                                  <img src="/assets/memory/memoryatk3.png" class="w-10 h-10 object-contain" alt="">
+                                  
+                                </div>
+                                <div class="mt-1 text-center text-[11px] md:text-xs text-white/85">공격력</div>
+                              </div>
+
+                              <div class="col-span-1 relative pl-3">
+                                <span class="absolute left-0 top-1/2 -translate-y-1/2 h-[70%] w-px bg-white/20"></span>
+
+                                <div class="flex flex-col items-center">
+                                  <img src="/assets/skillball/huimuult.png" class="w-10 h-10 object-contain" alt="">
+                                  <div class="mt-1 text-[11px] md:text-xs text-white/85">필살기</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       <!-- 하단 라벨 -->
                       <div class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap">
                         <span class="inline-flex items-center gap-1 sm:gap-2 rounded-full px-3 py-1 font-semibold
@@ -631,17 +813,17 @@ const pillClass = (name) =>
           </div>
         </div>
 
-      <div id="rank" class="max-w-4xl w-full mx-auto mt-6 rounded-md bg-[#0A0A23]/30 p-6">
+      <div id="rank" class="max-w-4xl w-full mx-auto mt-6 rounded-md bg-[#0A0A23]/30 p-2 md:p-6">
 
         <div class="col-span-full flex justify-center mb-4">
           <span class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-[15px] font-bold
-                      bg-[#0A0A23]/40 text-white border-2 border-black mb-3 mt-1">
+                      bg-[#0A0A23]/40 text-white border-2 border-black mb-1 mt-2 md:mt-1 md:mb-2">
             랭크 추천
           </span>
         </div>
 
-        <div class="divide-y">
-          <div class="grid grid-cols-[2fr_2fr_6fr] bg-[#666666] rounded-t-md">
+        <div class="divide-y divide-gray-500 text-[13px] md:text-[15px]">
+          <div class="grid grid-cols-[2fr_2fr_6fr] bg-[#383838] rounded-t-md">
             <div class="p-2 text-center">랭크</div>
             <div class="p-2 text-center">추천도</div>
             <div class="p-2 text-center">비고</div>
@@ -694,7 +876,7 @@ const pillClass = (name) =>
         
         <div class="col-span-full flex justify-center mb-4">
           <span class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-[15px] font-bold
-                      bg-[#0A0A23]/40 text-white border-2 border-black mt-3">
+                      bg-[#0A0A23]/40 text-white border-2 border-black mt-2 md:mt-3">
             파티 구성
           </span>
         </div>
@@ -703,58 +885,77 @@ const pillClass = (name) =>
         <div class="bg-black/50 rounded-md p-4 text-white">
           <div class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50">
               <img src="/assets/types/dark.png" alt="img1" class="h-12 w-12 md:w-20 md:h-20 object-cover rounded-md border-2 border-purple-400" />
-              <!-- <span class="mt-2 text-xs">암속성</span> -->
+              
           </div>
 
-          <div class="flex justify-center gap-[59px] md:gap-[84px] mx-auto mb-2">
-            <img src="/assets/roleIcons/amp.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-            <img src="/assets/roleIcons/arm.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-            <img src="/assets/roleIcons/atk.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-          </div>
+      
           
           
-          <div class="grid grid-cols-3 sm:grid-cols-3 gap-3">
-            <!-- 캐러셀 A -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide>
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/daemonissa2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-blue-500" />
-                  <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">릴리스 · 데모니사</span>
-                </div>
-              </Slide>
-            </Carousel>
+          <div class="grid grid-cols-3 gap-2 md:gap-2">
 
-            <!-- 캐러셀 B -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide>
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/scire2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-red-600" />
-                  <span class="mt-2 text-xs">카레니나 · 휘효</span>
-                </div>
-              </Slide>
+            <div class="col-span-3">
+              <div class="grid grid-cols-3 place-items-center">
+                <img src="/assets/roleIcons/amp.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md -ml-1" alt="증폭형" />
+                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md" alt="방어형" />
+                <img src="/assets/roleIcons/atk.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md ml-2" alt="공격형" />
+              </div>
+            </div>
 
-              <Slide>
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/parhelion2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-red-600" />
-                  <span class="mt-2 text-xs">이스마엘 · 환일</span>
-                </div>
-              </Slide>
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/daemonissa2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-blue-500" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">릴리스 · 데모니사</span>
+                  </div>
+                </Slide>
+              </Carousel>
+            </div>
 
-              <template #addons>
-                <Navigation />
-              </template>
-            </Carousel>
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full party">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/scire2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-red-500" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">카레니나 · 취호</span>
+                  </div>
+                </Slide>
+                
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/parhelion2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-red-500" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">이스마엘 · 환일</span>
+                  </div>
+                </Slide>
 
-            <!-- 캐러셀 C -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide v-for="n in 2" :key="'C-'+n">
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/huimu2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-yellow-600" />
-                  <span class="mt-2 text-xs">비앙카 · 휘명</span>
-                </div>
-              </Slide>
-            </Carousel>
+                <template #addons>
+                    <Navigation />
+                  </template>
+              </Carousel>
+              </div>
+            
+
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/huimu2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-yellow-400" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">비앙카 · 휘명</span>
+                  </div>
+                </Slide>
+              </Carousel>
           </div>
+        </div>
         </div>
 
         <!-- 2) 두 번째 박스 -->
@@ -764,50 +965,65 @@ const pillClass = (name) =>
               <!-- <span class="mt-2 text-xs">암속성</span> -->
           </div>
 
-          <div class="flex justify-center gap-[59px] md:gap-[84px] mx-auto mb-2">
-            <img src="/assets/roleIcons/amp.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-            <img src="/assets/roleIcons/arm.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-            <img src="/assets/roleIcons/atk.png" alt="img1" class="h-10 w-10 md:w-[50px] md:h-[50px] object-cover rounded-md" />
-          </div>
-          
-          
-          <div class="grid grid-cols-3 sm:grid-cols-3 gap-3">
-            <!-- 캐러셀 A -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide>
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/feral2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-blue-500" />
-                  <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">21호 · 페럴</span>
-                </div>
-              </Slide>
-            </Carousel>
+          <div class="grid grid-cols-3 gap-2 md:gap-2">
 
-            <!-- 캐러셀 B -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide>
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/startrail2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-red-600" />
-                  <span class="mt-2 text-xs">나나미 · 망성</span>
-                </div>
-              </Slide>
-            </Carousel>
+            <div class="col-span-3">
+              <div class="grid grid-cols-3 place-items-center">
+                <img src="/assets/roleIcons/amp.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md -ml-1" alt="증폭형" />
+                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md" alt="방어형" />
+                <img src="/assets/roleIcons/atk.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md ml-2" alt="공격형" />
+              </div>
+            </div>
 
-            <!-- 캐러셀 C -->
-            <Carousel :items-to-show="1" :wrap-around="true" class="w-full party">
-              <Slide v-for="n in 2" :key="'C-'+n">
-                <div class="flex flex-col items-center mb-4">
-                  <img src="/assets/portrait/huimu2.png" alt="img1" class="h-20 w-20 md:w-[100px] md:h-[100px] object-cover rounded-md border-2 border-yellow-600" />
-                  <span class="mt-2 text-xs">비앙카 · 휘명</span>
-                </div>
-              </Slide>
-            </Carousel>
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/feral2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-blue-500" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">21호 · 페럴</span>
+                  </div>
+                </Slide>
+              </Carousel>
+            </div>
+
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/startrail2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-red-500" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">나나미 · 망성</span>
+                  </div>
+                </Slide>
+              </Carousel>
+              </div>
+            
+
+            <div>
+              <Carousel :items-to-show="1" :wrap-around="true"
+                        :navigation-enabled="false" :pagination-enabled="false"
+                        class="w-full">
+                <Slide>
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/portrait/huimu2.png"
+                        class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-yellow-400" />
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">비앙카 · 휘명</span>
+                  </div>
+                </Slide>
+              </Carousel>
           </div>
         </div>
-      </div>
+        </div>
+        </div>
 
-      <div id="cycle" class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30">
+      <div id="cycle" class="max-w-4xl w-full mx-auto mt-6 grid grid-cols-1 gap-2 md:px-6 md:py-3 rounded-md bg-[#0A0A23]/30">
 
-        <div class="col-span-2 md:col-span-4 flex justify-center mb-4">
+        <div class="md:col-span-4 flex justify-center mb-3 mt-3 md:mb-4 md:mt-0">
           <div>
                 <span class="inline-flex items-center gap-1 sm:gap-2 rounded-md px-3 py-1.5 sm:px-4 sm:py-2 text-[15px]  font-bold
                       bg-[#0A0A23]/40 text-white border-2 border-black hover:bg-white/15 hover:border-white/30
@@ -819,7 +1035,7 @@ const pillClass = (name) =>
 
 
         <!-- ===== 사이클 박스 전체 ===== -->
-<div class="md:col-span-2 bg-black/50 rounded-md p-4 text-white max-w-4xl">
+<div class="md:col-span-4 bg-black/50 rounded-md p-1 md:p-4 text-white max-w-4xl">
 
   <!-- [바깥 탭] 암속성/습광 -->
   <div role="tablist" class=" flex gap-2 mb-4 border-b border-white/20">
@@ -844,7 +1060,7 @@ const pillClass = (name) =>
   </div>
 
   <!-- ===== 내부 컨테이너 ===== -->
-  <div class="max-w-4xl w-full mx-auto mt-2 grid grid-cols-1 md:grid-cols-1 gap-4 px-6 py-3 rounded-md bg-[#0A0A23]/30">
+  <div class="max-w-4xl w-full mx-auto mt-2 grid grid-cols-1 gap-4 px-1 md:px-6 py-3 rounded-md bg-[#0A0A23]/30">
 
     <!-- [안쪽 탭] 저랭크/고랭크 (암속성일 때만 표시) -->
     <div class="col-span-1 md:col-span-1" v-if="cycleTab === 'tabA'">
@@ -892,10 +1108,150 @@ const pillClass = (name) =>
     </div>
 
     <!-- ================== 암속성 / 저랭크 ================== -->
+    <!-- ================== 암속성 / 고랭크 ================== -->
     <template v-if="cycleTab === 'tabA' && cyclerankTab === 's'">
-      <div class="col-span-1 md:col-span-2 text-white/70 p-4">
-        저랭크 가이드는 준비중입니다.
+      <div class="w-full">
+          <!-- 아이콘 + 알약 버튼 -->
+          <div class="flex flex-col items-center mb-4">
+            <img
+              src="/assets/types/dark.png"
+              alt="암속성"
+              class="w-10 h-10 object-cover rounded-md border-2 border-purple-400 mb-3"
+            />
+
+            <!-- <div class="flex gap-2">
+              <button
+                type="button"
+                :aria-pressed="mode === 'first'"
+                @click="mode = 'first'"
+                :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+              >
+                첫 출전 사이클
+              </button>
+
+              <button
+                type="button"
+                :aria-pressed="mode === 'repeat'"
+                @click="mode = 'repeat'"
+                :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+              >
+                반복 출전 사이클
+              </button>
+            </div> -->
+          </div>
+
+          <!-- 비디오 (src만 변경) -->
+          <video
+            :src="videoSources[cyclerankTab][mode]"
+            controls
+            muted
+            class="w-full h-auto rounded-md block"
+            :key="forceReload ? mode : undefined"
+          ></video>
+        </div>
+      
+
+      <!-- 첫 출전/반복 출전 “시퀀스 영역” -->
+      <div class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full">
+        <div class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50">
+          <!-- <span class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]">
+            {{ mode === 'first' ? '첫 출전 사이클' : '반복 출전 사이클' }}
+          </span> -->
+          <span class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]">
+            반복 사이클
+          </span>
+        </div>
+
+        <!-- ========== 첫 출전 사이클 시퀀스 ========== -->
+          <template v-if="mode === 'first'">
+
+            <Carousel
+              :items-to-show="1"
+              :wrap-around="false"
+              :navigation-enabled="false"   
+              :pagination-enabled="true"    
+                    
+            >
+              <!-- Slide A: 기존 콘텐츠 전부 -->
+            
+          <Slide>
+            <!-- [시퀀스 1] -->
+            <div class="">
+              <div class="w-full max-w-full flex justify-center">
+                <div class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0">
+                  <div class="flex flex-col items-center ">
+                    <img src="/assets/skillball/dodge.png"
+                        class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover" />
+                    <span class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap">[HOLD] 회피</span>
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/skillball/arrow.png"
+                        class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain" />
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/skillball/basic.png"
+                        class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover" />
+                    <span class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap">[HOLD] 평타</span>
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/skillball/arrow.png"
+                        class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain" />
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <img src="/assets/skillball/huimuult.png"
+                        class="w-7 h-7 md:w-[50px] md:h-[50px] rounded-md object-cover" />
+                    <span class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap">필살기</span>
+                  </div>
+                </div>
+              </div>
+
+                   </div>
+                   </Slide>
+
+                  
+                    <Slide>
+                      <div class="grid grid-col-1 flex items-center justify-center">
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          교대-회피꾹-평꾹-궁
+                        </p>
+                        
+                        
+                      </div>
+                    </Slide>
+
+                    <template #addons>
+                      <div class="absolute right-5">
+                        <Pagination />
+                      </div>
+                    </template>
+                  </Carousel>
+
+                </template>
+
+                <template v-else>
+                   <Carousel
+                      :items-to-show="1"
+                      :wrap-around="false"
+                      :navigation-enabled="false"   
+                      :pagination-enabled="true"           
+                    >
+                    
+                  <Slide>
+                  </Slide>
+
+              
+                  </Carousel>
+                  
+
+                </template>
       </div>
+      
+
+      
     </template>
 
     <!-- ================== 암속성 / 저랭크 ================== -->
@@ -956,18 +1312,37 @@ const pillClass = (name) =>
         </div>
       
 
-      <!-- 왼쪽: 첫 출전/반복 출전 “시퀀스 영역” -->
-      <div class="bg-black/50 p-4 rounded-md text-white max-h-[300px] md:max-h-[550px] overflow-y-auto no-scrollbar">
+      <!-- 첫 출전/반복 출전 “시퀀스 영역” -->
+      <div class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full">
         <div class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50">
-          <span class="mt-2 text-s">
+          <span class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]">
             {{ mode === 'first' ? '첫 출전 사이클' : '반복 출전 사이클' }}
           </span>
         </div>
 
         <!-- ========== 첫 출전 사이클 시퀀스 ========== -->
           <template v-if="mode === 'first'">
+
+            <Carousel
+              :items-to-show="1"
+              :wrap-around="false"
+              :navigation-enabled="false"   
+              :pagination-enabled="true"    
+                    
+            >
+              <!-- Slide A: 기존 콘텐츠 전부 -->
+            
+          <Slide>
+            <div class="block md:hidden">
+              <img
+                src="/assets/mobileCycle/ssshuimuS.png"
+                alt="시퀀스 1 전체 흐름"
+                class="w-full h-auto rounded-md shadow-sm select-none"
+              />
+            </div>
             <!-- [시퀀스 1] -->
-            <div class="min-w-0 w-full max-w-full overflow-x-auto">
+            <div class="hidden md:block">
+            <div class="min-w-0 w-full max-w-full">
               <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                 <div class="flex flex-col items-center -ml-1">
                   <img src="/assets/skillball/dodge.png" class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover" />
@@ -1012,7 +1387,7 @@ const pillClass = (name) =>
             
 
               <!-- [시퀀스 3] -->
-                  <div class="min-w-0 w-full max-w-full overflow-x-auto mt-6">
+                  <div class="min-w-0 w-full max-w-full mt-6">
                     <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                       <div class="inline-flex flex-col items-center">
                         <img src="/assets/skillball/arrow.png" alt="→"
@@ -1067,7 +1442,7 @@ const pillClass = (name) =>
                   </div>
                   
 
-                  <div class="min-w-0 w-full max-w-full overflow-x-auto mt-6">
+                  <div class="min-w-0 w-full max-w-full mt-6">
                     <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                       <div class="inline-flex flex-col items-center">
                         <img src="/assets/skillball/arrow.png" alt="→"
@@ -1086,12 +1461,54 @@ const pillClass = (name) =>
                     
                     </div>
                    </div> 
+                   </div>
+                   </Slide>
+
+                  
+                    <Slide>
+                      <div class="grid grid-col-1 flex items-center justify-center">
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          교대-회피꾹-파볼꾹-막타때 빨-빨-궁
+                        </p>
+                        <p class="text-sm md:text-base text-white/80">
+                          -빨빨-회피-평꾹-빨-교대
+                        </p>
+                        
+                      </div>
+                    </Slide>
+
+                    <template #addons>
+                      <div class="absolute right-5">
+                        <Pagination />
+                      </div>
+                    </template>
+                  </Carousel>
 
                 </template>
 
                 <template v-else>
+                   <Carousel
+                      :items-to-show="1"
+                      :wrap-around="false"
+                      :navigation-enabled="false"   
+                      :pagination-enabled="true"    
+                            
+                    >
+                      <!-- Slide A: 기존 콘텐츠 전부 -->
+                    
+                  <Slide>
+                  
+                  <div class="block md:hidden">
+                    <img
+                      src="/assets/mobileCycle/ssshuimuR.png"
+                      alt="시퀀스 1 전체 흐름"
+                      class="w-full h-auto rounded-md shadow-sm select-none"
+                    />
+                  </div>
+                    
+                <div class="w-full flex flex-col gap-2 hidden md:block">
                   <!-- [시퀀스 2] (필살기 시작) -->
-                    <div class="min-w-0 w-full max-w-full overflow-x-auto">
+                    <div class="min-w-0 w-full max-w-full mb-3">
                       <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                         <div class="flex flex-col items-center">
                           <img src="/assets/skillball/huimuult.png" alt="" class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-md object-cover" />
@@ -1104,12 +1521,12 @@ const pillClass = (name) =>
                     </div>
 
                     <!-- [시퀀스 3~5 묶음] -->
-                    <div class="relative border border-white rounded-md mt-4 p-0 space-y-5">
+                    <div class="relative border border-white rounded-md p-0 space-y-5">
                       <span class="absolute -top-3 left-3 bg-black px-2 font-bold text-[25px] text-white">x4</span>
 
                       <!-- [시퀀스 3] -->
-                      <div class="w-full overflow-x-auto min-w-0">
-                        <div class="inline-flex items-center gap-3 sm:gap-4">
+                      <div class="w-full min-w-0">
+                        <div class="inline-flex items-center gap-2 sm:gap-4">
                           <div class="flex flex-col items-center">
                             <div class="inline-flex items-center rounded-md ml-3">
                               <img src="/assets/skillball/huimured.png" alt="" class="w-7 h-7 md:w-[50px] md:h-[50px] rounded-md object-cover" />
@@ -1149,7 +1566,7 @@ const pillClass = (name) =>
 
               
                       <!-- [시퀀스 5] -->
-                      <div class="w-full overflow-x-auto min-w-0 pb-7">
+                      <div class="w-full  min-w-0 pb-7">
                         <div class="inline-flex items-center gap-3 sm:gap-4">
                           <div class="inline-flex flex-col items-center shrink-0">
                             <img src="/assets/skillball/arrow.png" alt="→" class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain" />
@@ -1174,7 +1591,7 @@ const pillClass = (name) =>
                       </div>
 
           <!-- [시퀀스 3] -->
-                  <div class="min-w-0 w-full max-w-full overflow-x-auto mt-3">
+                  <div class="min-w-0 w-full max-w-full mt-3">
                     <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                       <div class="inline-flex flex-col items-center">
                         <img src="/assets/skillball/arrow.png" alt="→"
@@ -1231,7 +1648,7 @@ const pillClass = (name) =>
                 
 
                   <!-- [시퀀스 5] -->
-                  <div class="min-w-0 w-full max-w-full overflow-x-auto mt-3">
+                  <div class="min-w-0 w-full max-w-full mt-3">
                     <div class="inline-flex min-w-max items-center gap-3 sm:gap-4">
                       <div class="inline-flex flex-col items-center">
                         <img src="/assets/skillball/arrow.png" alt="→"
@@ -1248,6 +1665,39 @@ const pillClass = (name) =>
                       </div>
                     </div>
                   </div>
+                  </div>
+
+                  </Slide>
+
+                  
+                    <Slide>
+                      <div class="grid grid-col-1 flex items-center justify-center">
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          교대-궁-빨빨-회피-평꾹-빨-궁
+                        </p>
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          -빨빨-회피-평꾹-빨-궁
+                        </p>
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          -빨빨-회피-평꾹-빨-궁
+                        </p>
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          -빨빨-회피-평꾹-빨-궁
+                        </p>
+                        <p class="text-sm md:text-base text-white/80 mb-4">
+                          -빨빨-회피-평꾹-빨-교대
+                        </p>
+                        
+                      </div>
+                    </Slide>
+
+                    <template #addons>
+                      <div class="absolute right-5">
+                        <Pagination />
+                      </div>
+                    </template>
+                  </Carousel>
+                  
 
                 </template>
       </div>
@@ -1292,7 +1742,7 @@ const pillClass = (name) =>
 }
 
 :deep(.party .carousel__prev) {
-  left: -1.2rem;
+  left: -1rem;
   top: 3rem; 
 }
 
@@ -1309,6 +1759,12 @@ const pillClass = (name) =>
 :deep(.memory .carousel__next) {
   right: -1rem;
   
+}
+
+:deep(.carousel__pagination-button) {
+  width: 10px; height: 10px;               /* 선택: 크기 조절 */
+  background-color: rgba(255, 255, 255, .35);
+  border-radius: 9999px;
 }
 
 @media (max-width: 639px) {
