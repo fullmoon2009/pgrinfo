@@ -153,6 +153,7 @@ const party1 = {
           img: "/assets/portrait/echo2.png",
           label: "아리사 · 에코",
           borderClass: "border-red-500",
+          to:'/char/echo',
         },
       ],
       showNav: false,
@@ -163,6 +164,7 @@ const party1 = {
           img: "/assets/portrait/solacetune2.png",
           label: "함영 · 단심",
           borderClass: "border-yellow-400",
+          to:'/char/solacetune',
         },
       ],
     },
@@ -191,6 +193,7 @@ const party2 = {
           img: "/assets/portrait/echo2.png",
           label: "아리사 · 에코",
           borderClass: "border-red-500",
+          to:'/char/echo',
           badges: [
             {text: '선발'},
           ]
@@ -203,6 +206,7 @@ const party2 = {
           img: "/assets/portrait/solacetune2.png",
           label: "함영 · 단심",
           borderClass: "border-yellow-400",
+          to:'/char/solacetune',
         },
       ],
     },

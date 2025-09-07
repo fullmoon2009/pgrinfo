@@ -262,6 +262,7 @@ const party1 = {
           img: "/assets/portrait/pyroath2.png",
           label: "루시아 · 서염",
           borderClass: "border-blue-500",
+          to:'/char/pyroath',
           badges: [
             {text: '대장'},
           ]
@@ -288,11 +289,13 @@ const party1 = {
           img: "/assets/portrait/epitaph2.png",
           label: "와타나베 · 진명",
           borderClass: "border-yellow-400",
+          to:'/char/epitaph',
         },
         {
           img: "/assets/portrait/startrail2.png",
           label: "나나미 · 망성",
           borderClass: "border-yellow-400",
+          to:'/char/startrail',
         }
       ],
       showNav: true,
@@ -323,6 +326,7 @@ const party2 = {
           img: "/assets/portrait/crimson2.png",
           label: "루시아 · 심홍수영",
           borderClass: "border-red-500",
+          to:'/char/crimsonweave',
           badges: [
             {text: '대장'},
           ]
@@ -336,6 +340,7 @@ const party2 = {
           img: "/assets/portrait/epitaph2.png",
           label: "와타나베 · 진명",
           borderClass: "border-yellow-400",
+          to:'/char/epitaph',
         }
       ],
     },

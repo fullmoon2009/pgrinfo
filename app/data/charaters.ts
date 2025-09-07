@@ -91,7 +91,7 @@ export const characters: Character[] = [
     types: ['fire', 'abyss']
   },
   {
-    slug: "lost",
+    slug: "lostlullaby",
     name: '라미아 · 심요',
     portrait: '/assets/portrait/lost2.png',
     types: ['dark']
@@ -109,7 +109,7 @@ export const characters: Character[] = [
     types: ['lightning']
   },
   {
-    slug: "crimson",
+    slug: "crimsonweave",
     name: '루시아 · 심홍수영',
     portrait: '/assets/portrait/crimson2.png',
     types: ['lightning', 'abyss']

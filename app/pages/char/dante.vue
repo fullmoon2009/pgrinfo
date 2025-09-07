@@ -144,6 +144,7 @@ const party1 = {
           img: "/assets/portrait/geiravor2.png",
           label: "베라 · 작망",
           borderClass: "border-blue-500",
+          to:'/char/geiravor',
         },
       ],
     },
@@ -163,11 +164,13 @@ const party1 = {
           img: "/assets/portrait/epitaph2.png",
           label: "와타나베 · 진명",
           borderClass: "border-yellow-400",
+          to:'/char/epitaph',
         },
         {
           img: "/assets/portrait/startrail2.png",
           label: "나나미 · 망성",
           borderClass: "border-yellow-400",
+          to:'/char/startrail'
         }
       ],
       showNav: true,
@@ -185,6 +188,7 @@ const party2 = {
           img: "/assets/portrait/geiravor2.png",
           label: "베라 · 작망",
           borderClass: "border-blue-500",
+          to:'/char/geiravor',
           badges: [
             {text: '선발'},
           ]
@@ -210,6 +214,7 @@ const party2 = {
           img: "/assets/portrait/startrail2.png",
           label: "나나미 · 망성",
           borderClass: "border-yellow-400",
+          to:'/char/startrail',
         }
       ],
     },

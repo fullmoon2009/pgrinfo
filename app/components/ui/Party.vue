@@ -5,9 +5,7 @@ import { Carousel, Slide, Navigation } from 'vue3-carousel'
 type Corner = 'lt' | 'rt' | 'lb' | 'rb'
 type Badge = {
   text: string
-  /** 배지 색/테두리 등 커스텀 클래스 */
   cls?: string
-  /** 배지 위치(기본: lt = 좌상) */
   pos?: Corner
 }
 
@@ -15,12 +13,22 @@ type MemberSlide = {
   img: string
   label: string
   borderClass?: string
-  /** ⬇ 기존 단일 배지(호환용) */
+  // 단일/다중 배지
   badgeText?: string
   badgeClass?: string
-  /** ⬇ 다중 배지 지원 */
   badges?: Badge[]
+
+  // 🔹 이동 관련(선택)
+  /** 내부 라우트 경로 (NuxtLink로 이동) 예: '/characters/dante' */
+  to?: string
+  /** 외부 링크 (a태그로 이동) 예: 'https://example.com' */
+  href?: string
+  /** 외부 링크 target (기본 '_self') */
+  target?: '_self' | '_blank' | '_parent' | '_top'
+  /** rel 속성 (보안상 _blank면 'noopener noreferrer' 권장) */
+  rel?: string
 }
+
 type Column = { slides: MemberSlide[]; showNav?: boolean }
 
 const props = defineProps<{
@@ -122,27 +130,109 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
         >
           <Slide v-for="s in col.slides" :key="s.img + '|' + s.label">
             <div class="flex flex-col items-center">
-              <!-- 배지 올리기 위해 relative 래퍼로 감싸기 -->
-              <div class="relative">
+              <!-- 🔹 링크 우선순위: NuxtLink(to) → a(href) → div -->
+              <NuxtLink
+                v-if="s.to"
+                :to="s.to"
+                class="relative group rounded-md focus:outline-none focus:ring-2 focus:ring-white/40"
+              >
+                <!-- 카드 -->
+                <img
+                  :src="s.img"
+                  class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
+                  :class="s.borderClass || 'border-white/20'"
+                  :alt="s.label"
+                />
+                <!-- 배지(단일/다중) -->
+                <span
+                  v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
+                  class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
+                         bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
+                  :class="s.badgeClass"
+                >
+                  {{ s.badgeText }}
+                </span>
+                <template v-if="s.badges?.length">
+                  <div
+                    v-for="corner in CORNERS"
+                    :key="corner"
+                    v-show="s.badges.some(b => (b.pos || 'lt') === corner)"
+                    class="absolute z-10 flex flex-col gap-1"
+                    :class="CORNER_CLASS[corner]"
+                  >
+                    <span
+                      v-for="(b, bi) in s.badges.filter(b => (b.pos || 'lt') === corner)"
+                      :key="bi"
+                      class="rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
+                             bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
+                      :class="b.cls"
+                    >
+                      {{ b.text }}
+                    </span>
+                  </div>
+                </template>
+              </NuxtLink>
+
+              <a
+                v-else-if="s.href"
+                :href="s.href"
+                :target="s.target || '_self'"
+                :rel="s.rel || (s.target === '_blank' ? 'noopener noreferrer' : undefined)"
+                class="relative group rounded-md focus:outline-none focus:ring-2 focus:ring-white/40"
+              >
+                <!-- 카드 -->
+                <img
+                  :src="s.img"
+                  class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
+                  :class="s.borderClass || 'border-white/20'"
+                  :alt="s.label"
+                />
+                <!-- 배지 동일 로직 -->
+                <span
+                  v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
+                  class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
+                         bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
+                  :class="s.badgeClass"
+                >
+                  {{ s.badgeText }}
+                </span>
+                <template v-if="s.badges?.length">
+                  <div
+                    v-for="corner in CORNERS"
+                    :key="corner"
+                    v-show="s.badges.some(b => (b.pos || 'lt') === corner)"
+                    class="absolute z-10 flex flex-col gap-1"
+                    :class="CORNER_CLASS[corner]"
+                  >
+                    <span
+                      v-for="(b, bi) in s.badges.filter(b => (b.pos || 'lt') === corner)"
+                      :key="bi"
+                      class="rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
+                             bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
+                      :class="b.cls"
+                    >
+                      {{ b.text }}
+                    </span>
+                  </div>
+                </template>
+              </a>
+
+              <!-- 링크가 없을 때 기본 div -->
+              <div v-else class="relative">
                 <img
                   :src="s.img"
                   class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2"
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
-
-                <!-- (A) 구버전: 단일 배지 -->
                 <span
                   v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
-                  class="absolute left-1 top-1 z-10
-                         rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
+                  class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
                          bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
                   :class="s.badgeClass"
                 >
                   {{ s.badgeText }}
                 </span>
-
-                <!-- (B) 확장: 다중 배지 -->
                 <template v-if="s.badges?.length">
                   <div
                     v-for="corner in CORNERS"
@@ -168,7 +258,6 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
             </div>
           </Slide>
 
-          <!-- 네비: showNav && 슬라이드 2개 이상일 때만 -->
           <template #addons v-if="col.showNav && col.slides && col.slides.length > 1">
             <Navigation />
           </template>

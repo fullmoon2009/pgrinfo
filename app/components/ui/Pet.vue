@@ -55,7 +55,14 @@ const imgStyle = computed(() => {
           />
         </div>
         <!-- 기본 크기: text-xs md:text-sm, 필요시 petNameClass로 덮어쓰기 -->
-        <span :class="['mt-2 text-white/90 text-center text-sm md:text-sm', petNameClass || 'text-xs md:text-sm']">
+        <span
+          :class="[
+            'mt-2 text-white/90 text-center',            
+            ((petName || '').trim().length > 6)           
+              ? 'text-[11px] md:text-[12px]'
+              : (petNameClass || 'text-sm md:text-sm')    
+          ]"
+        >
           {{ petName }}
         </span>
       </div>
