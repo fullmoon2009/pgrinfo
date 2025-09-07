@@ -41,7 +41,7 @@ const imgStyle = computed(() => {
 
 <template>
   <div class="rounded-md bg-black/30 p-3">
-    <div class="grid grid-cols-3 gap-3 py-[12px]">
+    <div class="grid grid-cols-3 gap-3 py-[13px]">
       <div class="col-span-1 flex flex-col items-center">
         <div :class="petBoxClass || 'w-full max-w-[120px] aspect-square overflow-hidden rounded-md border-2 border-red-500'">
           <img

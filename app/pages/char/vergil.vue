@@ -9,6 +9,7 @@ import SupportPet from "@/components/ui/Pet.vue";
 import MemoryCarousel from "@/components/ui/Memory.vue";
 import RankTable from "@/components/ui/Rank.vue";
 import PartyBox from "@/components/ui/Party.vue";
+import CharacterSkills from "@/components/ui/CharacterSkills.vue";
 import CycleSection from "@/components/ui/Cycle.vue";
 
 const cycleTab = ref<"tabA" | "tabB">("tabA");
@@ -36,10 +37,10 @@ const pills = [
 ];
 
 const weaponSkills = [
-  { img: "/assets/wskills/count.png", label: "죽음의 카운트다운" },
-  { img: "/assets/wskills/sunset.png", label: "눈부신 석양" },
-  { img: "/assets/wskills/flash.png", label: "초산 플래시" },
-];
+  { id: 'count',     img: '/assets/wskills/count.png',     label: '죽음의 카운트다운' },
+  { id: 'sunset', img: '/assets/wskills/sunset.png', label: '눈부신 석양' },
+  { id: 'flash', img: '/assets/wskills/flash.png',       label: '초산 플래시' },
+]
 
 const petSkills = [
   { img: "/assets/petskills/mirage1.png", label: "악마의 검무" },
@@ -305,6 +306,7 @@ const videoSources = {
       <!-- 좌측 2칸 -->
       <div class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4">
         <WeaponSkills
+          weapon-id="yamato",
           weapon-img="/assets/arms/yamato.png"
           weapon-name="★6 야마토"
           :skills="weaponSkills"

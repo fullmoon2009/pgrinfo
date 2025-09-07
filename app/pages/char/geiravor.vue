@@ -9,6 +9,7 @@ import SupportPet from "@/components/ui/Pet.vue";
 import MemoryCarousel from "@/components/ui/Memory.vue";
 import RankTable from "@/components/ui/Rank.vue";
 import PartyBox from "@/components/ui/Party.vue";
+import CharacterSkills from "@/components/ui/CharacterSkills.vue";
 import CycleSection from "@/components/ui/Cycle.vue";
 
 const cycleTab = ref<"tabA" | "tabB">("tabA");
@@ -36,10 +37,11 @@ const pills = [
 ];
 
 const weaponSkills = [
-  { img: "/assets/wskills/sunset.png", label: "눈부신 석양" },
-  { img: "/assets/wskills/flash.png", label: "초산 플래시" },
-  { img: "/assets/wskills/light.png", label: "광휘의 파편" },
-];
+  { id: 'sunset',     img: '/assets/wskills/sunset.png',     label: '눈부신 석양' },
+  { id: 'amplight', img: '/assets/wskills/amplight.png', label: '초전도 축광' },
+  { id: 'count', img: '/assets/wskills/count.png',       label: '죽음의 카운트다운' },
+]
+
 
 const petSkills = [
   { img: "/assets/petskills/redwolf1.png", label: "광기의 사냥" },
@@ -438,6 +440,8 @@ const videoSources = {
       />
     </section>
 
+    <CharacterSkills char-key="geiravor" />
+
     <div
       id="equip"
       class="max-w-4xl w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 px-2 py-1 md:px-6 md:py-3 rounded-md bg-[#0A0A23]/30"
@@ -447,6 +451,7 @@ const videoSources = {
      
       <div class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4">
         <WeaponSkills
+          weapon-id="deathlessflame"
           weapon-img="/assets/arms/deathlessflame.png"
           weapon-name="★6 불멸의 불꽃"
           :skills="weaponSkills"

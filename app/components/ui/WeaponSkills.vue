@@ -1,24 +1,50 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { weaponSkillDesc } from '@/data/weaponskilldata'
+import { weaponData, type WeaponTooltip } from '~/data/weaponData'
 
-type Skill = { img:string; label:string }
 type Fit = 'cover'|'contain'|'fill'|'none'|'scale-down'
+type Corner = 'lt'|'rt'|'lb'|'rb'
+type Badge = { text:string; cls?:string; pos?:Corner }
+
+// 스킬: id 우선, 없으면 label로 매핑
+type Skill = { img:string; label:string; id?:string }
+
+type MemberSlide = {
+  img: string; label: string; borderClass?: string
+  badgeText?: string; badgeClass?: string; badges?: Badge[]
+}
+type Column = { slides: MemberSlide[]; showNav?: boolean }
 
 const props = defineProps<{
+  /* 무기 이미지/이름 */
   weaponImg:string
   weaponName:string
-  title?:string
-  skills: Skill[]                 // 3개 예상
+  weaponId?: string            // 👈 무기 툴팁 조회 키(권장)
 
-  /* === 추가: 무기 이미지 사이즈/확대/크롭 제어 === */
-  weaponBoxClass?: string         // 무기 이미지 컨테이너 클래스(기본 크기 덮어쓰기)
-  weaponFit?: Fit                 // object-fit (기본: cover)
-  weaponObjectPosition?: string   // '50% 10%' 같은 center 조정
-  weaponZoom?: number             // 1.2 처럼 확대
-  weaponTransformOrigin?: string  // '50% 10%' 확대 기준점
-  weaponImgClass?: string         // 이미지에 임의 Tailwind 클래스 추가(선택)
+  /* 라벨 */
+  title?:string
+  skills: Skill[]
+
+  /* 무기 이미지 렌더 옵션 */
+  weaponBoxClass?: string
+  weaponFit?: Fit
+  weaponObjectPosition?: string
+  weaponZoom?: number
+  weaponTransformOrigin?: string
+  weaponImgClass?: string
+
+  /* (다른 페이지 재사용 prop들) */
+  typeIcon?: string
+  typeKey?: string
+  typeBorderClass?: string
+  roleIcons?: string[]
+  roleIconClasses?: string[]
+  columns?: [Column, Column, Column]
 }>()
 
+/* object-fit 클래스 */
 const fitClass = computed(() => {
   switch (props.weaponFit) {
     case 'contain': return 'object-contain'
@@ -28,7 +54,7 @@ const fitClass = computed(() => {
     default: return 'object-cover'
   }
 })
-
+/* 무기 이미지 style */
 const imgStyle = computed(() => {
   const s: Record<string,string> = {}
   if (props.weaponObjectPosition) s.objectPosition = props.weaponObjectPosition
@@ -36,31 +62,94 @@ const imgStyle = computed(() => {
   if (props.weaponTransformOrigin) s.transformOrigin = props.weaponTransformOrigin
   return s
 })
+
+/* ===== 스킬 툴팁 상태 ===== */
+const hoverIdx = ref<number|null>(null)   // 데스크탑 hover
+const openIdx  = ref<number|null>(null)   // 모바일/클릭 토글
+const toggleRow = (i:number) => { openIdx.value = openIdx.value === i ? null : i }
+
+/* ===== 무기(좌측) 툴팁 상태 ===== */
+const weaponHover = ref(false)
+const weaponOpen  = ref(false)
+
+/* 바깥 클릭 시 모두 닫기 */
+const rootEl = ref<HTMLElement|null>(null)
+const onDocPointerDown = (e: Event) => {
+  const t = e.target as Node | null
+  if (rootEl.value && t && !rootEl.value.contains(t)) {
+    openIdx.value = null
+    weaponOpen.value = false
+  }
+}
+onMounted(() => document.addEventListener('pointerdown', onDocPointerDown, true))
+onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointerDown, true))
+
+/* 스킬 설명: id → label */
+const getDesc = (s: Skill) => weaponSkillDesc[s.id ?? s.label] ?? ''
+
+/* 무기 툴팁 데이터: weaponId → weaponName 순 */
+const weaponTip = computed<WeaponTooltip | undefined>(() => {
+  const key = props.weaponId ?? props.weaponName
+  return key ? weaponData[key] : undefined
+})
 </script>
 
 <template>
-  <div class="rounded-md bg-black/30 p-3">
+  <div ref="rootEl" class="rounded-md bg-black/30 p-3 relative">
+    <!-- 모바일: 열렸을 때 바깥 탭으로 닫히는 스크림 -->
+    <div
+      v-if="openIdx !== null || weaponOpen"
+      class="fixed inset-0 z-40 md:hidden"
+      @click="openIdx = null; weaponOpen = false"
+    />
+
     <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 md:pb-5 md:h-full">
+      <!-- 좌측: 무기 이미지 + 이름 -->
       <div class="md:col-span-1 flex flex-col items-center">
-        <div :class="weaponBoxClass || 'w-[100px] h-[170px] md:w-[110px] md:h-[220px] overflow-hidden rounded-md border-2 border-orange-500'">
-          <img
-            :src="weaponImg"
-            :class="['w-full h-full', fitClass, weaponImgClass]"
-            :style="imgStyle"
-          />
+        <div
+          class="relative"
+          @mouseenter="weaponHover = true"
+          @mouseleave="weaponHover = false"
+          @click="weaponOpen = !weaponOpen"
+        >
+          <div :class="weaponBoxClass || 'w-[100px] h-[170px] md:w-[110px] md:h-[220px] overflow-hidden rounded-md border-2 border-orange-500'">
+            <img :src="weaponImg" :class="['w-full h-full', fitClass, weaponImgClass]" :style="imgStyle" />
+          </div>
+
+          <!-- 무기 스샷 툴팁 -->
+          <div
+            v-if="weaponTip"
+            class="pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 z-50"
+            :class="(weaponHover || weaponOpen) ? 'block' : 'hidden'"
+          >
+            <div
+              class="pointer-events-auto relative rounded-md border border-white/20 bg-black/90 text-white/90
+                     p-3 shadow-xl w-[260px] md:w-[300px]"
+              @click.stop
+            >
+              <div class="font-bold text-[13px] md:text-[14px] mb-1">{{ weaponTip.title }}</div>
+              <div class="text-[11px] md:text-[12px] leading-relaxed whitespace-pre-line">
+                {{ weaponTip.description }}
+              </div>
+
+              <!-- 모바일 닫기 -->
+              <!-- <button
+                class="md:hidden absolute top-1 right-1 px-1.5 py-0.5 text-[10px] rounded bg-white/15 border border-white/30"
+                @click.stop="weaponOpen = false"
+              >닫기</button> -->
+            </div>
+          </div>
         </div>
+
         <span
           :class="[
-            'mt-2',
-            ((weaponName || '').trim().length >= 8)
-              ? 'text-[13px] md:text-sm text-white/90'  
-              : 'text-sm text-white/9 text-white/90'
+            'mt-2 text-white/90 text-center',
+            ((weaponName || '').trim().length >= 8) ? 'text-[13px] md:text-sm' : 'text-sm'
           ]"
-        >
-          {{ weaponName }}
-        </span>
+        >{{ weaponName }}</span>
       </div>
 
+      <!-- 우측: 무기 공명 추천 + 스킬 목록 -->
       <div class="col-span-2 rounded-md relative">
         <div class="absolute -top-1 left-1/2 -translate-x-1/2">
           <span class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]
@@ -70,17 +159,53 @@ const imgStyle = computed(() => {
         </div>
 
         <div class="divide-y divide-white/20 md:w-full pt-5 md:pt-7">
-          <div v-for="(s, i) in skills" :key="i" class="grid grid-cols-10 gap-2 md:gap-6 py-2 px-6">
+          <div
+            v-for="(s, i) in skills"
+            :key="i"
+            class="relative grid grid-cols-10 gap-2 md:gap-6 py-2 px-6 group cursor-default"
+            @mouseenter="hoverIdx = i"
+            @mouseleave="hoverIdx = null"
+            @click="toggleRow(i)"
+            role="button"
+            tabindex="0"
+            @keyup.enter="toggleRow(i)"
+            @keyup.space.prevent="toggleRow(i)"
+            :aria-expanded="openIdx===i"
+          >
+            <!-- 아이콘 -->
             <div class="col-span-3 flex items-center -ml-4 md:-ml-0">
               <div class="relative w-[40px] md:w-14 aspect-square rounded-md border-2 border-white/30 shrink-0">
                 <img :src="s.img" class="w-full h-full object-cover" />
                 <span class="absolute -top-1 -left-1 px-1 rounded bg-white/90 text-black text-[10px] font-bold leading-none shadow">
-                  {{ i+1 }}
+                  {{ i + 1 }}
                 </span>
               </div>
             </div>
+
+            <!-- 라벨 -->
             <div class="col-span-7 flex items-center text-[12px] md:text-sm whitespace-nowrap">
               {{ s.label }}
+            </div>
+
+            <!-- 스킬 툴팁 -->
+            <div
+              v-if="getDesc(s)"
+              class="pointer-events-none absolute left-4 right-4 md:left-auto md:right-0 md:translate-x-[calc(100%+8px)]
+                     top-full md:top-1/2 md:-translate-y-1/2 z-50"
+              :class="(hoverIdx===i || openIdx===i) ? 'block' : 'hidden'"
+            >
+              <div
+                class="pointer-events-auto relative rounded-md border border-white/20 bg-black/90 text-white/90
+                       text-[11px] leading-relaxed p-3 shadow-xl max-w-xs md:max-w-sm whitespace-pre-line"
+                @click.stop
+              >
+                <!-- <button
+                  class="md:hidden absolute top-1 right-1 px-1.5 py-0.5 text-[10px] rounded bg-white/15 border border-white/30"
+                  @click.stop="openIdx = null"
+                >닫기</button> -->
+
+                {{ getDesc(s) }}
+              </div>
             </div>
           </div>
         </div>
