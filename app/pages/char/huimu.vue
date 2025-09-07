@@ -896,7 +896,7 @@ const pillClass = (name) =>
             <div class="col-span-3">
               <div class="grid grid-cols-3 place-items-center">
                 <img src="/assets/roleIcons/amp.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md -ml-1" alt="증폭형" />
-                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md" alt="방어형" />
+                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md md:ml-1" alt="방어형" />
                 <img src="/assets/roleIcons/atk.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md ml-2" alt="공격형" />
               </div>
             </div>
@@ -970,7 +970,7 @@ const pillClass = (name) =>
             <div class="col-span-3">
               <div class="grid grid-cols-3 place-items-center">
                 <img src="/assets/roleIcons/amp.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md -ml-1" alt="증폭형" />
-                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md" alt="방어형" />
+                <img src="/assets/roleIcons/arm.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md md:ml-1" alt="방어형" />
                 <img src="/assets/roleIcons/atk.png" class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md ml-2" alt="공격형" />
               </div>
             </div>

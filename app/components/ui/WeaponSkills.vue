@@ -41,9 +41,7 @@ const imgStyle = computed(() => {
 <template>
   <div class="rounded-md bg-black/30 p-3">
     <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 md:pb-5 md:h-full">
-      <!-- 왼쪽: 무기 -->
       <div class="md:col-span-1 flex flex-col items-center">
-        <!-- 컨테이너 크기 커스터마이즈 가능 + overflow-hidden 으로 크롭 -->
         <div :class="weaponBoxClass || 'w-[100px] h-[170px] md:w-[110px] md:h-[220px] overflow-hidden rounded-md border-2 border-orange-500'">
           <img
             :src="weaponImg"
@@ -51,10 +49,18 @@ const imgStyle = computed(() => {
             :style="imgStyle"
           />
         </div>
-        <span class="mt-2 text-sm">{{ weaponName }}</span>
+        <span
+          :class="[
+            'mt-2',
+            ((weaponName || '').trim().length >= 8)
+              ? 'text-[13px] md:text-sm text-white/90'  
+              : 'text-sm text-white/9 text-white/90'
+          ]"
+        >
+          {{ weaponName }}
+        </span>
       </div>
 
-      <!-- 오른쪽 -->
       <div class="col-span-2 rounded-md relative">
         <div class="absolute -top-1 left-1/2 -translate-x-1/2">
           <span class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]

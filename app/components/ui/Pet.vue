@@ -41,7 +41,7 @@ const imgStyle = computed(() => {
 
 <template>
   <div class="rounded-md bg-black/30 p-3">
-    <div class="grid grid-cols-3 gap-3 py-[13px]">
+    <div class="grid grid-cols-3 gap-3 py-[12px]">
       <div class="col-span-1 flex flex-col items-center">
         <div :class="petBoxClass || 'w-full max-w-[120px] aspect-square overflow-hidden rounded-md border-2 border-red-500'">
           <img
@@ -55,7 +55,7 @@ const imgStyle = computed(() => {
           />
         </div>
         <!-- 기본 크기: text-xs md:text-sm, 필요시 petNameClass로 덮어쓰기 -->
-        <span :class="['mt-2 text-white/90 text-center', petNameClass || 'text-xs md:text-sm']">
+        <span :class="['mt-2 text-white/90 text-center text-sm md:text-sm', petNameClass || 'text-xs md:text-sm']">
           {{ petName }}
         </span>
       </div>

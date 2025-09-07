@@ -121,7 +121,7 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                           <!-- 마지막 아이콘 뒤에는 'or'를 넣지 않음 -->
                           <span
                             v-if="i < s.atkIcons.length - 1"
-                            :class="s.atkSepCls ?? 'text-[11px] md:text-xs text-white/70 select-none'"
+                            :class="s.atkSepCls ?? 'text-[10px] md:text-xs text-white/70 select-none'"
                           >
                             {{ s.atkSepText ?? 'or' }}
                           </span>
@@ -141,7 +141,12 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                           :src="s.ultIcon"
                           :class="['w-10 h-10 object-contain', s.ultIconCls]"
                         />
-                        <div class="mt-1 text-[11px] md:text-xs text-white/85">
+                        <div
+                          class="mt-1 text-white/85"
+                          :class="((s.ultLabel ?? '필살기').trim().length > 5)
+                            ? 'text-[9px] md:text-[9px]'
+                            : 'text-[10px] md:text-xs'"
+                        >
                           {{ s.ultLabel ?? '필살기' }}
                         </div>
                       </div>
@@ -158,12 +163,15 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                 >
                   {{ s.tierBadge.text }}
                 </span>
-                <span class="ml-2 text-pink-300 font-semibold">{{ s.chipText }}</span>
+
+                <span class="ml-2 text-[12px] text-pink-300 font-semibold">{{ s.chipText }}</span>
                 <span class="text-white/60"> / </span>
-                <span class=" text-red-400 font-semibold">{{ s.chipText2 }}</span>
-                <span class="text-white/60"> / </span>
-                <span class=" text-red-400 font-semibold">{{ s.chipText3 }}</span>
-                
+                <span class="text-[12px] text-red-400 font-semibold">{{ s.chipText2 }}</span>
+
+                <span v-if="s.chipText3 && s.chipText3.trim()" class="text-white/60"> / </span>
+                <span v-if="s.chipText3 && s.chipText3.trim()" class="text-[12px] text-red-400 font-semibold">
+                  {{ s.chipText3 }}
+                </span>
               </div>
             </div>
           </div>

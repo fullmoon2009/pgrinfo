@@ -17,7 +17,7 @@ defineProps<{
                  :class="it.border || 'border-white/30'" />
           </div>
         </div>
-        <div class="mt-2 grid grid-cols-2 text-center text-[10px] md:text-xs">
+        <div class="mt-2 grid grid-cols-2 text-white/90 text-center text-[10px] md:text-xs">
           <span>{{ left[0]?.label }}</span>
           <span>{{ left[1]?.label }}</span>
         </div>
@@ -29,7 +29,7 @@ defineProps<{
           <img :src="right.src" :alt="right.label"
                class="w-full h-full object-contain rounded-md ring-2 ring-white p-1" />
         </div>
-        <span class="mt-2 text-[10px] md:text-xs">{{ right.label }}</span>
+        <span class="mt-2 text-[10px] text-white/90 md:text-xs">{{ right.label }}</span>
       </div>
     </div>
   </div>
