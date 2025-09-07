@@ -923,7 +923,7 @@ const pillClass = (name) =>
                   <div class="flex flex-col items-center">
                     <img src="/assets/portrait/scire2.png"
                         class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 border-red-500" />
-                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">카레니나 · 취호</span>
+                    <span class="mt-2 text-[11px] md:text-xs whitespace-nowrap">카레니나 · 휘효</span>
                   </div>
                 </Slide>
                 
