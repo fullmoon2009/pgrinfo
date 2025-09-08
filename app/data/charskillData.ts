@@ -1,26 +1,25 @@
-// 데이터/타입 한 곳에서 관리
 export type SkillTier = 'orb' | 'active' | 'passive'
 
 export type SkillDetail = {
   title: string
-  levelText?: string            // "Level 19" 같은 텍스트
-  badges?: { text: string; cls?: string }[]  // 모달 상단 칩들
-  body: string[]                // 모달 본문 (HTML 허용; v-html로 렌더)
+  levelText?: string            
+  badges?: { text: string; cls?: string }[]  
+  body: string[]                
 }
 
 export type SkillItem = {
   id: string
   tier: SkillTier
   name: string
-  icon: string                  // 64~96px 단색 아이콘 추천
-  subText?: string              // 카드 하단 보조 텍스트 (ex: "Level 19 - Red Orb")
-  accent?: string               // 카드 외곽/배경 강조 클래스 (tailwind)
-  detail: SkillDetail           // 모달 내용
+  icon: string                  
+  subText?: string              
+  accent?: string               
+  detail: SkillDetail           
 }
 
 export type SkillSection = { label: string; tier: SkillTier; items: SkillItem[] }
 
-// 캐릭터별로 섹션을 제공
+
 export type CharSkillMap = Record<string, SkillSection[]>
 
 export const charSkillData: CharSkillMap = {
@@ -43,7 +42,6 @@ export const charSkillData: CharSkillMap = {
               { text: '적색 스킬볼', cls: 'bg-red-500/15 border-red-400/30 text-red-300' },
             ],
             body: [
-              // HTML 허용(간단한 강조만 쓰도록!)
               `<span class="text-[17px] font-bold">솟구치는 화염-<span class="text-blue-400 font-semibold">솟구치는 화염 연계 미진입+적색 스킬볼 터치</span></span><br>
                베라 · 작망이 장창을 휘둘러 불속성 피해를 입히고 <span class="text-red-400 font-semibold">솟구치는 화염 연계</span>에 진입한다.`,
                `-소모한 스킬볼 개수에 따라 <span class="text-red-400 font-semibold">205.88%</span>/<span class="text-red-400 font-semibold">411.76%</span>/<span class="text-red-400 font-semibold">617.65%</span>의 불속성 피해를 입힌다.`,

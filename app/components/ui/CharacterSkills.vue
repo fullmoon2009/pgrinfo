@@ -3,21 +3,19 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { charSkillData, type SkillSection, type SkillItem } from '@/data/charskillData'
 
 const props = defineProps<{
-  /** 어떤 캐릭터의 스킬을 렌더할지 */
   charKey: string
-  /** 섹션 제목(기본: "Skills") */
   title?: string
 }>()
 
 const sections = computed<SkillSection[]>(() => charSkillData[props.charKey] ?? [])
 
-/* === 모달 상태 === */
+/* 모달 */
 const openSkill = ref<SkillItem | null>(null)
 const isOpen = computed(() => !!openSkill.value)
 const open = (s: SkillItem) => (openSkill.value = s)
 const close = () => (openSkill.value = null)
 
-/* esc/아웃사이드 닫기 */
+/* 모달 닫기(esc 가능) */
 const root = ref<HTMLElement | null>(null)
 const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
 const onPointerDown = (e: Event) => {
@@ -33,28 +31,25 @@ onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onPointerDown, true)
 })
 
-/* tier별 스타일 */
 const tierBadge: Record<string, string> = {
   orb: 'bg-white/5 text-sky-200 border border-sky-400/30',
   active: 'bg-white/5 text-rose-200 border border-rose-400/30',
   passive: 'bg-white/5 text-emerald-200 border border-emerald-400/30',
 }
 
-/* === 스킬 패널 펼치기/접기 === */
+/* === 패널 펼치기/접기 === */
 const detailsOpen = ref(true)
 const detailsToggleText = computed(() =>
   detailsOpen.value ? '스킬 정보 접기' : '스킬 정보 펼치기'
 )
 const toggleDetails = () => {
   detailsOpen.value = !detailsOpen.value
-  // 접을 때 열린 모달이 있으면 닫기
   if (!detailsOpen.value) close()
 }
 </script>
 
 <template>
   <div class="space-y-4 max-w-4xl w-full mx-auto mb-8 mt-2">
-    <!-- 타이틀 + 토글 버튼 -->
     <div class="flex items-center gap-2">
       <h2 class="text-xl md:text-2xl font-bold text-white/90">
         {{ title ?? 'Skills' }}
@@ -71,7 +66,6 @@ const toggleDetails = () => {
       </button>
     </div>
 
-    <!-- 섹션 루프 (펼치기/접기) -->
     <Transition name="slide-fade">
       <div v-if="detailsOpen" class="space-y-5">
         <div v-for="sec in sections" :key="sec.label" class="space-y-3">
@@ -79,7 +73,7 @@ const toggleDetails = () => {
             {{ sec.label }}
           </div>
 
-          <!-- 카드 리스트 -->
+          <!-- 카드 -->
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
             <button
               v-for="s in sec.items"
@@ -119,7 +113,6 @@ const toggleDetails = () => {
     <!-- === 모달 === -->
     <transition name="fade">
       <div v-if="isOpen" class="fixed inset-0 z-[70]">
-        <!-- backdrop -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
 
         <div class="absolute inset-0 grid place-items-center px-4">
@@ -128,7 +121,7 @@ const toggleDetails = () => {
             class="w-full max-w-2xl rounded-xl bg-[#161620] text-white shadow-2xl border border-white/15
                    animate-[fadeIn_200ms_ease-out]"
           >
-            <!-- 헤더 -->
+
             <div class="flex items-start gap-3 p-4 border-b border-white/10">
               <div class="h-11 w-11 rounded-md bg-white/[0.06] border border-white/15 grid place-items-center">
                 <img :src="openSkill!.icon" class="w-10 h-10 object-contain opacity-90" alt="" />
@@ -163,7 +156,6 @@ const toggleDetails = () => {
               </button>
             </div>
 
-            <!-- 본문 -->
             <div class="no-scrollbar p-4 md:p-5 space-y-3 max-h-[70vh] overflow-y-auto">
               <p
                 v-for="(p, i) in openSkill!.detail.body"
@@ -183,18 +175,17 @@ const toggleDetails = () => {
 .fade-enter-active,.fade-leave-active{ transition: opacity .18s ease }
 .fade-enter-from,.fade-leave-to{ opacity: 0 }
 
-/* 펼치기/접기 트랜지션 */
 .slide-fade-enter-active,
 .slide-fade-leave-active { transition: all .18s ease; }
 .slide-fade-enter-from { opacity: 0; transform: translateY(-4px); }
 .slide-fade-leave-to   { opacity: 0; transform: translateY(-4px); }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* 크롬, 사파리, 엣지 */
+  display: none; 
 }
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE, Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
 }
 
 @keyframes fadeIn { from{ opacity:.0; transform: translateY(4px) } to{ opacity:1; transform: translateY(0) } }

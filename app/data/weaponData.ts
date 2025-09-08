@@ -1,7 +1,6 @@
-// /src/data/weapondata.ts
 export type WeaponTooltip = {
   title: string
-  description: string   // 여러 줄이면 \n 사용 → 컴포넌트에서 pre-line 처리
+  description: string  
 }
 
 export const weaponData: Record<string, WeaponTooltip> = {

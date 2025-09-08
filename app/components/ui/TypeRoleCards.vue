@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  left: { src:string; label:string; border?:string }[]  // 길이 2 예상
+  left: { src:string; label:string; border?:string }[]
   right: { src:string; label:string; border?:string }
 }>()
 </script>
@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div class="mx-auto mt-6 w-[70vw] md:w-full max-w-md rounded-md bg-[#0A0A23]/30 px-4 py-3">
     <div class="grid grid-cols-3 gap-1 md:gap-2">
-      <!-- 좌 2칸 -->
+      <!-- 속성 아이콘 -->
       <div class="col-span-2 bg-black/50 rounded-xl p-3 md:p-4 text-white">
         <div class="grid grid-cols-2 place-items-center">
           <div v-for="(it,i) in left" :key="i" class="w-full aspect-square max-w-[64px] md:max-w-[90px]">
@@ -23,7 +23,7 @@ defineProps<{
         </div>
       </div>
 
-      <!-- 우 1칸 -->
+      <!-- 직업 아이콘 -->
       <div class="col-span-1 bg-black/50 rounded-xl p-3 md:p-4 grid place-items-center text-white">
         <div class="w-full aspect-square max-w-[64px] md:max-w-[87px]">
           <img :src="right.src" :alt="right.label"

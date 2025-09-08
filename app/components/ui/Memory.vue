@@ -1,64 +1,86 @@
 <script setup lang="ts">
-import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { Carousel, Slide, Navigation } from "vue3-carousel";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { memoryData, type MemorySetData } from "@/data/memoryData";
 
-type GridCard = { img: string }
+type GridCard = { img: string; memId?: string };
+
+const modalOpen = ref(false);
+const activeMemId = ref<string | null>(null);
+const activeMem = computed<MemorySetData | null>(() =>
+  activeMemId.value ? memoryData[activeMemId.value] ?? null : null
+);
+
+const openMem = (id?: string) => {
+  if (!id) return;
+  if (!memoryData[id]) return;
+  activeMemId.value = id;
+  modalOpen.value = true;
+};
+const closeMem = () => {
+  modalOpen.value = false;
+  activeMemId.value = null;
+};
+
+const zoomSrc = ref<string | null>(null);
+const openZoom = (src?: string) => {
+  if (src) zoomSrc.value = src;
+};
+const closeZoom = () => {
+  zoomSrc.value = null;
+};
+
+const onKey = (e: KeyboardEvent) => {
+  if (e.key !== "Escape") return;
+  if (zoomSrc.value) {
+    closeZoom();
+    return;
+  }
+  if (modalOpen.value) {
+    closeMem();
+    return;
+  }
+};
+onMounted(() => document.addEventListener("keydown", onKey));
+onBeforeUnmount(() => document.removeEventListener("keydown", onKey));
 
 type SlideCfg = {
-  /** 상단 타입 아이콘 */
-  typeIcon: string
-  /** 타입 아이콘 외곽선 클래스 (ex. 'border-pink-500') */
-  typeBorderCls?: string
-
-  /** 6칸 메모리 카드 */
-  grid: GridCard[]
-  /** 그리드 아이템 보더/배경 클래스 (ex. 'border-white/10 bg-black/20') */
-  gridItemCls?: string
-
-  /** 카드 넘버 표시/스타일 */
-  showIndex?: boolean
-  indexCls?: string
-
-  /** 중앙 공격력/필살기 라인 */
-  atkIcons: string[]
-  atkLabel?: string
-  atkIconCls?: string
-
-  ultIcon: string
-  ultLabel?: string
-  ultIconCls?: string
-
-  /** 가운데 세로 구분선 클래스 */
-  dividerCls?: string
-
-  /** 하단 배지/칩 텍스트 */
-  tierBadge: { text: string; cls: string }
-  chipText: string
-  chipText2: string
-  chipText3: string
-
-  // <script setup>의 SlideCfg에 아래 2개 추가
-  atkSepText?: string        // 기본값 'or'
-  atkSepCls?: string
-}
-
-
+  typeIcon: string;
+  typeBorderCls?: string;
+  grid: GridCard[];
+  gridItemCls?: string;
+  showIndex?: boolean;
+  indexCls?: string;
+  atkIcons: string[];
+  atkLabel?: string;
+  atkIconCls?: string;
+  ultIcon: string;
+  ultLabel?: string;
+  ultIconCls?: string;
+  dividerCls?: string;
+  tierBadge: { text: string; cls: string };
+  chipText: string;
+  chipText2: string;
+  chipText3: string;
+  atkSepText?: string;
+  atkSepCls?: string;
+};
 
 const props = defineProps<{
-  tabA: SlideCfg[]
-  tabB: SlideCfg[]
-}>()
+  tabA: SlideCfg[];
+  tabB: SlideCfg[];
+}>();
 
-const slidesLen = computed(() => props.tabA?.length ?? 0)
+const slidesLen = computed(() => props.tabA?.length ?? 0);
 </script>
 
 <template>
   <div class="rounded-md bg-black/30 p-3">
-    <!-- 상단 탭 영역은 부모가 넣음 -->
     <div class="flex gap-2">
       <slot name="tabs"></slot>
     </div>
 
-    <!-- 기본: panelA -->
+    <!-- 패널A -->
     <slot name="panelA">
       <Carousel
         :items-to-show="1"
@@ -70,36 +92,43 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
       >
         <Slide v-for="(s, idx) in tabA" :key="'a' + idx">
           <div class="w-full flex flex-col items-center">
-            <!-- 타입 아이콘 -->
             <div class="mb-3 flex flex-col items-center">
               <img
                 :src="s.typeIcon"
                 :class="[
                   'w-10 h-10 rounded-md object-cover border-2',
-                  s.typeBorderCls ?? 'border-purple-400'
+                  s.typeBorderCls ?? 'border-purple-400',
                 ]"
               />
             </div>
 
-            <!-- 본문 카드 -->
-            <div class="w-full max-w-[310px] mx-auto bg-[#1E1E2F] rounded-md border border-white/10 p-3">
+            <!-- 본문 -->
+            <div
+              class="w-full max-w-[310px] mx-auto bg-[#1E1E2F] rounded-md border border-white/10 p-3"
+            >
               <div class="grid grid-cols-3 gap-3">
                 <div
                   v-for="(c, i) in s.grid"
                   :key="i"
                   :class="[
-                    'relative rounded-md overflow-hidden border',
-                    s.gridItemCls ?? 'border-white/20 bg-black/40'
+                    'relative rounded-md overflow-hidden border cursor-pointer',
+                    'focus:outline-none focus:ring-2 focus:ring-white/30',
+                    s.gridItemCls ?? 'border-white/20 bg-black/40',
                   ]"
+                  role="button"
+                  tabindex="0"
+                  @click="openMem(c.memId)"
+                  @keydown.enter.prevent="openMem(c.memId)"
+                  @keydown.space.prevent="openMem(c.memId)"
                 >
                   <span
                     v-if="s.showIndex !== false"
                     :class="[
                       'absolute top-1 left-1 text-[10px] font-semibold',
-                      s.indexCls ?? 'text-white/80'
+                      s.indexCls ?? 'text-white/80',
                     ]"
                   >
-                    {{ String(i + 1).padStart(2, '0') }}
+                    {{ String(i + 1).padStart(2, "0") }}
                   </span>
                   <div class="aspect-[3/4]">
                     <img :src="c.img" class="w-full h-full object-cover" />
@@ -107,7 +136,6 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                 </div>
               </div>
 
-              <!-- 3:1 라벨 -->
               <div class="mt-3 -mx-1 md:-mx-2">
                 <div class="rounded-md px-2">
                   <div class="grid grid-cols-4 items-center gap-2">
@@ -118,24 +146,28 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                             :src="a"
                             :class="['w-10 h-10 object-contain', s.atkIconCls]"
                           />
-                          <!-- 마지막 아이콘 뒤에는 'or'를 넣지 않음 -->
                           <span
                             v-if="i < s.atkIcons.length - 1"
-                            :class="s.atkSepCls ?? 'text-[10px] md:text-xs text-white/70 select-none'"
+                            :class="
+                              s.atkSepCls ??
+                              'text-[10px] md:text-xs text-white/70 select-none'
+                            "
                           >
-                            {{ s.atkSepText ?? 'or' }}
+                            {{ s.atkSepText ?? "or" }}
                           </span>
                         </template>
                       </div>
-                      <div class="mt-1 text-center text-[11px] md:text-xs text-white/85">
-                        {{ s.atkLabel ?? '공격력' }}
+                      <div
+                        class="mt-1 text-center text-[11px] md:text-xs text-white/85"
+                      >
+                        {{ s.atkLabel ?? "공격력" }}
                       </div>
                     </div>
                     <div class="col-span-1 relative pl-3">
                       <span
                         class="absolute left-0 top-1/2 -translate-y-1/2 h-[70%] w-px"
                         :class="s.dividerCls ?? 'bg-white/20'"
-                      ></span>
+                      />
                       <div class="flex flex-col items-center">
                         <img
                           :src="s.ultIcon"
@@ -143,11 +175,13 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                         />
                         <div
                           class="mt-1 text-white/85"
-                          :class="((s.ultLabel ?? '필살기').trim().length > 5)
-                            ? 'text-[9px] md:text-[9px]'
-                            : 'text-[10px] md:text-xs'"
+                          :class="
+                            (s.ultLabel ?? '필살기').trim().length > 5
+                              ? 'text-[9px]'
+                              : 'text-[10px] md:text-xs'
+                          "
                         >
-                          {{ s.ultLabel ?? '필살기' }}
+                          {{ s.ultLabel ?? "필살기" }}
                         </div>
                       </div>
                     </div>
@@ -155,8 +189,9 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                 </div>
               </div>
 
-              <!-- 하단 라벨 -->
-              <div class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap">
+              <div
+                class="mt-3 border-t border-white/10 pt-2 text-center text-xs whitespace-nowrap"
+              >
                 <span
                   class="inline-flex items-center gap-1 rounded-full px-3 py-1 font-semibold bg-white/10 border border-white/20"
                   :class="s.tierBadge.cls"
@@ -164,12 +199,24 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
                   {{ s.tierBadge.text }}
                 </span>
 
-                <span class="ml-2 text-[12px] text-pink-300 font-semibold">{{ s.chipText }}</span>
+                <span class="ml-2 text-[12px] text-pink-300 font-semibold">{{
+                  s.chipText
+                }}</span>
                 <span class="text-white/60"> / </span>
-                <span class="text-[12px] text-red-400 font-semibold">{{ s.chipText2 }}</span>
+                <span class="text-[12px] text-red-400 font-semibold">{{
+                  s.chipText2
+                }}</span>
 
-                <span v-if="s.chipText3 && s.chipText3.trim()" class="text-white/60"> / </span>
-                <span v-if="s.chipText3 && s.chipText3.trim()" class="text-[12px] text-red-400 font-semibold">
+                <span
+                  v-if="s.chipText3 && s.chipText3.trim()"
+                  class="text-white/60"
+                >
+                  /
+                </span>
+                <span
+                  v-if="s.chipText3 && s.chipText3.trim()"
+                  class="text-[12px] text-red-400 font-semibold"
+                >
                   {{ s.chipText3 }}
                 </span>
               </div>
@@ -183,7 +230,226 @@ const slidesLen = computed(() => props.tabA?.length ?? 0)
       </Carousel>
     </slot>
 
-    <!-- 우측 패널은 부모가 꽂아넣음 -->
     <slot name="panelB"></slot>
+
+    <!-- 모달 -->
+    <transition name="fade">
+      <div
+        v-if="modalOpen"
+        class="fixed inset-0 z-[95]"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div
+          class="absolute inset-0 bg-black/70 backdrop-blur-[2px]"
+          @click="closeMem"
+        ></div>
+
+        <div class="absolute inset-0 grid place-items-center p-4">
+          <div
+            class="w-full max-w-2xl rounded-2xl overflow-hidden bg-[#111217] text-white border border-white/10 shadow-2xl"
+          >
+            <div class="relative h-20 md:h-24 overflow-hidden mt-[-22px]">
+              <img
+                :src="activeMem?.banner || ''"
+                class="block w-full h-full object-cover z-0 select-none"
+                :style="{
+                  objectPosition: activeMem?.bannerObjectPosition || '50% 50%',
+                  transform:
+                    (activeMem?.bannerScale
+                      ? `scale(${activeMem.bannerScale}) `
+                      : '') +
+                    (activeMem?.bannerShiftY
+                      ? `translateY(${activeMem.bannerShiftY})`
+                      : ''),
+                  transformOrigin: activeMem?.bannerOrigin || '50% 50%',
+                }"
+                alt=""
+              />
+
+              <span
+                class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[2px] bg-gradient-to-r from-transparent via-white/45 to-transparent"
+              ></span>
+
+              <div class="absolute left-3 bottom-2 flex items-center gap-2">
+                <div
+                  class="px-2 py-1 rounded-md bg-black/40 backdrop-blur-[2px] border border-white/15"
+                >
+                  <span class="text-base md:text-lg font-bold leading-none">
+                    {{ activeMem?.name || "" }}
+                  </span>
+                </div>
+                <div class="flex">
+                  <svg
+                    v-for="n in activeMem?.rarity || 0"
+                    :key="n"
+                    viewBox="0 0 24 24"
+                    class="w-4 h-4 md:w-5 md:h-5 text-amber-300 drop-shadow"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <button
+                class="absolute top-8 right-2 rounded-md px-2 py-1 bg-white/10 border border-white/20 hover:bg-white/15"
+                @click="closeMem"
+                aria-label="닫기"
+              >
+                ✕
+              </button>
+            </div>
+
+            <!-- 본문 -->
+            <div v-if="activeMem" class="px-4 md:px-5 py-4 space-y-5">
+              <section>
+                <div
+                  class="mx-auto max-w-md rounded-xl border border-white/10 bg-white/[0.02] p-2 md:p-3"
+                >
+                  <!-- 레이블 -->
+                  <div class="grid grid-cols-3 gap-2 mb-1">
+                    <div
+                      v-for="(slot, i) in activeMem.resonanceSlots || []"
+                      :key="'label' + i"
+                      class="text-center text-[11px] md:text-[12px] font-semibold text-white/75"
+                    >
+                      {{ slot.label }}
+                    </div>
+                  </div>
+
+                  <!-- 이미지 -->
+                  <div class="grid grid-cols-3 gap-2">
+                    <div
+                      v-for="(slot, i) in activeMem.resonanceSlots || []"
+                      :key="'col' + i"
+                      class="flex flex-col items-center gap-1.5 md:gap-2"
+                    >
+                      <button
+                        type="button"
+                        class="w-full rounded-lg overflow-hidden bg-black/30 border border-white/12 group"
+                        @click="openZoom(slot.face)"
+                        aria-label="face 확대"
+                      >
+                        <div class="aspect-[9/16]">
+                          <img
+                            :src="slot.face"
+                            class="w-full h-full object-contain cursor-zoom-in group-active:scale-[.99] transition"
+                            alt=""
+                          />
+                        </div>
+                      </button>
+
+                      <div
+                        class="w-full rounded-lg overflow-hidden bg-black/30 border border-white/12"
+                      >
+                        <div class="aspect-[4/5]">
+                          <img
+                            :src="slot.full"
+                            class="w-full h-full object-contain"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 스탯 -->
+              <section>
+                <div class="mx-auto max-w-md">
+                  <div
+                    class="grid grid-cols-4 text-center rounded-lg overflow-hidden text-[12px]"
+                  >
+                    <div class="bg-rose-800/70 px-2 py-1.5 font-bold">HP</div>
+                    <div class="bg-rose-800/70 px-2 py-1.5 font-bold">Crit</div>
+                    <div class="bg-rose-800/70 px-2 py-1.5 font-bold">ATK</div>
+                    <div class="bg-rose-800/70 px-2 py-1.5 font-bold">DEF</div>
+
+                    <div class="bg-white/[0.04] px-2 py-2">
+                      {{ activeMem.stats.hp }}
+                    </div>
+                    <div class="bg-white/[0.04] px-2 py-2">
+                      {{ activeMem.stats.crit }}
+                    </div>
+                    <div class="bg-white/[0.04] px-2 py-2">
+                      {{ activeMem.stats.atk }}
+                    </div>
+                    <div class="bg-white/[0.04] px-2 py-2">
+                      {{ activeMem.stats.def }}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 세트 효과 -->
+              <section>
+                <h4 class="text-base font-bold mb-1.5">세트 효과</h4>
+                <div class="space-y-2.5 text-[13px] leading-relaxed">
+                  <div>
+                    <div class="font-extrabold text-white/95">2-piece</div>
+                    <p
+                      class="mt-1 text-white/85"
+                      v-html="activeMem.effects.two"
+                    ></p>
+                  </div>
+                  <div>
+                    <div class="font-extrabold text-white/95">4-piece</div>
+                    <p
+                      class="mt-1 text-white/85"
+                      v-html="activeMem.effects.four"
+                    ></p>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div v-else class="p-6 text-center text-white/60 text-sm">
+              불러오는 중…
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- 라이트박스  -->
+    <transition name="fade">
+      <div
+        v-if="zoomSrc"
+        class="fixed inset-0 z-[100] bg-black/85 grid place-items-center p-4"
+        @click.self="closeZoom"
+        aria-modal="true"
+        role="dialog"
+      >
+        <button
+          class="absolute top-3 right-4 rounded-md px-2 py-1 text-white/85 hover:text-white hover:bg-white/10 border border-white/20"
+          type="button"
+          @click="closeZoom"
+          aria-label="닫기"
+        >
+          ✕
+        </button>
+
+        <img
+          :src="zoomSrc"
+          class="max-h-[90vh] max-w-[92vw] object-contain rounded-lg shadow-2xl"
+          alt=""
+        />
+      </div>
+    </transition>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

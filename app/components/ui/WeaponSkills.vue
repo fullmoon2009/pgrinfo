@@ -7,8 +7,6 @@ import { weaponData, type WeaponTooltip } from '~/data/weaponData'
 type Fit = 'cover'|'contain'|'fill'|'none'|'scale-down'
 type Corner = 'lt'|'rt'|'lb'|'rb'
 type Badge = { text:string; cls?:string; pos?:Corner }
-
-// 스킬: id 우선, 없으면 label로 매핑
 type Skill = { img:string; label:string; id?:string }
 
 type MemberSlide = {
@@ -18,16 +16,13 @@ type MemberSlide = {
 type Column = { slides: MemberSlide[]; showNav?: boolean }
 
 const props = defineProps<{
-  /* 무기 이미지/이름 */
   weaponImg:string
   weaponName:string
-  weaponId?: string            // 👈 무기 툴팁 조회 키(권장)
+  weaponId?: string            
 
-  /* 라벨 */
   title?:string
   skills: Skill[]
 
-  /* 무기 이미지 렌더 옵션 */
   weaponBoxClass?: string
   weaponFit?: Fit
   weaponObjectPosition?: string
@@ -35,7 +30,6 @@ const props = defineProps<{
   weaponTransformOrigin?: string
   weaponImgClass?: string
 
-  /* (다른 페이지 재사용 prop들) */
   typeIcon?: string
   typeKey?: string
   typeBorderClass?: string
@@ -44,7 +38,6 @@ const props = defineProps<{
   columns?: [Column, Column, Column]
 }>()
 
-/* object-fit 클래스 */
 const fitClass = computed(() => {
   switch (props.weaponFit) {
     case 'contain': return 'object-contain'
@@ -54,7 +47,7 @@ const fitClass = computed(() => {
     default: return 'object-cover'
   }
 })
-/* 무기 이미지 style */
+
 const imgStyle = computed(() => {
   const s: Record<string,string> = {}
   if (props.weaponObjectPosition) s.objectPosition = props.weaponObjectPosition
@@ -63,16 +56,16 @@ const imgStyle = computed(() => {
   return s
 })
 
-/* ===== 스킬 툴팁 상태 ===== */
-const hoverIdx = ref<number|null>(null)   // 데스크탑 hover
-const openIdx  = ref<number|null>(null)   // 모바일/클릭 토글
+/* 스킬 툴팁 상태 */
+const hoverIdx = ref<number|null>(null)   
+const openIdx  = ref<number|null>(null)   
 const toggleRow = (i:number) => { openIdx.value = openIdx.value === i ? null : i }
 
-/* ===== 무기(좌측) 툴팁 상태 ===== */
+/* 무기 툴팁 상태 */
 const weaponHover = ref(false)
 const weaponOpen  = ref(false)
 
-/* 바깥 클릭 시 모두 닫기 */
+/* 툴팁 닫기 옵션 */
 const rootEl = ref<HTMLElement|null>(null)
 const onDocPointerDown = (e: Event) => {
   const t = e.target as Node | null
@@ -84,10 +77,10 @@ const onDocPointerDown = (e: Event) => {
 onMounted(() => document.addEventListener('pointerdown', onDocPointerDown, true))
 onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointerDown, true))
 
-/* 스킬 설명: id → label */
+/* 스킬 데이터 */
 const getDesc = (s: Skill) => weaponSkillDesc[s.id ?? s.label] ?? ''
 
-/* 무기 툴팁 데이터: weaponId → weaponName 순 */
+/* 무기 툴팁 데이터 */
 const weaponTip = computed<WeaponTooltip | undefined>(() => {
   const key = props.weaponId ?? props.weaponName
   return key ? weaponData[key] : undefined
@@ -96,7 +89,6 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
 
 <template>
   <div ref="rootEl" class="rounded-md bg-black/30 p-3 relative">
-    <!-- 모바일: 열렸을 때 바깥 탭으로 닫히는 스크림 -->
     <div
       v-if="openIdx !== null || weaponOpen"
       class="fixed inset-0 z-40 md:hidden"
@@ -104,7 +96,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
     />
 
     <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 md:pb-5 md:h-full">
-      <!-- 좌측: 무기 이미지 + 이름 -->
+      <!-- 무기 박스 -->
       <div class="md:col-span-1 flex flex-col items-center">
         <div
           class="relative"
@@ -116,7 +108,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
             <img :src="weaponImg" :class="['w-full h-full', fitClass, weaponImgClass]" :style="imgStyle" />
           </div>
 
-          <!-- 무기 스샷 툴팁 -->
+          <!-- 무기 툴팁 -->
           <div
             v-if="weaponTip"
             class="pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 z-50"
@@ -131,12 +123,6 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
               <div class="text-[11px] md:text-[12px] leading-relaxed whitespace-pre-line">
                 {{ weaponTip.description }}
               </div>
-
-              <!-- 모바일 닫기 -->
-              <!-- <button
-                class="md:hidden absolute top-1 right-1 px-1.5 py-0.5 text-[10px] rounded bg-white/15 border border-white/30"
-                @click.stop="weaponOpen = false"
-              >닫기</button> -->
             </div>
           </div>
         </div>
@@ -149,7 +135,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
         >{{ weaponName }}</span>
       </div>
 
-      <!-- 우측: 무기 공명 추천 + 스킬 목록 -->
+      <!-- 무기 스킬 및 툴팁 -->
       <div class="col-span-2 rounded-md relative">
         <div class="absolute -top-1 left-1/2 -translate-x-1/2">
           <span class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]
@@ -199,11 +185,6 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
                        text-[11px] leading-relaxed p-3 shadow-xl max-w-xs md:max-w-sm whitespace-pre-line"
                 @click.stop
               >
-                <!-- <button
-                  class="md:hidden absolute top-1 right-1 px-1.5 py-0.5 text-[10px] rounded bg-white/15 border border-white/30"
-                  @click.stop="openIdx = null"
-                >닫기</button> -->
-
                 {{ getDesc(s) }}
               </div>
             </div>

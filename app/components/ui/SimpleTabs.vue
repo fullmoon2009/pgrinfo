@@ -3,7 +3,7 @@ type TabItem = { id: string; label: string }
 const props = defineProps<{
   items: TabItem[]
   modelValue?: string
-  sizeClass?: string   // 버튼 폰트/패딩 커스텀(optional)
+  sizeClass?: string
 }>()
 const emit = defineEmits<{'update:modelValue':[string]}>()
 const active = computed({

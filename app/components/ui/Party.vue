@@ -13,19 +13,17 @@ type MemberSlide = {
   img: string
   label: string
   borderClass?: string
-  // 단일/다중 배지
   badgeText?: string
   badgeClass?: string
   badges?: Badge[]
 
-  // 🔹 이동 관련(선택)
-  /** 내부 라우트 경로 (NuxtLink로 이동) 예: '/characters/dante' */
+  
+  /** 내부 라우트 (NuxtLink) */
   to?: string
-  /** 외부 링크 (a태그로 이동) 예: 'https://example.com' */
+  /** 외부 링크 (a태그) */
   href?: string
   /** 외부 링크 target (기본 '_self') */
   target?: '_self' | '_blank' | '_parent' | '_top'
-  /** rel 속성 (보안상 _blank면 'noopener noreferrer' 권장) */
   rel?: string
 }
 
@@ -79,7 +77,7 @@ const typeIconBorderClass = computed(
     (inferredTypeKey.value ? TYPE_BORDER[inferredTypeKey.value] : 'border-white/40')
 )
 
-/** 배지 위치별 컨테이너 클래스 */
+/* 컨테이너 클래스 */
 const CORNER_CLASS: Record<Corner, string> = {
   lt: 'left-1 top-1 items-start',
   rt: 'right-1 top-1 items-end',
@@ -91,7 +89,7 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
 
 <template>
   <div class="bg-black/50 rounded-md p-4 text-white max-w-md">
-    <!-- 상단: 속성 아이콘 -->
+    <!-- 속성 아이콘 -->
     <div class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50">
       <img
         :src="typeIcon"
@@ -101,7 +99,7 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
       />
     </div>
 
-    <!-- 역할 아이콘 줄 -->
+    <!-- 직업 아이콘 -->
     <div class="grid grid-cols-3 gap-2 md:gap-2 mb-2">
       <div class="col-span-3">
         <div class="grid grid-cols-3 place-items-center">
@@ -130,7 +128,7 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
         >
           <Slide v-for="s in col.slides" :key="s.img + '|' + s.label">
             <div class="flex flex-col items-center">
-              <!-- 🔹 링크 우선순위: NuxtLink(to) → a(href) → div -->
+              <!-- 링크 우선순위: NuxtLink(to) → a(href) → div -->
               <NuxtLink
                 v-if="s.to"
                 :to="s.to"
@@ -143,7 +141,7 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
-                <!-- 배지(단일/다중) -->
+                <!-- 배지 -->
                 <span
                   v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
                   class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
@@ -187,7 +185,6 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
-                <!-- 배지 동일 로직 -->
                 <span
                   v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
                   class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold
@@ -217,7 +214,7 @@ const CORNERS: Corner[] = ['lt', 'rt', 'lb', 'rb']
                 </template>
               </a>
 
-              <!-- 링크가 없을 때 기본 div -->
+              <!-- 기본 div -->
               <div v-else class="relative">
                 <img
                   :src="s.img"
