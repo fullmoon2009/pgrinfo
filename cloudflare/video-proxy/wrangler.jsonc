@@ -1,0 +1,54 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pgr-video-proxy",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-09",
+
+
+  "observability": {
+    "enabled": true
+  },
+
+  /**
+   * Environment Variables
+   * (도메인 생기면 ORIGIN_ALLOW에 화이트리스트를 콤마로 넣어줘)
+   */
+  "vars": {
+    "ORIGIN_ALLOW": ""
+    // "SIGNING_SECRET": "change_me_to_a_long_random_secret" // (옵션) 서명 토큰 쓰고 싶을 때
+  },
+
+  /**
+   * R2 bucket binding
+   * VIDEOS 라는 이름으로 Worker 코드에서 env.VIDEOS 로 접근
+   */
+  "r2_buckets": [
+    {
+      "binding": "VIDEOS",
+      "bucket_name": "pgr-cycle-video" // 네 R2 버킷명으로 맞게 유지/수정
+      // "jurisdiction": "auto" // (옵션)
+    }
+  ]
+
+  /**
+   * Smart Placement
+   * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+   */
+  // "placement": { "mode": "smart" }
+
+  /**
+   * Static Assets
+   * https://developers.cloudflare.com/workers/static-assets/binding/
+   */
+  // "assets": { "directory": "./public/", "binding": "ASSETS" }
+
+  /**
+   * Service Bindings
+   * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+   */
+  // "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+}

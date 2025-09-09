@@ -377,24 +377,9 @@ const hasParty2 = computed(
 
 // 사이클 박스
 // 비디오 소스 매핑
-const videoSources = {
-  s: {
-    first: "/assets/videos/huimusssS.mp4",
-    repeat: "/assets/videos/huimusssR.mp4",
-  },
-  sswx: {
-    first: "/assets/videos/huimusssSSWX.mp4",
-    repeat: "/assets/videos/huimusssSSWX_R.mp4",
-  },
-  sswo: {
-    first: "/assets/videos/huimusssSSWO.mp4",
-    repeat: "/assets/videos/huimusssSSWO_R.mp4",
-  },
-  sss: {
-    first: "/assets/videos/vergilS.mp4",
-    repeat: "/assets/videos/vergilR.mp4",
-  },
-} as const;
+
+const VIDEO_BASE = "https://pgr-video-proxy.fullmoon2009.workers.dev/video";
+const video = (name: string) => `${VIDEO_BASE}/${name}`;
 
 const charKey = "geiravor";
 
@@ -765,15 +750,6 @@ const myCoatings = computed(() =>
                       >
                     </div>
                   </div>
-
-                  <!-- 비디오 (src만 변경) -->
-                  <video
-                    :src="videoSources[cyclerankTab][mode]"
-                    controls
-                    muted
-                    class="w-full h-auto rounded-md block"
-                    :key="forceReload ? mode : undefined"
-                  ></video>
                 </div>
 
                 <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
@@ -783,6 +759,28 @@ const myCoatings = computed(() =>
                   <div
                     class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
                   >
+                    <!-- 비디오 (src만 변경) -->
+                    <template v-if="mode === 'first'">
+                      <video
+                        :src="`${VIDEO_BASE}/vergilS.mp4`"
+                        controls
+                        muted
+                        preload="metadata"
+                        class="w-full h-auto rounded-md block"
+                        :key="mode"
+                      />
+                    </template>
+
+                    <template v-else-if="mode === 'repeat'">
+                      <video
+                        :src="`${VIDEO_BASE}/vergilR.mp4`"
+                        controls
+                        muted
+                        preload="metadata"
+                        class="w-full h-auto rounded-md block"
+                        :key="mode"
+                      />
+                    </template>
                     <span
                       class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
                     >
@@ -1406,12 +1404,12 @@ const myCoatings = computed(() =>
 
                   <!-- 비디오 (src만 변경) -->
                   <video
-                    :src="'/assets/videos/vergilM.mp4'"
+                    :src="`${VIDEO_BASE}/vergilM.mp4`"
                     controls
                     muted
                     class="w-full h-auto rounded-md block"
                     :key="forceReload ? mode : undefined"
-                  ></video>
+                  />
                 </div>
 
                 <div
