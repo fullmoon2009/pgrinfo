@@ -144,15 +144,28 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
         </div>
 
         <!-- 소개 이미지 -->
-        <transition name="fade">
-          <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
-            <div class="rounded-lg overflow-hidden border border-white/10 bg-black/40">
-              <div class="w-full grid place-items-center">
-                <img :src="c.images.long" class="max-w-full object-contain" />
-              </div>
-            </div>
-          </div>
-        </transition>
+<transition name="fade">
+  <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
+    <div class="rounded-lg overflow-hidden border border-white/10 bg-black/40">
+      <div class="w-full grid place-items-center">
+        <img :src="c.images.long" class="max-w-full object-contain" />
+      </div>
+    </div>
+
+    <!-- 하단 닫기 버튼 -->
+    <div class="mt-2 flex justify-end">
+      <button
+        type="button"
+        class="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[12px]
+               bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white/90 transition"
+        @click="toggleLong(c.id)"
+        aria-label="소개 이미지 닫기"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+</transition>
       </div>
     </div>
   </div>

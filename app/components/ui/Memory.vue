@@ -245,9 +245,11 @@ const slidesLen = computed(() => props.tabA?.length ?? 0);
           @click="closeMem"
         ></div>
 
-        <div class="absolute inset-0 grid place-items-center p-4">
+        <div class="absolute inset-0 grid place-items-center p-4"
+        @click.self="closeMem">
           <div
             class="w-full max-w-2xl rounded-2xl overflow-hidden bg-[#111217] text-white border border-white/10 shadow-2xl"
+             @click.stop
           >
             <div class="relative h-20 md:h-24 overflow-hidden mt-[-22px]">
               <img
@@ -390,14 +392,14 @@ const slidesLen = computed(() => props.tabA?.length ?? 0);
                 <h4 class="text-base font-bold mb-1.5">세트 효과</h4>
                 <div class="space-y-2.5 text-[13px] leading-relaxed">
                   <div>
-                    <div class="font-extrabold text-white/95">2-piece</div>
+                    <div class="font-extrabold text-white/95">2세트</div>
                     <p
                       class="mt-1 text-white/85"
                       v-html="activeMem.effects.two"
                     ></p>
                   </div>
                   <div>
-                    <div class="font-extrabold text-white/95">4-piece</div>
+                    <div class="font-extrabold text-white/95">4세트</div>
                     <p
                       class="mt-1 text-white/85"
                       v-html="activeMem.effects.four"

@@ -38,7 +38,7 @@ const tierBadge: Record<string, string> = {
 }
 
 /* === 패널 펼치기/접기 === */
-const detailsOpen = ref(true)
+const detailsOpen = ref(false)
 const detailsToggleText = computed(() =>
   detailsOpen.value ? '스킬 정보 접기' : '스킬 정보 펼치기'
 )
@@ -111,6 +111,7 @@ const toggleDetails = () => {
     </Transition>
 
     <!-- === 모달 === -->
+     <teleport to="body">
     <transition name="fade">
       <div v-if="isOpen" class="fixed inset-0 z-[70]">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
@@ -168,6 +169,7 @@ const toggleDetails = () => {
         </div>
       </div>
     </transition>
+    </teleport>
   </div>
 </template>
 

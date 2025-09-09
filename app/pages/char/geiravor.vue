@@ -22,7 +22,7 @@ const segClass = (m: "guide" | "coating") =>
 
 const cycleTab = ref<"tabA" | "tabB">("tabA");
 
-const cyclerankTab = ref<"s" | "sswx" | "sswo" | "sss">("sss");
+const cyclerankTab = ref<"s" | "sswx" | "sswo" | "sss">("s");
 
 const mode = ref<"first" | "repeat">("first");
 
@@ -62,8 +62,9 @@ const MID = {
   dv: "davinci",
   sh: "shakespeare",
   gu: "guinevere",
-  ein: "einsteinna",
+  ein: "einsteina",
   ad: "adolf",
+  sam: "samantha",
 } as const;
 
 const slidesA = [
@@ -85,7 +86,7 @@ const slidesA = [
     ],
     atkLabel: "공격력",
     ultIcon: "/assets/skillball/geiravorcore.png",
-    ultLabel: "직업 패시브",
+    ultLabel: "증폭형",
     tierBadge: { text: "SSS 미만", cls: "text-red-500" },
     chipText: "다빈치 x4",
     chipText2: "퀴니 x2",
@@ -95,12 +96,12 @@ const slidesA = [
     typeIcon: "/assets/types/fire.png",
     typeBorderCls: "border-2 border-red-500",
     grid: [
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/shake2.png" },
-      { img: "/assets/memory/adolf3.webp" },
-      { img: "/assets/memory/adolf1.webp" },
-      { img: "/assets/memory/ein2.png" },
-      { img: "/assets/memory/ein3.png" },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/shake2.png", memId: MID.sh },
+      { img: "/assets/memory/adolf3.webp", memId: MID.ad },
+      { img: "/assets/memory/adolf1.webp", memId: MID.ad },
+      { img: "/assets/memory/ein2.png", memId: MID.ein },
+      { img: "/assets/memory/ein3.png", memId: MID.ein },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -117,12 +118,12 @@ const slidesA = [
     typeIcon: "/assets/types/fire.png",
     typeBorderCls: "border-2 border-red-500",
     grid: [
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/shake2.png" },
-      { img: "/assets/memory/shake3.png" },
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/adolf2.webp" },
-      { img: "/assets/memory/adolf3.webp" },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/shake2.png", memId: MID.sh },
+      { img: "/assets/memory/shake3.png", memId: MID.sh },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/adolf2.webp", memId: MID.ad },
+      { img: "/assets/memory/adolf3.webp", memId: MID.ad },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -140,12 +141,12 @@ const slidesA = [
     typeIcon: "/assets/types/fire.png",
     typeBorderCls: "border-2 border-red-500",
     grid: [
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/shake2.png" },
-      { img: "/assets/memory/shake3.png" },
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/adolf2.webp" },
-      { img: "/assets/memory/adolf3.webp" },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/shake2.png", memId: MID.sh },
+      { img: "/assets/memory/shake3.png", memId: MID.sh },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/adolf2.webp", memId: MID.ad },
+      { img: "/assets/memory/adolf3.webp", memId: MID.ad },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -163,12 +164,12 @@ const slidesA = [
     typeIcon: "/assets/types/burn.png",
     typeBorderCls: "border-2 border-[#5a0f0f]",
     grid: [
-      { img: "/assets/memory/davinci1.png" },
-      { img: "/assets/memory/davinci2.png" },
-      { img: "/assets/memory/guine3.png" },
-      { img: "/assets/memory/guine1.png" },
-      { img: "/assets/memory/ein2.png" },
-      { img: "/assets/memory/ein3.png" },
+      { img: "/assets/memory/davinci1.png", memId: MID.dv },
+      { img: "/assets/memory/davinci2.png", memId: MID.dv },
+      { img: "/assets/memory/guine3.png", memId: MID.gu },
+      { img: "/assets/memory/guine1.png", memId: MID.gu },
+      { img: "/assets/memory/ein2.png", memId: MID.ein },
+      { img: "/assets/memory/ein3.png", memId: MID.ein },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -189,12 +190,12 @@ const slidesB = [
     typeIcon: "/assets/types/fire.png",
     typeBorderCls: "border-2 border-red-500",
     grid: [
-      { img: "/assets/memory/davinci1.png" },
-      { img: "/assets/memory/davinci2.png" },
-      { img: "/assets/memory/davinci3.png" },
-      { img: "/assets/memory/davinci1.png" },
-      { img: "/assets/memory/adolf2.webp" },
-      { img: "/assets/memory/adolf3.webp" },
+      { img: "/assets/memory/davinci1.png", memId: MID.dv },
+      { img: "/assets/memory/davinci2.png", memId: MID.dv },
+      { img: "/assets/memory/davinci3.png", memId: MID.dv },
+      { img: "/assets/memory/davinci1.png", memId: MID.dv },
+      { img: "/assets/memory/adolf2.webp", memId: MID.ad },
+      { img: "/assets/memory/adolf3.webp", memId: MID.ad },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -211,12 +212,12 @@ const slidesB = [
     typeIcon: "/assets/types/burn.png",
     typeBorderCls: "border-2 border-[#5a0f0f]",
     grid: [
-      { img: "/assets/memory/guine1.png" },
-      { img: "/assets/memory/guine2.png" },
-      { img: "/assets/memory/ein3.png" },
-      { img: "/assets/memory/ein1.png" },
-      { img: "/assets/memory/sam2.png" },
-      { img: "/assets/memory/sam3.png" },
+      { img: "/assets/memory/guine1.png", memId: MID.gu },
+      { img: "/assets/memory/guine2.png", memId: MID.gu },
+      { img: "/assets/memory/ein3.png", memId: MID.ein },
+      { img: "/assets/memory/ein1.png", memId: MID.ein },
+      { img: "/assets/memory/sam2.png", memId: MID.sam },
+      { img: "/assets/memory/sam3.png", memId: MID.sam },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -235,7 +236,7 @@ const slidesB = [
     typeIcon: "/assets/types/nihil.png",
     typeBorderCls: "border-2 border-[#C00088]",
     grid: [
-      { img: "/assets/memory/shake1.png" },
+      { img: "/assets/memory/shake1.png", memId: MID.dv },
       { img: "/assets/memory/shake2.png" },
       { img: "/assets/memory/shake3.png" },
       { img: "/assets/memory/shake1.png" },
@@ -632,7 +633,7 @@ const myCoatings = computed(() =>
                     : 'text-white/70 hover:text-white/90'
                 "
               >
-                진의참 사이클
+                화속성 사이클
               </button>
               <button
                 role="tab"
@@ -659,34 +660,45 @@ const myCoatings = computed(() =>
                   role="tablist"
                   class="flex gap-2 mb-2 border-b border-white/20"
                 >
-                  <!-- <button
-          role="tab"
-          :aria-selected="cyclerankTab === 's'"
-          @click="cyclerankTab = 's'"
-          class="px-2 py-2 md:px-4 md:py-2 rounded-t-md text-[11px] md:text-sm font-semibold"
-          :class="cyclerankTab === 's' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
-        >
-          전랭크 -->
-                  <!-- </button> -->
-                  <!-- <button
-          role="tab"
-          :aria-selected="cyclerankTab === 'sswx'"
-          @click="cyclerankTab = 'sswx'"
-          class="px-0 py-2 md:px-4 md:py-2 rounded-t-md text-[10px] md:text-sm font-semibold"
-          :class="cyclerankTab === 'sswx' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
-        >
-          SS0~3(전무X)
-        </button>
-        <button
-          role="tab"
-          :aria-selected="cyclerankTab === 'sswo'"
-          @click="cyclerankTab = 'sswo'"
-          class="px-2 py-2 md:px-4 md:py-2 rounded-t-md text-[11px] md:text-sm font-semibold"
-          :class="cyclerankTab === 'sswo' ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white/90'"
-        >
-          SS0~3(전무O)
-        </button>
-         -->
+                  <button
+                    role="tab"
+                    :aria-selected="cyclerankTab === 's'"
+                    @click="cyclerankTab = 's'"
+                    class="px-2 py-2 md:px-4 md:py-2 rounded-t-md text-[11px] md:text-sm font-semibold"
+                    :class="
+                      cyclerankTab === 's'
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/70 hover:text-white/90'
+                    "
+                  >
+                    S
+                  </button>
+                  <button
+                    role="tab"
+                    :aria-selected="cyclerankTab === 'sswx'"
+                    @click="cyclerankTab = 'sswx'"
+                    class="px-0 py-2 md:px-4 md:py-2 rounded-t-md text-[10px] md:text-sm font-semibold"
+                    :class="
+                      cyclerankTab === 'sswx'
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/70 hover:text-white/90'
+                    "
+                  >
+                    SS0(전무X)
+                  </button>
+                  <button
+                    role="tab"
+                    :aria-selected="cyclerankTab === 'sswo'"
+                    @click="cyclerankTab = 'sswo'"
+                    class="px-2 py-2 md:px-4 md:py-2 rounded-t-md text-[11px] md:text-sm font-semibold"
+                    :class="
+                      cyclerankTab === 'sswo'
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/70 hover:text-white/90'
+                    "
+                  >
+                    SS0~3(전무O)
+                  </button>
 
                   <button
                     role="tab"
@@ -699,45 +711,36 @@ const myCoatings = computed(() =>
                         : 'text-white/70 hover:text-white/90'
                     "
                   >
-                    전랭크
+                    SSS
                   </button>
                 </div>
               </div>
 
-              <!-- 내부 SSS 탭 -->
-              <template v-if="cycleTab === 'tabA' && cyclerankTab === 'sss'">
+              <!-- 내부 S 탭 -->
+              <template v-if="cycleTab === 'tabA' && cyclerankTab === 's'">
                 <div class="w-full">
                   <!-- 속성 아이콘 + 버튼 -->
-                  <div class="flex flex-col items-center mb-4">
+                  <div class="flex flex-col items-center">
                     <img
-                      src="/assets/types/ultima.png"
+                      src="/assets/types/fire.png"
                       alt="암속성"
-                      class="w-10 h-10 object-cover rounded-md border-2 border-emerald-300 mb-3"
+                      class="w-10 h-10 object-cover rounded-md border-2 border-red-500 mb-3"
                     />
 
                     <div class="flex gap-2">
-                      <button
-                        type="button"
-                        :aria-pressed="mode === 'first'"
-                        @click="mode = 'first'"
-                        :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
-                      >
-                        첫 출전 사이클
-                      </button>
-
                       <button
                         type="button"
                         :aria-pressed="mode === 'repeat'"
                         @click="mode = 'repeat'"
                         :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
                       >
-                        반복 출전 사이클
+                        반복 사이클
                       </button>
                     </div>
                   </div>
 
                   <!-- 주의사항 존재시 기술 -->
-                  <div class="w-full flex justify-center mb-4">
+                  <!-- <div class="w-full flex justify-center">
                     <div
                       class="inline-block text-center text-[11px] md:text-sm border border-white rounded-md px-3 py-2"
                     >
@@ -749,9 +752,20 @@ const myCoatings = computed(() =>
                         >전용 무기 + 죽음의 카운트다운 공명 필수</span
                       >
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
+                <!-- 비디오 (src만 변경) -->
+                <template v-if="mode === 'first'">
+                  <video
+                    :src="`${VIDEO_BASE}/geiravorS.mp4`"
+                    controls
+                    muted
+                    preload="metadata"
+                    class="w-full h-auto rounded-md block"
+                    :key="mode"
+                  />
+                </template>
                 <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
                 <div
                   class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full"
@@ -759,34 +773,553 @@ const myCoatings = computed(() =>
                   <div
                     class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
                   >
-                    <!-- 비디오 (src만 변경) -->
-                    <template v-if="mode === 'first'">
-                      <video
-                        :src="`${VIDEO_BASE}/vergilS.mp4`"
-                        controls
-                        muted
-                        preload="metadata"
-                        class="w-full h-auto rounded-md block"
-                        :key="mode"
-                      />
-                    </template>
-
-                    <template v-else-if="mode === 'repeat'">
-                      <video
-                        :src="`${VIDEO_BASE}/vergilR.mp4`"
-                        controls
-                        muted
-                        preload="metadata"
-                        class="w-full h-auto rounded-md block"
-                        :key="mode"
-                      />
-                    </template>
                     <span
                       class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
                     >
-                      {{
-                        mode === "first" ? "첫 출전 사이클" : "반복 출전 사이클"
-                      }}
+                      {{ mode === "first" ? "반복 사이클" : "반복 사이클" }}
+                    </span>
+                  </div>
+
+                  <!-- ========== 기본 속성 사이클 ========== -->
+                  <template v-if="mode === 'first'">
+                    <Carousel
+                      :items-to-show="1"
+                      :wrap-around="false"
+                      :navigation-enabled="false"
+                      :pagination-enabled="true"
+                    >
+                      <Slide>
+                        <!-- 첫 출전 사이클 -->
+
+                        <div class="">
+                          <!-- line 1 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격 (절반 충전)</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 2 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <Slide>
+                        <!-- 사이클 텍스트 -->
+                        <div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              교대-33체인-평꾹(반충전)
+                            </p>
+                          </div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              -1차궁-33체인-평꾹-2차궁
+                            </p>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <template #addons>
+                        <div class="absolute right-5">
+                          <Pagination />
+                        </div>
+                      </template>
+                    </Carousel>
+                  </template>
+                </div>
+              </template>
+
+              <!-- 내부 SS0 탭 -->
+              <template v-if="cycleTab === 'tabA' && cyclerankTab === 'sswx'">
+                <div class="w-full">
+                  <!-- 속성 아이콘 + 버튼 -->
+                  <div class="flex flex-col items-center">
+                    <img
+                      src="/assets/types/fire.png"
+                      alt="암속성"
+                      class="w-10 h-10 object-cover rounded-md border-2 border-red-500 mb-3"
+                    />
+
+                    <div class="flex gap-2">
+                      <button
+                        type="button"
+                        :aria-pressed="mode === 'repeat'"
+                        @click="mode = 'repeat'"
+                        :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+                      >
+                        반복 사이클
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 주의사항 존재시 기술 -->
+                  <!-- <div class="w-full flex justify-center">
+                    <div
+                      class="inline-block text-center text-[11px] md:text-sm border border-white rounded-md px-3 py-2"
+                    >
+                      <span
+                        class="block font-bold tracking-wide text-orange-400"
+                        >!!주의!!</span
+                      >
+                      <span class="block mt-1 text-amber-200"
+                        >전용 무기 + 죽음의 카운트다운 공명 필수</span
+                      >
+                    </div>
+                  </div> -->
+                </div>
+
+                <!-- 비디오 (src만 변경) -->
+                <template v-if="mode === 'first'">
+                  <video
+                    :src="`${VIDEO_BASE}/geiravorSSWX.mp4`"
+                    controls
+                    muted
+                    preload="metadata"
+                    class="w-full h-auto rounded-md block"
+                    :key="mode"
+                  />
+                </template>
+                <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
+                <div
+                  class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full"
+                >
+                  <div
+                    class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
+                  >
+                    <span
+                      class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
+                    >
+                      {{ mode === "first" ? "반복 사이클" : "반복 사이클" }}
+                    </span>
+                  </div>
+
+                  <!-- ========== 기본 속성 사이클 ========== -->
+                  <template v-if="mode === 'first'">
+                    <Carousel
+                      :items-to-show="1"
+                      :wrap-around="false"
+                      :navigation-enabled="false"
+                      :pagination-enabled="true"
+                    >
+                      <Slide>
+                        <!-- 첫 출전 사이클 -->
+                        
+                        <div class="">
+                          <!-- line 1 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격 (최대 충전)</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 2 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <Slide>
+                        <!-- 사이클 텍스트 -->
+                        <div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              교대-3체-평꾹(풀차지)-1차궁
+                            </p>
+                          </div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              -33체-평꾹-2차궁
+                            </p>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <template #addons>
+                        <div class="absolute right-5">
+                          <Pagination />
+                        </div>
+                      </template>
+                    </Carousel>
+                  </template>
+                </div>
+              </template>
+
+              <!-- 내부 SS3 탭 -->
+              <template v-if="cycleTab === 'tabA' && cyclerankTab === 'sswo'">
+                <div class="w-full">
+                  <!-- 속성 아이콘 + 버튼 -->
+                  <div class="flex flex-col items-center">
+                    <img
+                      src="/assets/types/fire.png"
+                      alt="암속성"
+                      class="w-10 h-10 object-cover rounded-md border-2 border-red-500 mb-3"
+                    />
+
+                    <div class="flex gap-2">
+                      <button
+                        type="button"
+                        :aria-pressed="mode === 'repeat'"
+                        @click="mode = 'repeat'"
+                        :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+                      >
+                        반복 사이클
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 주의사항 존재시 기술 -->
+                  <!-- <div class="w-full flex justify-center">
+                    <div
+                      class="inline-block text-center text-[11px] md:text-sm border border-white rounded-md px-3 py-2"
+                    >
+                      <span
+                        class="block font-bold tracking-wide text-orange-400"
+                        >!!주의!!</span
+                      >
+                      <span class="block mt-1 text-amber-200"
+                        >전용 무기 + 죽음의 카운트다운 공명 필수</span
+                      >
+                    </div>
+                  </div> -->
+                </div>
+
+                <!-- 비디오 (src만 변경) -->
+                <template v-if="mode === 'first'">
+                  <video
+                    :src="`${VIDEO_BASE}/geiravorSSWO.mp4`"
+                    controls
+                    muted
+                    preload="metadata"
+                    class="w-full h-auto rounded-md block"
+                    :key="mode"
+                  />
+                </template>
+                <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
+                <div
+                  class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full"
+                >
+                  <div
+                    class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
+                  >
+                    <span
+                      class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
+                    >
+                      {{ mode === "first" ? "반복 사이클" : "반복 사이클" }}
                     </span>
                   </div>
 
@@ -803,10 +1336,10 @@ const myCoatings = computed(() =>
                         <!-- line 1 -->
                         <div class="">
                           <div
-                            class="w-full max-w-full flex justify-center mb-4"
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
                           >
                             <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
                               <div class="flex flex-col items-center">
                                 <img
@@ -827,42 +1360,21 @@ const myCoatings = computed(() =>
                               </div>
 
                               <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/keyarrow.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >방향키</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilred.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >적색 스킬볼</span
+                                  >청색 스킬볼 ×3</span
                                 >
                               </div>
 
@@ -875,25 +1387,7 @@ const myCoatings = computed(() =>
 
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilult.png"
+                                  src="/assets/skillball/geiravorult.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
@@ -906,10 +1400,10 @@ const myCoatings = computed(() =>
 
                           <!-- line 2 -->
                           <div
-                            class="w-full max-w-full flex justify-center mb-4"
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
                           >
                             <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
                               <div class="flex flex-col items-center">
                                 <img
@@ -919,13 +1413,40 @@ const myCoatings = computed(() =>
                               </div>
 
                               <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
-                                />
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >[HOLD] 기본 공격 (저지먼트 컷 2회)</span
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
                                 >
                               </div>
 
@@ -938,7 +1459,44 @@ const myCoatings = computed(() =>
 
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilult.png"
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/dodge.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×2
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >회피 ×2 (평꾹 유지)</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
@@ -950,9 +1508,11 @@ const myCoatings = computed(() =>
                           </div>
 
                           <!-- line 3 -->
-                          <div class="w-full max-w-full flex justify-center">
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
                             <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
                               <div class="flex flex-col items-center">
                                 <img
@@ -962,24 +1522,21 @@ const myCoatings = computed(() =>
                               </div>
 
                               <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
+                                  >청색 스킬볼 ×3</span
                                 >
                               </div>
 
@@ -992,12 +1549,200 @@ const myCoatings = computed(() =>
 
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilbasic.png"
+                                  src="/assets/skillball/dodge.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
+                                  >회피</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 4 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/dodge.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×2
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >회피 ×2 (평꾹 유지)</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 5 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-2 md:mb-4"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
                                 >
                               </div>
                             </div>
@@ -1012,14 +1757,250 @@ const myCoatings = computed(() =>
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              교대-회피-방향키+평타-빨볼-평타-1차궁
+                              회피-3체-1차궁
                             </p>
                           </div>
                           <div
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              -평꾹(저지먼트 컷 2번)-2차궁
+                              -33체-평꾹(평꾹 유지한채로
+                              회피2번or회피연타)-2차궁
+                            </p>
+                          </div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              -3체-회피-3체-1차궁
+                            </p>
+                          </div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              -33체-평꾹(평꾹 유지한채로
+                              회피2번or회피연타)-2차궁-3체
+                            </p>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <template #addons>
+                        <div class="absolute right-5">
+                          <Pagination />
+                        </div>
+                      </template>
+                    </Carousel>
+                  </template>
+                </div>
+              </template>
+
+              <!-- 내부 SSS 탭 -->
+              <template v-if="cycleTab === 'tabA' && cyclerankTab === 'sss'">
+                <div class="w-full">
+                  <!-- 속성 아이콘 + 버튼 -->
+                  <div class="flex flex-col items-center mb-4">
+                    <img
+                      src="/assets/types/fire.png"
+                      alt="암속성"
+                      class="w-10 h-10 object-cover rounded-md border-2 border-red-500 mb-3"
+                    />
+
+                    <div class="flex gap-2">
+                      <button
+                        type="button"
+                        :aria-pressed="mode === 'first'"
+                        @click="mode = 'first'"
+                        :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+                      >
+                        첫 출전 사이클
+                      </button>
+
+                      <button
+                        type="button"
+                        :aria-pressed="mode === 'repeat'"
+                        @click="mode = 'repeat'"
+                        :class="[pillClass('repeat'), 'text-[11px] md:text-sm']"
+                      >
+                        반복 사이클
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 주의사항 존재시 기술 -->
+                  <div class="w-full flex justify-center">
+                    <div
+                      class="inline-block text-center text-[11px] md:text-sm border border-white rounded-md px-3 py-2"
+                    >
+                      <span
+                        class="block font-bold tracking-wide text-orange-400"
+                        >!!주의!!</span
+                      >
+                      <span class="block mt-1 text-amber-200"
+                        >SSS 이상은 !!죽음의 카운트다운!! 필요 없음</span
+                      >
+                      <span class="block mt-1 text-amber-200"
+                        >초산 플래시 or 광휘의 파편 중 택1</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 비디오 (src만 변경) -->
+                    <template v-if="mode === 'first'">
+                      <!-- <video
+                        :src="`${VIDEO_BASE}/geiravorSSS.mp4`"
+                        controls
+                        muted
+                        preload="metadata"
+                        class="w-full h-auto rounded-md block"
+                        :key="mode"
+                      /> -->
+                    </template>
+
+                    <template v-else-if="mode === 'repeat'">
+                      <video
+                        :src="`${VIDEO_BASE}/geiravorSSS.mp4`"
+                        controls
+                        muted
+                        preload="metadata"
+                        class="w-full h-auto rounded-md block"
+                        :key="mode"
+                      />
+                    </template>
+
+                <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
+                <div
+                  class="bg-black/50 md:p-4 rounded-md text-white md:w-full md:max-h-full"
+                >
+                  <div
+                    class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
+                  >
+                    
+                    <span
+                      class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
+                    >
+                      {{
+                        mode === "first" ? "첫 출전 사이클" : "반복 출전 사이클"
+                      }}
+                    </span>
+                  </div>
+
+                  <!-- ========== 기본 속성 사이클 ========== -->
+                  <template v-if="mode === 'first'">
+                    <Carousel
+                      :items-to-show="1"
+                      :wrap-around="false"
+                      :navigation-enabled="false"
+                      :pagination-enabled="true"
+                    >
+                      <Slide>
+                        <!-- 첫 출전 사이클 -->
+
+                        <div class="">
+                          <!-- line 1 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 2 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-2 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <span class="block mt-1 text-amber-200">OR</span>
+                            </div>
+                          </div>
+
+                          <!-- line 3 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Slide>
+
+                      <Slide>
+                        <!-- 사이클 텍스트 -->
+                        <div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              작망 선발-3체인
+                            </p>
+                          </div>
+                          <div
+                            class="grid grid-col-1 flex items-center justify-center"
+                          >
+                            <p class="text-sm md:text-base text-white/80 mb-4">
+                              OR
                             </p>
                           </div>
 
@@ -1027,7 +2008,7 @@ const myCoatings = computed(() =>
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              -파파-평타
+                              작망 선발-3체인-1차궁
                             </p>
                           </div>
                         </div>
@@ -1050,17 +2031,17 @@ const myCoatings = computed(() =>
                       :pagination-enabled="true"
                     >
                       <Slide>
-                        <!-- line 1 -->
                         <div class="">
+                          <!-- line 1 -->
                           <div
-                            class="w-full max-w-full flex justify-center mb-4"
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
                           >
                             <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilult.png"
+                                  src="/assets/skillball/geiravorult.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
@@ -1077,35 +2058,21 @@ const myCoatings = computed(() =>
                               </div>
 
                               <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
+                                  >적색 스킬볼 ×3</span
                                 >
                               </div>
 
@@ -1114,118 +2081,6 @@ const myCoatings = computed(() =>
                                   src="/assets/skillball/arrow.png"
                                   class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
                                 />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilult.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >필살기</span
-                                >
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- line 2 -->
-                          <div
-                            class="w-full max-w-full flex justify-center mb-4"
-                          >
-                            <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
-                            >
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilbasic.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilult.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >필살기</span
-                                >
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- line 3 -->
-                          <div
-                            class="w-full max-w-full flex justify-center mb-4"
-                          >
-                            <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
-                            >
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/keyarrow.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >방향키</span
-                                >
                               </div>
 
                               <div class="flex flex-col items-center">
@@ -1248,12 +2103,12 @@ const myCoatings = computed(() =>
 
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilbasic.png"
+                                  src="/assets/skillball/geiravorbasic.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
                                 />
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >[HOLD] 기본 공격 (스킬볼 잔량 3개 유지)</span
+                                  >[HOLD] 기본 공격</span
                                 >
                               </div>
 
@@ -1266,7 +2121,7 @@ const myCoatings = computed(() =>
 
                               <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilult.png"
+                                  src="/assets/skillball/geiravorult.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
@@ -1277,39 +2132,14 @@ const myCoatings = computed(() =>
                             </div>
                           </div>
 
-                          <!-- line 4 -->
-                          <div class="w-full max-w-full flex justify-center">
+                          <!-- line 2 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
                             <div
-                              class="flex items-center gap-2 md:gap-4 mb-3 md:mb-0"
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/arrow.png"
-                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
-                                />
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
-                                >
-                              </div>
-
-                              <div class="flex flex-col items-center">
-                                <img
-                                  src="/assets/skillball/vergilblue.png"
-                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
-                                />
-                                <span
-                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >청색 스킬볼</span
-                                >
-                              </div>
+                              
 
                               <div class="flex flex-col items-center">
                                 <img
@@ -1319,13 +2149,272 @@ const myCoatings = computed(() =>
                               </div>
 
                               <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
                                 <img
-                                  src="/assets/skillball/vergilbasic.png"
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/dodge.png"
                                   class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
                                 />
                                 <span
                                   class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
-                                  >기본 공격</span
+                                  >회피</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                            
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- line 3 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+
+                          
+
+                    
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/dodge.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >회피</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorred.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >적색 스킬볼 ×3</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/dodge.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >회피</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorbasic.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md border-2 border-white object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >[HOLD] 기본 공격</span
+                                >
+                              </div>
+
+                              
+
+                              
+                            </div>
+                          </div>
+
+                          <!-- line 4 -->
+                          <div
+                            class="w-full max-w-full flex justify-center overflow-x-auto mb-0 md:mb-5"
+                          >
+                            <div
+                              class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
+                            >
+                              
+
+                              
+
+                              
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                            
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/geiravorult.png"
+                                  class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md object-cover"
+                                />
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >필살기</span
+                                >
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <img
+                                  src="/assets/skillball/arrow.png"
+                                  class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
+                                />
+                              </div>
+
+                              <div class="flex flex-col items-center">
+                                <div class="relative inline-block">
+                                  <img
+                                    src="/assets/skillball/geiravorblue.png"
+                                    class="block w-10 h-10 md:w-[50px] md:h-[50px] object-cover border-b-2 border-white rounded-md"
+                                    alt=""
+                                  />
+                                  <span
+                                    class="absolute bottom-0 right-0 -translate-y-1/2 translate-x-1/4 text-[8px] md:text-xs leading-none font-bold px-1.5 py-0.5 border border-white/70 bg-black/70 text-white backdrop-blur-sm"
+                                  >
+                                    ×3
+                                  </span>
+                                </div>
+                                <span
+                                  class="mt-2 text-[10px] md:text-[11px] whitespace-nowrap"
+                                  >청색 스킬볼 ×3</span
                                 >
                               </div>
                             </div>
@@ -1340,22 +2429,14 @@ const myCoatings = computed(() =>
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              교대-1차궁-평평평or저컷2번-2차궁
+                              교대-1차궁-3체-회피-평꾹-2차궁
                             </p>
                           </div>
                           <div
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              -파파-평타-1차궁
-                            </p>
-                          </div>
-
-                          <div
-                            class="grid grid-col-1 flex items-center justify-center"
-                          >
-                            <p class="text-sm md:text-base text-white/80 mb-4">
-                              -방향키+회피-평꾹-2차궁
+                              -3체-회피-3체-1차궁
                             </p>
                           </div>
 
@@ -1363,7 +2444,7 @@ const myCoatings = computed(() =>
                             class="grid grid-col-1 flex items-center justify-center"
                           >
                             <p class="text-sm md:text-base text-white/80 mb-4">
-                              -파파-평타
+                              -3체-회피-3체-회피-평꾹-2차궁-3체
                             </p>
                           </div>
                         </div>
