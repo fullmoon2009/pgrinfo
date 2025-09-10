@@ -31,9 +31,9 @@ export const characters: Character[] = [
     types: ['fire', 'abyss']
   },
   {
-    slug: "pianisimmo",
+    slug: "pianissimo",
     name: '세레나 · 희성',
-    portrait: '/assets/portrait/pianisimmo2.png',
+    portrait: '/assets/portrait/pianissimo2.png',
     types: ['physics', 'freeze']
   },
   {

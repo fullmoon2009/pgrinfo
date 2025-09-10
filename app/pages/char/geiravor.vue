@@ -13,6 +13,7 @@ import CharacterSkills from "@/components/ui/CharacterSkills.vue";
 import CycleSection from "@/components/ui/Cycle.vue";
 import { coatingData } from "@/data/coatingData";
 import CoatingShowcase from "@/components/ui//CoatingShowcase.vue";
+import Navbar from "@/components/ui/Navbar.vue";
 
 const viewMode = ref<"guide" | "coating">("guide");
 const segClass = (m: "guide" | "coating") =>
@@ -88,6 +89,7 @@ const slidesA = [
     ultIcon: "/assets/skillball/geiravorcore.png",
     ultLabel: "증폭형",
     tierBadge: { text: "SSS 미만", cls: "text-red-500" },
+    typeName: "화속성",
     chipText: "다빈치 x4",
     chipText2: "퀴니 x2",
     chipText3: "후루루 x2",
@@ -110,6 +112,7 @@ const slidesA = [
     ],
     ultIcon: "/assets/skillball/geiravorult.png",
     tierBadge: { text: "SSS 미만/망성", cls: "text-red-500" },
+    typeName: "화속성",
     chipText: "셰익 x4",
     chipText2: "후루루 x2",
     chipText3: "아인 x2",
@@ -132,6 +135,7 @@ const slidesA = [
     ],
     ultIcon: "/assets/skillball/geiravorult.png",
     tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
+    typeName: "화속성",
     chipText: "셰익스피어 x4",
     chipText2: "후루루 x4",
     chipText3: "",
@@ -155,6 +159,7 @@ const slidesA = [
     ],
     ultIcon: "/assets/skillball/geiravorult.png",
     tierBadge: { text: "SSS 이상/망성", cls: "text-yellow-500" },
+    typeName: "화속성",
     chipText: "다빈치 x4",
     chipText2: "후루루 x4",
     chipText3: "",
@@ -178,6 +183,7 @@ const slidesA = [
     ],
     ultIcon: "/assets/skillball/geiravorult.png",
     tierBadge: { text: "전랭크", cls: "text-white" },
+    typeName: "연소",
     chipText: "다빈치 x4",
     chipText2: "퀴니 x2",
     chipText3: "아인슈타나 x2",
@@ -204,6 +210,7 @@ const slidesB = [
     ],
     ultIcon: "/assets/skillball/geiravorult.png",
     tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
+    typeName: "화속성",
     chipText: "다빈치 x4",
     chipText2: "퀴니 x4",
     chipText3: "",
@@ -226,8 +233,9 @@ const slidesB = [
     ],
     atkLabel: "공격력",
     ultIcon: "/assets/skillball/geiravorcore.png",
-    ultLabel: "직업 패시브",
+    ultLabel: "증폭형",
     tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
+    typeName: "연소",
     chipText: "퀴니 x4",
     chipText2: "아인슈타나 x2",
     chipText3: "사만다(5) x2",
@@ -250,8 +258,9 @@ const slidesB = [
     ],
     atkLabel: "공격력",
     ultIcon: "/assets/skillball/geiravorcore.png",
-    ultLabel: "직업 패시브",
+    ultLabel: "증폭형",
     tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
+    typeName: "공허",
     chipText: "셰익스피어 x4",
     chipText2: "다빈치 x4",
     chipText3: "",
@@ -390,14 +399,7 @@ const myCoatings = computed(() =>
 </script>
 
 <template>
-  <nav class="bg-gray-800 text-white p-4 flex justify-between items-center">
-    <div class="font-bold"></div>
-    <div class="space-x-4">
-      <NuxtLink to="/" class="hover:underline">Home</NuxtLink>
-      <NuxtLink to="/char" class="hover:underline">Char</NuxtLink>
-      <NuxtLink to="/events" class="hover:underline">Event</NuxtLink>
-    </div>
-  </nav>
+  <Navbar />
   <div class="min-h-screen bg-[#1a1a1a]/95 text-white p-3">
     <div class="p-2 md:p-3 mx-auto"></div>
     <!-- 프로필 이미지 -->
@@ -435,7 +437,7 @@ const myCoatings = computed(() =>
           class="ml-1 px-4 py-1.5 text-[12px] md:text-sm rounded-full border transition"
           :class="segClass('coating')"
         >
-          코팅 쇼케이스
+          코팅 정보
         </button>
       </div>
     </div>
@@ -473,12 +475,12 @@ const myCoatings = computed(() =>
         <!-- 장비 & 의식 세팅 -->
         <div
           id="equip"
-          class="max-w-4xl w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 px-2 py-1 md:px-6 md:py-3 rounded-md bg-[#0A0A23]/30"
+          class="max-w-4xl w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 px-2 py-3 md:px-6 md:py-3 rounded-md bg-[#0A0A23]/30"
         >
           <SectionPill text="장비 & 의식 세팅" />
 
           <div
-            class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4"
+            class="col-span-2 bg-black/50 rounded-md px-4 text-white space-y-4"
           >
             <WeaponSkills
               weapon-id="deathlessflame"
@@ -504,10 +506,10 @@ const myCoatings = computed(() =>
             />
           </div>
 
-          <div class="col-span-2 bg-black/50 rounded-md p-4 text-white">
+          <div class="col-span-2 bg-black/50 rounded-md px-4 text-white">
             <div
               role="tablist"
-              class="flex gap-2 mb-4 border-b border-white/20"
+              class="flex gap-2 mb-4 mt-2 border-b border-white/20"
             >
               <button
                 class="px-3 py-2 md:px-4 md:py-[10px] rounded-t-md text-sm md:text-[16px]"
@@ -646,7 +648,7 @@ const myCoatings = computed(() =>
                     : 'text-white/70 hover:text-white/90'
                 "
               >
-                SPECIAL
+                연소 사이클
               </button>
             </div>
 
@@ -1071,7 +1073,7 @@ const myCoatings = computed(() =>
                     >
                       <Slide>
                         <!-- 첫 출전 사이클 -->
-                        
+
                         <div class="">
                           <!-- line 1 -->
                           <div
@@ -1848,8 +1850,8 @@ const myCoatings = computed(() =>
                 </div>
 
                 <!-- 비디오 (src만 변경) -->
-                    <template v-if="mode === 'first'">
-                      <!-- <video
+                <template v-if="mode === 'first'">
+                  <!-- <video
                         :src="`${VIDEO_BASE}/geiravorSSS.mp4`"
                         controls
                         muted
@@ -1857,18 +1859,18 @@ const myCoatings = computed(() =>
                         class="w-full h-auto rounded-md block"
                         :key="mode"
                       /> -->
-                    </template>
+                </template>
 
-                    <template v-else-if="mode === 'repeat'">
-                      <video
-                        :src="`${VIDEO_BASE}/geiravorSSS.mp4`"
-                        controls
-                        muted
-                        preload="metadata"
-                        class="w-full h-auto rounded-md block"
-                        :key="mode"
-                      />
-                    </template>
+                <template v-else-if="mode === 'repeat'">
+                  <video
+                    :src="`${VIDEO_BASE}/geiravorSSS.mp4`"
+                    controls
+                    muted
+                    preload="metadata"
+                    class="w-full h-auto rounded-md block"
+                    :key="mode"
+                  />
+                </template>
 
                 <!-- 첫 출전/반복 출전 “실제 사이클 영역” -->
                 <div
@@ -1877,7 +1879,6 @@ const myCoatings = computed(() =>
                   <div
                     class="flex flex-col items-center mb-4 pb-3 border-b-2 border-white/50"
                   >
-                    
                     <span
                       class="mt-2 md:mb-2 md:font-semibold text-sm md:text-[17px]"
                     >
@@ -2139,8 +2140,6 @@ const myCoatings = computed(() =>
                             <div
                               class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
-                              
-
                               <div class="flex flex-col items-center">
                                 <img
                                   src="/assets/skillball/arrow.png"
@@ -2218,8 +2217,6 @@ const myCoatings = computed(() =>
                                 />
                               </div>
 
-                            
-
                               <div class="flex flex-col items-center">
                                 <img
                                   src="/assets/skillball/geiravorult.png"
@@ -2240,18 +2237,12 @@ const myCoatings = computed(() =>
                             <div
                               class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
-
-                          
-
-                    
-
                               <div class="flex flex-col items-center">
                                 <img
                                   src="/assets/skillball/arrow.png"
                                   class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
                                 />
                               </div>
-
 
                               <div class="flex flex-col items-center">
                                 <div class="relative inline-block">
@@ -2296,7 +2287,6 @@ const myCoatings = computed(() =>
                                   class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
                                 />
                               </div>
-
 
                               <div class="flex flex-col items-center">
                                 <div class="relative inline-block">
@@ -2352,10 +2342,6 @@ const myCoatings = computed(() =>
                                   >[HOLD] 기본 공격</span
                                 >
                               </div>
-
-                              
-
-                              
                             </div>
                           </div>
 
@@ -2366,20 +2352,12 @@ const myCoatings = computed(() =>
                             <div
                               class="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-4 mb-3 md:mb-0 md:scale-100 scale-[0.77] origin-top min-w-max"
                             >
-                              
-
-                              
-
-                              
-
                               <div class="flex flex-col items-center">
                                 <img
                                   src="/assets/skillball/arrow.png"
                                   class="w-[18px] h-[18px] md:w-[20px] md:h-[20px] mt-3 md:mt-4 object-contain"
                                 />
                               </div>
-
-                            
 
                               <div class="flex flex-col items-center">
                                 <img

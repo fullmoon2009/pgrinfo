@@ -34,6 +34,14 @@ const fitClass = computed(() => {
       return "object-cover";
   }
 });
+
+const thumbNameSize = (t?: string) => {
+  const len = (t?.trim() ?? "").length;
+  if (len > 12) return "text-[9px] md:text-[10px]";
+  if (len > 6) return "text-[10px] md:text-[11px]";
+  return "text-[11px] md:text-[11px]";
+};
+
 const imgStyle = computed(() => {
   const s: Record<string, string> = {};
   if (props.petObjectPosition) s.objectPosition = props.petObjectPosition;
@@ -149,9 +157,15 @@ const pillClass = (kind: "active" | "passive") =>
               />
             </div>
             <span
-              class="mt-1 text-[11px] md:text-[11px] text-white/90 text-center"
-              >{{ s.label }}</span
+              :class="[
+                'block mt-1 h-4 md:h-5 leading-tight text-white/90 text-center',
+                'overflow-hidden text-ellipsis whitespace-nowrap',
+
+                thumbNameSize(s.label),
+              ]"
             >
+              {{ s.label }}
+            </span>
           </div>
         </div>
       </div>
@@ -159,98 +173,100 @@ const pillClass = (kind: "active" | "passive") =>
   </div>
 
   <!-- 모달  -->
-   <teleport to="body">
-  <transition name="pet-fade">
-    <div
-      v-if="modalOpen"
-      class="fixed inset-0 z-[90]"
-      aria-modal="true"
-      role="dialog"
-    >
+  <teleport to="body">
+    <transition name="pet-fade">
       <div
-        class="absolute inset-0 bg-black/70 backdrop-blur-[2px] "
-        @click="closeModal"
-      ></div>
-
-      <div class="absolute inset-0 grid place-items-center p-4">
+        v-if="modalOpen"
+        class="fixed inset-0 z-[90]"
+        aria-modal="true"
+        role="dialog"
+      >
         <div
-          class="w-full max-w-2xl rounded-xl bg-[#14141C] text-white shadow-2xl border border-white/10 animate-[petIn_200ms_ease-out]"
-        >
-          <!-- 헤더 -->
-          <div class="flex items-center gap-3 p-4 border-b border-white/10">
-            <div
-              class="h-[60px] w-[60px] rounded-md overflow-hidden border border-white/15"
-            >
-              <img :src="petImg" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-1">
-              <div class="text-[17px] md:text-lg font-bold text-white/95">
-                {{ petName }}
-              </div>
-              <div class="mt-1 flex flex-wrap gap-1">
-                <span
-                  v-if="modalLevel !== undefined"
-                  class="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] bg-white/10 border border-white/20"
-                >
-                  Level {{ modalLevel }}
-                </span>
-              </div>
-            </div>
-            <button
-              class="ml-2 mb-6 text-white/80 hover:text-white rounded-md p-1.5 hover:bg-white/10 transition"
-              @click="closeModal"
-              aria-label="닫기"
-            >
-              ✕
-            </button>
-          </div>
+          class="absolute inset-0 bg-black/70 backdrop-blur-[2px]"
+          @click="closeModal"
+        ></div>
 
-          <!-- 본문 -->
-          <div class="p-4 md:p-5 space-y-3 max-h-[70vh] overflow-y-auto no-scrollbar">
-            <div
-              v-for="(b, i) in modalBlocks"
-              :key="i"
-              class="flex gap-3 p-3 rounded-lg bg-white/[0.04] border border-white/10"
-            >
+        <div class="absolute inset-0 grid place-items-center p-4">
+          <div
+            class="w-full max-w-2xl rounded-xl bg-[#14141C] text-white shadow-2xl border border-white/10 animate-[petIn_200ms_ease-out]"
+          >
+            <!-- 헤더 -->
+            <div class="flex items-center gap-3 p-4 border-b border-white/10">
               <div
-                class="h-[60px] w-[60px] shrink-0 rounded-md bg-white/[0.06] border border-white/15 grid place-items-center"
+                class="h-[60px] w-[60px] rounded-md overflow-hidden border border-white/15"
               >
-                <img
-                  :src="b.img"
-                  class="w-[50px] h-[50px] object-contain opacity-90"
-                  alt=""
-                />
+                <img :src="petImg" class="w-full h-full object-cover" />
               </div>
-
               <div class="flex-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <div class="font-semibold text-white/95">{{ b.label }}</div>
-                  <!-- 뱃지 -->
+                <div class="text-[17px] md:text-lg font-bold text-white/95">
+                  {{ petName }}
+                </div>
+                <div class="mt-1 flex flex-wrap gap-1">
                   <span
-                    class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px]"
-                    :class="pillClass(b.kind)"
+                    v-if="modalLevel !== undefined"
+                    class="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] bg-white/10 border border-white/20"
                   >
-                    {{ b.kind === "active" ? "액티브" : "패시브" }}
-                  </span>
-                  <span
-                    v-if="b.level !== undefined"
-                    class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/10 border border-white/20 text-white/85"
-                  >
-                    Level {{ b.level }}
+                    Level {{ modalLevel }}
                   </span>
                 </div>
+              </div>
+              <button
+                class="ml-2 mb-6 text-white/80 hover:text-white rounded-md p-1.5 hover:bg-white/10 transition"
+                @click="closeModal"
+                aria-label="닫기"
+              >
+                ✕
+              </button>
+            </div>
+
+            <!-- 본문 -->
+            <div
+              class="p-4 md:p-5 space-y-3 max-h-[70vh] overflow-y-auto no-scrollbar"
+            >
+              <div
+                v-for="(b, i) in modalBlocks"
+                :key="i"
+                class="flex gap-3 p-3 rounded-lg bg-white/[0.04] border border-white/10"
+              >
                 <div
-                  class="mt-1 text-[13px] md:text-[14px] leading-relaxed text-white/85"
-                  v-html="b.desc"
-                ></div>
+                  class="h-[60px] w-[60px] shrink-0 rounded-md bg-white/[0.06] border border-white/15 grid place-items-center"
+                >
+                  <img
+                    :src="b.img"
+                    class="w-[50px] h-[50px] object-contain opacity-90"
+                    alt=""
+                  />
+                </div>
+
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <div class="font-semibold text-white/95">{{ b.label }}</div>
+                    <!-- 뱃지 -->
+                    <span
+                      class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px]"
+                      :class="pillClass(b.kind)"
+                    >
+                      {{ b.kind === "active" ? "액티브" : "패시브" }}
+                    </span>
+                    <span
+                      v-if="b.level !== undefined"
+                      class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/10 border border-white/20 text-white/85"
+                    >
+                      Level {{ b.level }}
+                    </span>
+                  </div>
+                  <div
+                    class="mt-1 text-[13px] md:text-[14px] leading-relaxed text-white/85"
+                    v-html="b.desc"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </transition>
-</teleport>
+    </transition>
+  </teleport>
 </template>
 
 <style scoped>
@@ -280,11 +296,11 @@ const pillClass = (kind: "active" | "passive") =>
   border-radius: 6px;
 }
 
-.no-scrollbar { 
-  -ms-overflow-style: none; 
-  scrollbar-width: none;     
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-.no-scrollbar::-webkit-scrollbar { 
-  display: none;             
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 </style>

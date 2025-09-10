@@ -24,7 +24,10 @@ html, body {
 }
 
 
-
+html, body {
+  background: #1a1a1a;  /* ← 원하는 색 */
+  color-scheme: dark;   /* (선택) 브라우저 기본 스크롤/폼 컨트롤을 다크로 */
+}
 
 
 

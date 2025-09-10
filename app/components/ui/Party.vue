@@ -57,10 +57,10 @@ const TYPE_BORDER: Record<string, string> = {
   fire: 'border-red-500',
   burn: 'border-[#5a0f0f]',
   ice: 'border-cyan-300',
-  freeze: 'border-amber-300',
+  freeze: 'border-blue-500',
   lightning: 'border-amber-300',
   ultima: 'border-emerald-300',
-  physics: 'border-gray-300',
+  physics: 'border-gray-400',
   nihil: 'border-[#C00088]',
   fuzz: 'border-gray-300',
 }

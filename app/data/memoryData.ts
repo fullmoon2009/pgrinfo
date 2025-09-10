@@ -145,4 +145,67 @@ export const memoryData: Record<string, MemorySetData> = {
       four: '다음 치료 스킬 시전 시 원소 속성 광환을 남기며, 구역 내의 아군 유닛은 8%의 전체 원소 속성 피해와 5%의 전체 원소 속성 저항이 증가한다. 쿨타임 10초.',
     },
   },
+
+  'burana': {
+    id: 'burana',
+    name: '부라나',
+    rarity: 6,
+    banner: '/assets/memory/burfull1.png',
+    bannerObjectPosition: '0% 23%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 66, atk: 132, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/burfull1.png', full: '/assets/memory/bur1.png' },
+      { label: '2/5', face: '/assets/memory/burfull2.png', full: '/assets/memory/bur2.png' },
+      { label: '3/6', face: '/assets/memory/burfull3.png', full: '/assets/memory/bur3.png' },
+    ],
+    effects: {
+      two: '공격력, 물리 피해, 결빙 피해가 5% 증가한다.',
+      four: '운류의 관통 시전 시, 즉시 스킬볼 2개를 획득한다. 음검의 울림, 운류의 관통, 필살-바람의 울음, 필살-꽃의 종지부의 피해가 두 배로 증가한다.',
+    },
+  },
+
+  'klenova': {
+    id: 'klenova',
+    name: '클레노바',
+    rarity: 6,
+    banner: '/assets/memory/klefull1.png',
+    bannerObjectPosition: '0% 40%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 66, atk: 132, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/klefull1.png', full: '/assets/memory/kle1.png' },
+      { label: '2/5', face: '/assets/memory/klefull2.png', full: '/assets/memory/kle2.png' },
+      { label: '3/6', face: '/assets/memory/klefull3.png', full: '/assets/memory/kle3.png' },
+    ],
+    effects: {
+      two: '얼음속성 피해가 5%, 결빙 피해가 10% 증가한다.',
+      four: '얼음 가시 지속 기간 동안 공격력이 5%, 결빙 피해가 10% 증가한다.',
+    },
+  },
+
+  'patton': {
+    id: 'patton',
+    name: '패튼',
+    rarity: 6,
+    banner: '/assets/memory/pattonfull1.png',
+    bannerObjectPosition: '0% 23%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1453, crit: 67, atk: 132, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/pattonfull1.png', full: '/assets/memory/patton1.png' },
+      { label: '2/5', face: '/assets/memory/pattonfull2.png', full: '/assets/memory/patton2.png' },
+      { label: '3/6', face: '/assets/memory/pattonfull3.png', full: '/assets/memory/patton3.png' },
+    ],
+    effects: {
+      two: '공격력이 3% 증가하고, 물리 피해가 7% 증가한다.',
+      four: '추가 피해 버프가 10% 상승한다. 공격 시 목표를 부상 상태로 만들며, 해당 기간에 목표의 물리 저항이 7% 감소한다. 부상 상태는 8초간 지속되며, 동일 목표에 대해 10초의 쿨타임이 있다. 부상 상태의 목표를 공격할 시 폭발이 발생하여 600%의 물리 피해를 입히며, 동일 목표에 대해 6초의 쿨타임이 있다.',
+    },
+  },
 };

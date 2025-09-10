@@ -1,35 +1,41 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
-import type { CoatingItem } from '@/data/coatingData'
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
+import type { CoatingItem } from "@/data/coatingData";
 
-const props = defineProps<{ items?: CoatingItem[] }>()
-const data = computed(() => (props.items?.length ? props.items : []))
+const props = defineProps<{ items?: CoatingItem[] }>();
+const data = computed(() => (props.items?.length ? props.items : []));
 
-const zoomSrc = ref<string | null>(null)
-const openZoom  = (src: string) => (zoomSrc.value = src)
-const closeZoom = () => (zoomSrc.value = null)
-const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeZoom() }
-onMounted(() => document.addEventListener('keydown', onKey))
-onBeforeUnmount(() => document.removeEventListener('keydown', onKey))
+const zoomSrc = ref<string | null>(null);
+const openZoom = (src: string) => (zoomSrc.value = src);
+const closeZoom = () => (zoomSrc.value = null);
+const onKey = (e: KeyboardEvent) => {
+  if (e.key === "Escape") closeZoom();
+};
+onMounted(() => document.addEventListener("keydown", onKey));
+onBeforeUnmount(() => document.removeEventListener("keydown", onKey));
 
-const openLong = ref<Set<string>>(new Set())
-const isOpen = (id: string) => openLong.value.has(id)
+const openLong = ref<Set<string>>(new Set());
+const isOpen = (id: string) => openLong.value.has(id);
 const toggleLong = (id: string) => {
-  const s = new Set(openLong.value)
-  s.has(id) ? s.delete(id) : s.add(id)
-  openLong.value = s
-}
+  const s = new Set(openLong.value);
+  s.has(id) ? s.delete(id) : s.add(id);
+  openLong.value = s;
+};
 
-const typePillClass = (t: CoatingItem['type']) =>
-  t === 'special' ? 'bg-rose-500/10 text-rose-200 border border-rose-400/30'
-: t === 'gacha'   ? 'bg-sky-500/10  text-sky-200  border border-sky-400/30'
-                  : 'bg-white/10 text-white/85 border border-white/20'
+const typePillClass = (t: CoatingItem["type"]) =>
+  t === "special"
+    ? "bg-rose-500/10 text-rose-200 border border-rose-400/30"
+    : t === "gacha"
+    ? "bg-sky-500/10  text-sky-200  border border-sky-400/30"
+    : "bg-white/10 text-white/85 border border-white/20";
 
-const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방'][i] ?? '기본')
+const normalBadge = (i: number) =>
+  ["기본", "초급 해방", "최종 해방"][i] ?? "기본";
 </script>
 
 <template>
-  <div class="rounded-md bg-[#0A0A23]/30 p-4">
+  <div class="py-3"></div>
+  <div class="rounded-md max-w-4xl w-full mx-auto bg-[#0A0A23]/30 p-4">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-white/90 font-bold text-lg"></h3>
       <span class="text-[12px] text-white/60">프리뷰를 클릭하면 확대</span>
@@ -39,12 +45,12 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
       <div
         v-for="c in data"
         :key="c.id"
-        class="mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] "
+        class="mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
       >
-        <div v-if="c.type==='normal'" class="p-2">
+        <div v-if="c.type === 'normal'" class="p-2">
           <div class="grid grid-cols-3 gap-2">
             <div
-              v-for="(img, i) in (c.images.verticals || [])"
+              v-for="(img, i) in c.images.verticals || []"
               :key="i"
               class="relative rounded-lg overflow-hidden border border-white/10 bg-black/30"
             >
@@ -55,10 +61,9 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
                 alt=""
               />
               <span
-                class="absolute left-2 top-2 inline-flex items-center rounded-full px-2 py-0.5
-                       text-[10px] font-semibold bg-white/12 text-white/90 border border-white/25
-                       backdrop-blur-[2px] shadow"
-              >{{ normalBadge(i) }}</span>
+                class="absolute left-2 top-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-white/12 text-white/90 border border-white/25 backdrop-blur-[2px] shadow"
+                >{{ normalBadge(i) }}</span
+              >
             </div>
           </div>
         </div>
@@ -68,7 +73,10 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
           <!-- 1열 배경 -->
           <div class="rounded-lg overflow-hidden bg-black/30">
             <div class="aspect-[16/9] grid place-items-center">
-              <img :src="c.images.banner" class="max-w-full max-h-full object-contain" />
+              <img
+                :src="c.images.banner"
+                class="max-w-full max-h-full object-contain"
+              />
             </div>
           </div>
 
@@ -76,19 +84,31 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
           <div class="rounded-xl border border-white/10 p-2">
             <div class="grid grid-cols-3 gap-2 items-center">
               <!-- 코팅 -->
-              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+              <div
+                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
+              >
                 <div class="aspect-[3/4] grid place-items-center">
-                  <img :src="c.images.portraits?.[0]" class="max-w-full max-h-full object-contain" />
+                  <img
+                    :src="c.images.portraits?.[0]"
+                    class="max-w-full max-h-full object-contain"
+                  />
                 </div>
               </div>
               <!-- 무기 -->
-              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+              <div
+                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
+              >
                 <div class="aspect-[3/4] grid place-items-center">
-                  <img :src="c.images.portraits?.[1]" class="max-w-full max-h-full object-contain" />
+                  <img
+                    :src="c.images.portraits?.[1]"
+                    class="max-w-full max-h-full object-contain"
+                  />
                 </div>
               </div>
               <!-- 전신 -->
-              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+              <div
+                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
+              >
                 <div class="aspect-[9/16] grid place-items-center">
                   <img
                     :src="c.images.fullBody"
@@ -105,38 +125,62 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
         <!-- ===== 하단 데이터 필 ===== -->
         <div class="px-4 pb-3 pt-2 border-t border-white/10">
           <div class="flex items-center gap-2">
-            <div class="text-white font-semibold truncate mb-2">{{ c.name }}</div>
-            <span v-if="c.type!=='normal'" class="text-[10px] px-2 py-0.5 mb-1 rounded-full" :class="typePillClass(c.type)">
-              {{ c.type==='special' ? '특수 코팅' : c.type==='gacha' ? '가챠 코팅' : '일반 코팅' }}
+            <div class="text-white font-semibold truncate mb-2">
+              {{ c.name }}
+            </div>
+            <span
+              v-if="c.type !== 'normal'"
+              class="text-[10px] px-2 py-0.5 mb-1 rounded-full"
+              :class="typePillClass(c.type)"
+            >
+              {{
+                c.type === "special"
+                  ? "특수 코팅"
+                  : c.type === "gacha"
+                  ? "가챠 코팅"
+                  : "일반 코팅"
+              }}
             </span>
 
             <div class="ml-auto">
               <button
                 v-if="c.images.long"
                 type="button"
-                class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[8px] md:text-[11px]
-                       border border-white/20 bg-white/[0.06] hover:bg-white/[0.12] text-white/85 transition shadow-sm"
+                class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[8px] md:text-[11px] border border-white/20 bg-white/[0.06] hover:bg-white/[0.12] text-white/85 transition shadow-sm"
                 @click="toggleLong(c.id)"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 3c-4.418 0-8 5-8 7s3.582 7 8 7 8-5 8-7-3.582-7-8-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-3.5 h-3.5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 3c-4.418 0-8 5-8 7s3.582 7 8 7 8-5 8-7-3.582-7-8-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+                  />
                 </svg>
-                {{ isOpen(c.id) ? '소개 이미지 닫기' : '소개 이미지 보기' }}
+                {{ isOpen(c.id) ? "소개 이미지 닫기" : "소개 이미지 보기" }}
               </button>
             </div>
           </div>
 
           <div class="mt-2 flex flex-wrap items-center gap-2">
-            <template v-if="c.type==='normal'">
-              <span class="text-[12px] text-white/70">출시 {{ c.release }}</span>
+            <template v-if="c.type === 'normal'">
+              <span class="text-[12px] text-white/70"
+                >출시 {{ c.release }}</span
+              >
               <span class="text-white/30">·</span>
               <span class="text-[12px] text-white/70">{{ c.price }}</span>
             </template>
             <template v-else>
-              <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/5 text-white/80 border border-white/15">
+              <span
+                class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/5 text-white/80 border border-white/15"
+              >
                 출시 {{ c.release }}
               </span>
-              <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/5 text-white/80 border border-white/15">
+              <span
+                class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] bg-white/5 text-white/80 border border-white/15"
+              >
                 {{ c.price }}
               </span>
             </template>
@@ -144,32 +188,32 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
         </div>
 
         <!-- 소개 이미지 -->
-<transition name="fade">
-  <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
-    <div class="rounded-lg overflow-hidden border border-white/10 bg-black/40">
-      <div class="w-full grid place-items-center">
-        <img :src="c.images.long" class="max-w-full object-contain" />
+        <transition name="fade">
+          <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
+            <div
+              class="rounded-lg overflow-hidden border border-white/10 bg-black/40"
+            >
+              <div class="w-full grid place-items-center">
+                <img :src="c.images.long" class="max-w-full object-contain" />
+              </div>
+            </div>
+
+            <!-- 하단 닫기 버튼 -->
+            <div class="mt-2 flex justify-end">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[12px] bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white/90 transition"
+                @click="toggleLong(c.id)"
+                aria-label="소개 이미지 닫기"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
-
-    <!-- 하단 닫기 버튼 -->
-    <div class="mt-2 flex justify-end">
-      <button
-        type="button"
-        class="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[12px]
-               bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white/90 transition"
-        @click="toggleLong(c.id)"
-        aria-label="소개 이미지 닫기"
-      >
-        ✕
-      </button>
-    </div>
   </div>
-</transition>
-      </div>
-    </div>
-  </div>
-
 
   <transition name="fade">
     <div
@@ -184,13 +228,25 @@ const normalBadge = (i: number) => (['기본', '초급 해방', '최종 해방']
         type="button"
         @click="closeZoom"
         aria-label="닫기"
-      >✕</button>
-      <img :src="zoomSrc" class="max-h-[90vh] max-w-[92vw] object-contain shadow-2xl rounded-lg" alt="" />
+      >
+        ✕
+      </button>
+      <img
+        :src="zoomSrc"
+        class="max-h-[90vh] max-w-[92vw] object-contain shadow-2xl rounded-lg"
+        alt=""
+      />
     </div>
   </transition>
 </template>
 
 <style scoped>
-.fade-enter-active,.fade-leave-active{ transition: opacity .18s ease }
-.fade-enter-from,.fade-leave-to{ opacity: 0 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
