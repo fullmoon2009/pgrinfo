@@ -113,7 +113,7 @@ export const coatingData: CoatingItem[] = [
     id: 'daemonissa-special-01',          
     char: 'daemonissa',
     type: 'special',
-    name: '운명의 실타래',
+    name: '팜므 파탈',
     release: '2025-08-26',
     price: '168 레인보우 카드',
     tag: '특수 코팅',

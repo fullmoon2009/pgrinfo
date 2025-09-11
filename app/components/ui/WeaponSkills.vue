@@ -182,7 +182,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
             >
               <div
                 class="pointer-events-auto relative rounded-md border border-white/20 bg-black/90 text-white/90
-                       text-[11px] leading-relaxed p-3 shadow-xl max-w-xs md:max-w-sm whitespace-pre-line"
+                       text-[11px] md:text-[13px] leading-relaxed p-3 shadow-xl max-w-xs md:max-w-sm whitespace-pre-line"
                 @click.stop
               >
                 {{ getDesc(s) }}
