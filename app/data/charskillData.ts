@@ -350,7 +350,7 @@ export const charSkillData: CharSkillMap = {
               },
             ],
             body: [
-              `아군 전체의 공격력이 <span class="text-red-400 font-semibold">10%</span>, 증폭형 불속성 피해와 암연 피해가 <span class="text-red-400 font-semibold">5%</span> 증가한다`,
+              `아군 전체의 공격력이 <span class="text-red-400 font-semibold">10%</span>, 증폭형 불속성 피해와 암연 피해가 <span class="text-red-400 font-semibold">5%</span> 증가한다.`,
             ],
           },
         },
@@ -640,10 +640,8 @@ export const charSkillData: CharSkillMap = {
             ],
             body: [
               `<span class="text-[17px] font-bold">QTE-<span class="text-blue-400 font-semibold">QTE 터치</span></span><br>
-               베라 · 작망이 무기를 휘둘러 피해를 입히고, 치료를 부여한다.`,
-              `-총 <span class="text-red-400 font-semibold">600%</span>의 불속성 피해를 입힌다.`,
-              `-<span class="text-red-400 font-semibold">암연 단계 수가 1단계 이상일 경우</span>, <span class="text-red-400 font-semibold">600%</span>의 암연 피해를 입힌다.`,
-              `-최대 HP <span class="text-red-400 font-semibold">20%</span>의 치료를 부여한다.`,
+               세레나가 춤추듯 회전하여 목표를 공격하고 물리 피해를 입힌다.`,
+              `-총 <span class="text-red-400 font-semibold">600%</span>의 물리 피해를 입힌다.`,
             ],
           },
         },
@@ -664,7 +662,7 @@ export const charSkillData: CharSkillMap = {
               },
             ],
             body: [
-              `모든 아군 멤버가 전환되어 출전 시, 공격력이 <span class="text-red-400 font-semibold">20%</span> 증가하고, 증폭형 캐릭터의 대응하는 속성 피해 버프가 <span class="text-red-400 font-semibold">20%</span> 증가한다. <span class="text-red-400 font-semibold">10초</span>간 지속. <span class="text-red-400 font-semibold">암연 단계 수가 1단계 이상일 경우</span>, 베라·작망의 대응 속성을 암흑속성으로 간주한다.`,
+              `추가 피해 버프가 <span class="text-red-400 font-semibold">20%</span> 상승한다.`,
             ],
           },
         },
@@ -761,7 +759,7 @@ export const charSkillData: CharSkillMap = {
               },
             ],
             body: [
-              `아군 전체의 공격력이 <span class="text-red-400 font-semibold">10%</span>, 증폭형 불속성 피해와 암연 피해가 <span class="text-red-400 font-semibold">5%</span> 증가한다`,
+              `아군 전체의 물리 피해 및 결빙 피해가 <span class="text-red-400 font-semibold">10%</span> 증가하고, 공격형의 공격력이 <span class="text-red-400 font-semibold">10%</span> 증가한다.`,
             ],
           },
         },
@@ -783,14 +781,12 @@ export const charSkillData: CharSkillMap = {
             ],
             body: [
               `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">S5 승급 해제</span></span><br>
-              <span class="text-red-400 font-semibold">사냥의 전율</span>, <span class="text-red-400 font-semibold">영혼의 불길</span>, <span class="text-red-400 font-semibold">창날의 춤</soan>, <span class="text-red-400 font-semibold">살육의 참격</span>, <span class="text-red-400 font-semibold">하늘을 태우는 창</span> 시전 시 쿨타임 기간이 아닌 QTE를 발동한다.<br><br><br>
+              <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span>, <span class="text-red-400 font-semibold">격정의 선율</span>, <span class="text-red-400 font-semibold">필살-바람의 울음</span> 및 <span class="text-red-400 font-semibold">필살-꽃의 종지부</span> 시전 시 쿨타임 기간이 아닌 QTE를 발동한다. 전환되어 출전 후 쿨타임 기간이 아닌 QTE를 즉시 발동한다.<br><br><br>
               
              
               
               <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SS 승급 해제</span></span><br>
-              청색 스킬볼이 황색 스킬볼로 전환되는 효율이 <span class="text-red-400 font-semibold">50%</span> 상승하고, 청색 스킬볼 <span class="text-red-400 font-semibold">1개</span>를 소모할 때마다 황색 스킬볼 <span class="text-red-400 font-semibold">1개</span>가 생성된다.`,
-              `-<span class="text-red-400 font-semibold">사냥의 전율</span>을 힘 축적 완료 상태에서 시전할 때, 보유한 청색 스킬볼을 자동으로 소모할 수 있다. 최대 <span class="text-red-400 font-semibold">3개</span> 소모 가능하다.`,
-              `-<span class="text-red-400 font-semibold">단절의 불꽃</span> 지속 시간 동안, <span class="text-red-400 font-semibold">하늘을 태우는 창</span>은 <span class="text-red-400 font-semibold">야밤의 불꽃</span>으로 제거한 황색 스킬볼 개수 <span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">3</span>/<span class="text-red-400 font-semibold">4<span>/<span class="text-red-400 font-semibold">5</span>/<span class="text-red-400 font-semibold">6</span>에 따라 추가로 피해를 <span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">3</span>/<span class="text-red-400 font-semibold">3</span>회 입힌다.`,
+              <span class="text-red-400 font-semibold">필살-빗물의 서곡</span> 시전 시 즉시 <span class="text-red-400 font-semibold">60 선율 포인트</span>를 획득한다. <span class="text-red-400 font-semibold">격정의 선율</span> 시전 후 <span class="text-red-400 font-semibold">협주볼</span>을 시전할 때마다 <span class="text-red-400 font-semibold">무아 상태</span>가 종료될 때까지 피해가 2배로 증가한다. <span class="text-red-400 font-semibold">필살-바람의 울음</span>/<span class="text-red-400 font-semibold">필살-꽃의 종지부</span>의 기본 피해가 <span class="text-red-400 font-semibold">30%</span> 상승한다. <span class="text-red-400 font-semibold">필살-바람의 울음</span>/<span class="text-red-400 font-semibold">필살-꽃의 종지부</span> 시전 후 퇴장 시 <span class="text-red-400 font-semibold">여운의 울림</span> 상태에 진입한다. 이 상태에서는 2초마다 1회씩 공격하여 <span class="text-red-400 font-semibold">2000%</span>의 물리 피해를 입히며, 총 4회 공격 후 <span class="text-red-400 font-semibold">여운의 울림</span> 상태가 종료된다.`,
             ],
           },
         },
@@ -812,18 +808,13 @@ export const charSkillData: CharSkillMap = {
             ],
             body: [
               `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">SS3 승급 해제</span></span><br>
-              베라 · 작망의 치료를 받은 아군 유닛이 획득하는 화염 단련 효과가 10% 상승한다.`,
-              `-<span class="text-red-400 font-semibold">암연 단계 수가 1단계 이상일 경우<span class="text-red-400 font-semibold">, 베라·작망의 치료를 받은 아군 유닛은 추가로 <span class="text-red-400 font-semibold">10%</span>의 <span class="text-red-400 font-semibold">잿빛 붕렬</span> 효과를 획득한다.`,
-              `-<span class="text-red-400 font-semibold">단절의 불꽃</span> 지속 시간 동안, <span class="text-red-400 font-semibold">살육의 참격</span>은 <span class="text-red-400 font-semibold">야밤의 불꽃</span>으로 제거된 황색 스킬볼 개수 <span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">3</span>/<span class="text-red-400 font-semibold">4</span>/<span class="text-red-400 font-semibold">5</span>/<span class="text-red-400 font-semibold">6</span>에 따라 추가로 피해를 <span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">1</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">2</span>/<span class="text-red-400 font-semibold">3</span>/<span class="text-red-400 font-semibold">3</span>회 입힌다.<br><br><br>
+              <span class="text-red-400 font-semibold">60 선율 포인트</span> 보유 시, <span class="text-red-400 font-semibold">협주볼</span>의 변주치 획득 효율이 2배로 증가한다. <span class="text-red-400 font-semibold">1 음표</span>를 소모할 때마다 다음 <span class="text-red-400 font-semibold">격정의 선율</span>의 기본 피해가 <span class="text-red-400 font-semibold">20%</span> 증가하며, 최대 <span class="text-red-400 font-semibold">100%</span>까지 증가한다. <span class="text-red-400 font-semibold">필살-바람의 울음</span>/<span class="text-red-400 font-semibold">필살-꽃의 종지부</span> 시전 후, 이번 전투에서 QTE의 기본 피해가 <span class="text-red-400 font-semibold">500%</span> 상승한다.<br><br><br>
               
              
               
               <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SSS 승급 해제</span></span><br>
-              아군 전체가 전환되어 출전 시, QTE 스킬 쿨타임이 초기화된다.`,
-              `-베라 · 작망의 치료를 받은 아군 유닛이 획득하는 화염 단련 효과가 <span class="text-red-400 font-semibold">10%</span> 상승한다.`,
-              `-<span class="text-red-400 font-semibold">암연 단계 수가 1단계 이상일 경우</span>, 베라 · 작망의 치료를 받은 아군 유닛은 추가로 <span class="text-red-400 font-semibold">10%</span>의 <span class="text-red-400 font-semibold">잿빛 붕렬</span> 효과를 획득한다. <span class="text-red-400 font-semibold">출전할 때마다</span> 추가로 <span class="text-red-400 font-semibold">황색 스킬볼 3개</span>와 <span class="text-red-400 font-semibold">10 필살 에너지</span>를 획득할 수 있다. 처음으로 <span class="text-red-400 font-semibold">종말의 불길</span> 상태에 진입할 때, 추가로 <span class="text-red-400 font-semibold">10 필살 에너지</span>와 <span class="text-red-400 font-semibold">30 불꽃 재연</span>을 획득할 수 있다.`,
-              `-청색 스킬볼을 1세트 소모하면 추가로 <span class="text-red-400 font-semibold">12 필살 에너지</span>를 획득할 수 있다.`,
-              `-<span class="text-red-400 font-semibold">단절의 불꽃</span> 지속 시간 동안, <span class="text-red-400 font-semibold">사냥의 전율</span>, <span class="text-red-400 font-semibold">영혼의 불길</span>, <span class="text-red-400 font-semibold">창날의 춤</span>, <span class="text-red-400 font-semibold">살육의 참격</span>의 기본 피해가 <span class="text-red-400 font-semibold">50%</span> 상승한다.`,
+              출전 시 즉시  <span class="text-red-400 font-semibold">1 음표</span>,  <span class="text-red-400 font-semibold">12 필살 에너지</span>, 스킬볼 1개를 획득하며,  <span class="text-red-400 font-semibold">음표</span> 상한이  <span class="text-red-400 font-semibold">5</span>로 증가한다. 스킬볼을 소모하여  <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span> 시전 시, 최대 6개의 스킬볼을 소모하여  <span class="text-red-400 font-semibold">음표</span>로 전환한다.  <span class="text-red-400 font-semibold">음표 4개</span>/ <span class="text-red-400 font-semibold">5개</span> 보유 시,  <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span>의 기본 피해 증가 효과가  <span class="text-red-400 font-semibold">300%</span>/ <span class="text-red-400 font-semibold">600%</span>까지 상승한다.  <span class="text-red-400 font-semibold">여운의 울림</span> 상태에서 세레나의 추가 피해가 100% 상승한다.`,
+             
             ],
           },
         },
@@ -845,17 +836,17 @@ export const charSkillData: CharSkillMap = {
             ],
             body: [
               `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">SSS3 승급 해제</span></span><br>
-              <span class="text-red-400 font-semibold">단절의 불꽃</span>의 피해 증가 배율이 <span class="text-red-400 font-semibold">50%</span> 상승한다.<br><br><br>
+              <span class="text-red-400 font-semibold">필살-바람의 울음</span>, <span class="text-red-400 font-semibold">필살-꽃의 종지부</span>의 추가 피해가 <span class="text-red-400 font-semibold">60%</span> 상승한다.<br><br><br>
               
              
               
               <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SSS6 승급 해제</span></span><br>
-              <span class="text-red-400 font-semibold">사냥의 전율</span>, <span class="text-red-400 font-semibold">영혼의 불길</span>, <span class="text-red-400 font-semibold">창날의 춤</span>, <span class="text-red-400 font-semibold">살육의 참격</span>의 추가 피해가 50% 상승한다.<br><br><br>
+              <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span>, <span class="text-red-400 font-semibold">격정의 선율</span>의 추가 피해가 <span class="text-red-400 font-semibold">30%</span> 상승한다.<br><br><br>
               
              
               
               <span class="text-[17px] font-bold">3레벨-<span class="text-blue-400 font-semibold">SSS+ 승급 해제</span></span><br>
-              <span class="text-red-400 font-semibold">야밤의 불꽃</span>, <span class="text-red-400 font-semibold">하늘을 태우는 창</span>의 추가 피해가 <span class="text-red-400 font-semibold">50%</span> 상승한다.`,
+              <span class="text-red-400 font-semibold">운류의 관통</span>, <span class="text-red-400 font-semibold">협주볼</span>, 스킬볼의 추가 피해가 <span class="text-red-400 font-semibold">40%</span> 상승한다.`,
             ],
           },
         },

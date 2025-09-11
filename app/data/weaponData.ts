@@ -27,5 +27,10 @@ export const weaponData: Record<string, WeaponTooltip> = {
     description: '공격력이 10% 증가한다. 음검의 울림이 음표 기본 피해 버프를 획득하면, 다음 운류의 관통 또한 동일한 기본 피해 버프를 획득한다. 필살-빗물의 서곡 시전 시 스킬볼 3개를 획득하며, 출전할 때마다 최대 6개까지 획득할 수 있다.'
   },
 
+  umbrella: {
+    title: '종말과 시작',
+    description: '공격력이 10% 증가한다. 꿈의 서막 시전 시, 카드 단계가 B 이상이면 12 필살 에너지를 획득한다.'
+  },
+
   
 }

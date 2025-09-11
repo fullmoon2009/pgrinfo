@@ -140,4 +140,68 @@ export const petSkillData: Record<string, PetModal> = {
   },
 
 
+  crown: {
+    level: 30,
+    skills: [
+      {
+        img: '/assets/petskills/crownactive.webp',
+        label: '구시대의 춤.암흑',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 빌리가 공중으로 도약하여 목표를 사격해 <span class="text-orange-400 font-semibold">150%</span>의 암흑속성 피해를 9회 입힌다. 그 후 룰렛은 과부하로 폭발하여 <span class="text-orange-400 font-semibold">225%</span>의 암흑속성 피해를 9회 입힌다.',
+      },
+      
+        {
+        img: '/assets/petskills/crownactive.webp',
+        label: '운명의 실린더.암흑',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면 보조기 버튼이 활성화된다. 시전하면 빌리가 공중에서 내려와 회전 룰렛을 소환하고 주위의 적 유닛을 끌어모아 <span class="text-orange-400 font-semibold">150%</span>의 암흑속성 피해를 9회 입힌다. 그 후 룰렛은 과부하로 폭발하여 <span class="text-orange-400 font-semibold">650%</span>의 암흑속성 피해를 1회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/crown5.webp',
+        label: '현란한 조명',
+        kind: 'passive',
+        level: 5,
+        desc:
+          '빌리의 액티브 스킬 피해가 <span class="text-sky-400 font-semibold">70%</span> 증가한다.',
+      },
+
+      {
+        img: '/assets/petskills/crown4.webp',
+        label: '심취의 블루스',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 공격력이 <span class="text-sky-400 font-semibold">100</span> 증가한다.',
+      },
+      {
+        img: '/assets/petskills/crown3.webp',
+        label: '과잉 선물',
+        kind: 'passive',
+        level: 5,
+        desc: '빌리가 액티브 스킬을 시전하면 장착한 캐릭터의 추가 피해 버프가 <span class="text-sky-400 font-semibold">5%</span> 상승한다. 8초간 지속. 중복 발동 시 지속 시간이 초기화된다.',
+      },
+
+      {
+        img: '/assets/petskills/crown2.webp',
+        label: '넘치는 행운',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 암흑속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승하며, <span class="text-sky-400 font-semibold">수상한 흔적</span> 보유 시 번개속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승한다.',
+      },
+
+      {
+        img: '/assets/petskills/crown1.webp',
+        label: '잘자, 로프라도스',
+        kind: 'passive',
+        level: 5,
+        desc: '릴리스 · 데모니사가 빌리를 장착한 상태에서 <span class="text-sky-400 font-semibold">카니발 매치</span>를 시작하고 <span class="text-sky-400 font-semibold">어둠의 포옹</span> 또는 <span class="text-sky-400 font-semibold">신비로운 그림자</span를 처음 시전할 시, 빌리를 소환해 협력 공격을 전개하고, <span class="text-sky-400 font-semibold">3000%</span>의 암흑속성 피해를 1회 입힌다. <span class="text-sky-400 font-semibold">꿈의 서막</span>의 기본 피해가 <span class="text-sky-400 font-semibold">75%</span> 상승한다. 카드 단계가 <span class="text-sky-400 font-semibold">C</span>/<span class="text-sky-400 font-semibold">B</span>/<span class="text-sky-400 font-semibold">A</span>/<span class="text-sky-400 font-semibold">S</span>/<span class="text-sky-400 font-semibold">SS</span>에 도달하면, 기본 피해가 추가로 <span class="text-sky-400 font-semibold">10%</span>/<span class="text-sky-400 font-semibold">20%</span>/<span class="text-sky-400 font-semibold">30%</span>/<span class="text-sky-400 font-semibold">40%</span>/<span class="text-sky-400 font-semibold">50%</span> 상승한다.',
+      }
+    ],
+  },
+
+
 }

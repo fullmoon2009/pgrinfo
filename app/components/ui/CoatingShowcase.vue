@@ -2,6 +2,8 @@
 import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import type { CoatingItem } from "@/data/coatingData";
 
+type CoatingType = CoatingItem["type"] | "dorm";
+
 const props = defineProps<{ items?: CoatingItem[] }>();
 const data = computed(() => (props.items?.length ? props.items : []));
 
@@ -22,15 +24,46 @@ const toggleLong = (id: string) => {
   openLong.value = s;
 };
 
-const typePillClass = (t: CoatingItem["type"]) =>
+const typePillClass = (t: CoatingType | "normal") =>
   t === "special"
     ? "bg-rose-500/10 text-rose-200 border border-rose-400/30"
     : t === "gacha"
-    ? "bg-sky-500/10  text-sky-200  border border-sky-400/30"
-    : "bg-white/10 text-white/85 border border-white/20";
+    ? "bg-sky-500/10 text-sky-200 border border-sky-400/30"
+    : t === "dorm"
+    ? "bg-[#E6B800]/10 text-[#E6B800] border border-[#E6B800]/30"
+    : /* normal */
+      "bg-white/8 text-white/70 border border-white/20";
 
 const normalBadge = (i: number) =>
   ["기본", "초급 해방", "최종 해방"][i] ?? "기본";
+
+const bannerOf = (c: CoatingItem) =>
+  c.images.banner ||
+  c.images.verticals?.[0] ||
+  c.images.portraits?.[0] ||
+  c.images.fullBody ||
+  "";
+
+const portrait0Of = (c: CoatingItem) =>
+  c.images.portraits?.[0] ||
+  c.images.verticals?.[0] ||
+  c.images.fullBody ||
+  c.images.banner ||
+  "";
+
+const portrait1Of = (c: CoatingItem) =>
+  c.images.portraits?.[1] ||
+  c.images.verticals?.[1] ||
+  c.images.fullBody ||
+  c.images.banner ||
+  "";
+
+const fullBodyOf = (c: CoatingItem) =>
+  c.images.fullBody ||
+  c.images.verticals?.[2] ||
+  c.images.verticals?.[(c.images.verticals?.length ?? 1) - 1] ||
+  c.images.banner ||
+  "";
 </script>
 
 <template>
@@ -41,41 +74,60 @@ const normalBadge = (i: number) =>
       <span class="text-[12px] text-white/60">프리뷰를 클릭하면 확대</span>
     </div>
 
-    <div class="columns-1 md:columns-2 gap-4 [column-fill:_balance]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div
         v-for="c in data"
         :key="c.id"
-        class="mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
+        class="mb-4 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
       >
-        <div v-if="c.type === 'normal'" class="p-2">
+        <!-- ================== normal 레이아웃 ================== -->
+        <div v-if="c.type === 'normal'" class="p-3 space-y-2">
+          <!-- 배경 이미지 -->
+          <div
+            v-if="c.images.banner"
+            class="rounded-lg overflow-hidden bg-black/30 border border-white/10"
+          >
+            <div class="aspect-[16/9] grid place-items-center">
+              <img
+                :src="c.images.banner"
+                class="max-w-full max-h-full object-contain"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <!-- vertical 3개 -->
           <div class="grid grid-cols-3 gap-2">
             <div
               v-for="(img, i) in c.images.verticals || []"
               :key="i"
               class="relative rounded-lg overflow-hidden border border-white/10 bg-black/30"
             >
+              <!-- vertical 이미지 -->
               <img
                 :src="img"
-                class="block w-full py-2 h-auto object-contain cursor-zoom-in"
+                class="block w-full py-2 max-h-[210px] object-contain cursor-zoom-in"
                 @click="openZoom(img)"
-                alt=""
+                :alt="`${c.name} - ${normalBadge(i)}`"
               />
               <span
                 class="absolute left-2 top-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-white/12 text-white/90 border border-white/25 backdrop-blur-[2px] shadow"
-                >{{ normalBadge(i) }}</span
               >
+                {{ normalBadge(i) }}
+              </span>
             </div>
           </div>
         </div>
 
-        <!-- 특수/가챠: 공유 레이아웃 -->
+        <!-- ================== 공용 레이아웃 ================== -->
         <div v-else class="p-3 space-y-2">
           <!-- 1열 배경 -->
           <div class="rounded-lg overflow-hidden bg-black/30">
             <div class="aspect-[16/9] grid place-items-center">
               <img
-                :src="c.images.banner"
+                :src="bannerOf(c)"
                 class="max-w-full max-h-full object-contain"
+                alt=""
               />
             </div>
           </div>
@@ -89,8 +141,9 @@ const normalBadge = (i: number) =>
               >
                 <div class="aspect-[3/4] grid place-items-center">
                   <img
-                    :src="c.images.portraits?.[0]"
+                    :src="portrait0Of(c)"
                     class="max-w-full max-h-full object-contain"
+                    alt=""
                   />
                 </div>
               </div>
@@ -100,8 +153,9 @@ const normalBadge = (i: number) =>
               >
                 <div class="aspect-[3/4] grid place-items-center">
                   <img
-                    :src="c.images.portraits?.[1]"
+                    :src="portrait1Of(c)"
                     class="max-w-full max-h-full object-contain"
+                    alt=""
                   />
                 </div>
               </div>
@@ -111,9 +165,9 @@ const normalBadge = (i: number) =>
               >
                 <div class="aspect-[9/16] grid place-items-center">
                   <img
-                    :src="c.images.fullBody"
-                    class="max-w-full max-h-full object-contain cursor-zoom-in"
-                    @click="openZoom(c.images.fullBody!)"
+                    :src="fullBodyOf(c)"
+                    class="max-w-full max-h-[210px] object-contain cursor-zoom-in"
+                    @click="openZoom(fullBodyOf(c))"
                     alt=""
                   />
                 </div>
@@ -122,22 +176,23 @@ const normalBadge = (i: number) =>
           </div>
         </div>
 
-        <!-- ===== 하단 데이터 필 ===== -->
         <div class="px-4 pb-3 pt-2 border-t border-white/10">
           <div class="flex items-center gap-2">
             <div class="text-white font-semibold truncate mb-2">
               {{ c.name }}
             </div>
+
             <span
-              v-if="c.type !== 'normal'"
               class="text-[10px] px-2 py-0.5 mb-1 rounded-full"
-              :class="typePillClass(c.type)"
+              :class="typePillClass((c.type as CoatingType) || 'normal')"
             >
               {{
                 c.type === "special"
                   ? "특수 코팅"
                   : c.type === "gacha"
                   ? "가챠 코팅"
+                  : c.type === "dorm"
+                  ? "숙소 코팅"
                   : "일반 코팅"
               }}
             </span>
@@ -165,7 +220,7 @@ const normalBadge = (i: number) =>
           </div>
 
           <div class="mt-2 flex flex-wrap items-center gap-2">
-            <template v-if="c.type === 'normal'">
+            <template v-if="c.type === 'normal' || c.type === 'dorm'">
               <span class="text-[12px] text-white/70"
                 >출시 {{ c.release }}</span
               >
@@ -187,18 +242,20 @@ const normalBadge = (i: number) =>
           </div>
         </div>
 
-        <!-- 소개 이미지 -->
         <transition name="fade">
           <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
             <div
               class="rounded-lg overflow-hidden border border-white/10 bg-black/40"
             >
               <div class="w-full grid place-items-center">
-                <img :src="c.images.long" class="max-w-full object-contain" />
+                <img
+                  :src="c.images.long"
+                  class="max-w-full object-contain"
+                  alt=""
+                />
               </div>
             </div>
 
-            <!-- 하단 닫기 버튼 -->
             <div class="mt-2 flex justify-end">
               <button
                 type="button"
@@ -214,6 +271,7 @@ const normalBadge = (i: number) =>
       </div>
     </div>
   </div>
+
 
   <transition name="fade">
     <div

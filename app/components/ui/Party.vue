@@ -63,6 +63,7 @@ const TYPE_BORDER: Record<string, string> = {
   physics: 'border-gray-400',
   nihil: 'border-[#C00088]',
   fuzz: 'border-gray-300',
+  plazma: 'border-[#CC9900]'
 }
 
 const inferredTypeKey = computed(() => {

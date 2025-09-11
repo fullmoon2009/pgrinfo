@@ -159,7 +159,7 @@ const pillClass = (kind: "active" | "passive") =>
             <span
               :class="[
                 'block mt-1 h-4 md:h-5 leading-tight text-white/90 text-center',
-                'overflow-hidden text-ellipsis whitespace-nowrap',
+                ' text-ellipsis',
 
                 thumbNameSize(s.label),
               ]"

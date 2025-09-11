@@ -36,30 +36,31 @@ const mode = ref<"first" | "repeat">("first");
 const allowedRanksByTab = {
   tabA: ["sswx", "sscx", "sswo", "ss3", "sss"] as const,
   tabB: ["sswo", "sss"] as const,
-} as const
-
+} as const;
 
 const lastRankByTab: Record<"tabA" | "tabB", typeof cyclerankTab.value> = {
   tabA: "sswx",
   tabB: "sswo",
-}
+};
 
 function isRankValidForTab(tab: "tabA" | "tabB", rank: string) {
-  return (allowedRanksByTab[tab] as readonly string[]).includes(rank)
+  return (allowedRanksByTab[tab] as readonly string[]).includes(rank);
 }
 
 watch(cycleTab, (newTab) => {
-  const remembered = lastRankByTab[newTab]
-  const fallback = newTab === "tabA" ? "sswx" : "sswo"
-  cyclerankTab.value = isRankValidForTab(newTab, remembered) ? remembered : fallback
-})
+  const remembered = lastRankByTab[newTab];
+  const fallback = newTab === "tabA" ? "sswx" : "sswo";
+  cyclerankTab.value = isRankValidForTab(newTab, remembered)
+    ? remembered
+    : fallback;
+});
 
 watch(cyclerankTab, (newRank) => {
-  const tab = cycleTab.value
+  const tab = cycleTab.value;
   if (isRankValidForTab(tab, newRank)) {
-    lastRankByTab[tab] = newRank
+    lastRankByTab[tab] = newRank;
   }
-})
+});
 
 const forceReload = false;
 

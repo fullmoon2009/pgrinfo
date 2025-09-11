@@ -208,4 +208,25 @@ export const memoryData: Record<string, MemorySetData> = {
       four: '추가 피해 버프가 10% 상승한다. 공격 시 목표를 부상 상태로 만들며, 해당 기간에 목표의 물리 저항이 7% 감소한다. 부상 상태는 8초간 지속되며, 동일 목표에 대해 10초의 쿨타임이 있다. 부상 상태의 목표를 공격할 시 폭발이 발생하여 600%의 물리 피해를 입히며, 동일 목표에 대해 6초의 쿨타임이 있다.',
     },
   },
+
+  'barcelo': {
+    id: 'barcelo',
+    name: '바르셀로',
+    rarity: 6,
+    banner: '/assets/memory/barcelofull1.png',
+    bannerObjectPosition: '0% 12%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 66, atk: 132, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/barcelofull1.png', full: '/assets/memory/barcelo1.png' },
+      { label: '2/5', face: '/assets/memory/barcelofull2.png', full: '/assets/memory/barcelo2.png' },
+      { label: '3/6', face: '/assets/memory/barcelofull3.png', full: '/assets/memory/barcelo3.png' },
+    ],
+    effects: {
+      two: '공격력이 7%, 암흑속성 피해 및 선속 피해가 3% 증가한다.',
+      four: '찬란한 꿈의 초대의 기본 피해가 2배 증가한다.',
+    },
+  },
 };
