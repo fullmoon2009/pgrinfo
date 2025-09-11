@@ -200,7 +200,7 @@ const sizeClass = (label: string) => {
                 <span
                   data-tier-anchor
                   :data-tier-idx="idx"
-                  class="absolute top-[27px] -translate-y-1/2 left-[calc(100%+52px)] w-0 h-0"
+                  class="absolute top-[27px] -translate-y-1/2 left-[calc(100%+75px)] w-0 h-0"
                 ></span>
               </div>
             </div>

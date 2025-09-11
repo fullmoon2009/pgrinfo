@@ -99,7 +99,7 @@ export const coatingData: CoatingItem[] = [
     price: '',
     tag: '',
     images: {
-      banner: '/assets/coatings/pianissimonmbg.jpg',
+      banner: '/assets/coatings/pianissimonmbg.jpeg',
       verticals: [
         '/assets/coatings/pianissimonm1.png',
         '/assets/coatings/pianissimonm2.png',
@@ -172,7 +172,7 @@ export const coatingData: CoatingItem[] = [
     price: '168 레인보우 카드',
     tag: '특수 코팅',
     images: {
-      banner: '/assets/coatings/parhelionspcoatbg2.jpg',
+      banner: '/assets/coatings/parhelionspcoatbg2.png',
       portraits: [
         '/assets/coatings/parhelionspcoat2.png',
         '/assets/coatings/parhelionspcoatw2.png',
@@ -190,12 +190,13 @@ export const coatingData: CoatingItem[] = [
     price: '168 레인보우 카드',
     tag: '특수 코팅',
     images: {
-      banner: '/assets/coatings/parhelionspcoatbg1.jpg',
+      banner: '/assets/coatings/parhelionspcoatbg1.png',
       portraits: [
         '/assets/coatings/parhelionspcoat1.png',
         '/assets/coatings/parhelionspcoatw1.png',
       ],
       fullBody: '/assets/coatings/parhelionspcoats1.png',
+      long: '/assets/coatings/parhelionspcoatl1.png'
     },
   },
   {
@@ -207,7 +208,7 @@ export const coatingData: CoatingItem[] = [
     price: '',
     tag: '',
     images: {
-      banner: '/assets/coatings/parhelionnmbg.jpg',
+      banner: '/assets/coatings/parhelionnmbg.png',
       verticals: [
         '/assets/coatings/parhelionnm1.png',
         '/assets/coatings/parhelionnm2.png',

@@ -32,5 +32,10 @@ export const weaponData: Record<string, WeaponTooltip> = {
     description: '공격력이 10% 증가한다. 꿈의 서막 시전 시, 카드 단계가 B 이상이면 12 필살 에너지를 획득한다.'
   },
 
+  key: {
+    title: '만상귀일',
+    description: '공격력이 10% 증가한다. 필살-근원의 자태 시전 즉시 스킬볼 3개를 획득하며, 매번 출전 최대 6개의 스킬볼을 획득할 수 있다. 관측 기행으로 발동하는 속성 저항 감소/피해 증가 효과가 10% 상승한다.'
+  },
+
   
 }

@@ -229,4 +229,88 @@ export const memoryData: Record<string, MemorySetData> = {
       four: '찬란한 꿈의 초대의 기본 피해가 2배 증가한다.',
     },
   },
+
+  'sothoth': {
+    id: 'sothoth',
+    name: '소토스',
+    rarity: 6,
+    banner: '/assets/memory/sothothfull1.png',
+    bannerObjectPosition: '0% 33%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 66, atk: 132, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/sothothfull1.png', full: '/assets/memory/sothoth1.png' },
+      { label: '2/5', face: '/assets/memory/sothothfull2.png', full: '/assets/memory/sothoth2.png' },
+      { label: '3/6', face: '/assets/memory/sothothfull3.png', full: '/assets/memory/sothoth3.png' },
+    ],
+    effects: {
+      two: '공허속성 피해가 10% 증가한다.',
+      four: '흐릿한 잔상 시전 시, 현재 단계 수에 따라 18/36/36/36/54 붕괴치를 획득한다. 저편의 형상을 시전하면 150 잔상치를 즉시 획득한다. 차원 붕괴 시전 후, 다음 필살-소멸의 징벌의 기본 피해가 100% 상승한다. 자신이 아머형일 경우, 초차원 영역이 목표를 명중하면 관측 기행에 따라 대응 속성의 저항 감소 효과를 부여한다. 자신이 증폭형일 경우, 초차원 영역이 유지되는 동안에 초당 아군 공격력 8%의 HP를 회복하고, 관측 기행에 따라 아군 유닛에게 속성 피해 증가 효과를 부여한다.',
+    },
+  },
+
+  'heisen': {
+    id: 'heisen',
+    name: '하이젠',
+    rarity: 6,
+    banner: '/assets/memory/heisenfull1.png',
+    bannerObjectPosition: '0% 18%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 66, atk: 134, def: 219 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/heisenfull1.png', full: '/assets/memory/heisen1.png' },
+      { label: '2/5', face: '/assets/memory/heisenfull2.png', full: '/assets/memory/heisen2.png' },
+      { label: '3/6', face: '/assets/memory/heisenfull3.png', full: '/assets/memory/heisen3.png' },
+    ],
+    effects: {
+      two: '전체 공격이 3%, 번개속성 피해가 7% 증가한다.',
+      four: '추가 피해 버프가 10% 상승한다. 공격 시 목표를 감전 상태로 만들며, 해당 기간에 목표의 번개속성 저항이 15% 감소한다. 감전 상태는 8초간 지속되며, 동일 목표에 대해 10초의 쿨타임이 있다. 감전 상태의 목표를 공격할 시 천둥이 발생하여 600%의 번개속성 피해를 입히며, 동일 목표에 대해 6초의 쿨타임이 있다.',
+    },
+  },
+
+  'jiyuan': {
+    id: 'jiyuan',
+    name: '주원',
+    rarity: 6,
+    banner: '/assets/memory/jiyuanfull1.png',
+    bannerObjectPosition: '0% 18%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1491, crit: 64, atk: 134, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/jiyuanfull1.png', full: '/assets/memory/jiyuan1.png' },
+      { label: '2/5', face: '/assets/memory/jiyuanfull2.png', full: '/assets/memory/jiyuan2.png' },
+      { label: '3/6', face: '/assets/memory/jiyuanfull3.png', full: '/assets/memory/jiyuan3.png' },
+    ],
+    effects: {
+      two: '공격이 3%, 얼음속성 피해가 7% 증가한다.',
+      four: '추가 피해 버프가 10% 상승한다. 공격 시 목표를 동상 상태로 만들며, 해당 기간에 목표의 얼음속성 저항이 15% 감소한다. 동상 상태는 8초간 지속되며, 동일 목표에 대해 10초의 쿨타임이 있다. 동상 상태의 목표를 공격할 시 얼음 폭발이 발생하여 600%의 얼음속성 피해를 입히며, 동일 목표에 대해 6초의 쿨타임이 있다.',
+    },
+  },
+
+  'bathlon': {
+    id: 'bathlon',
+    name: '바슬론',
+    rarity: 6,
+    banner: '/assets/memory/bathlonfull1.png',
+    bannerObjectPosition: '0% 14%',
+    bannerScale: 0.8,
+    bannerOrigin: '160% 0%',
+    bannerShiftY: '28px',
+    stats: { hp: 1453, crit: 64, atk: 134, def: 223 },
+    resonanceSlots: [
+      { label: '1/4', face: '/assets/memory/bathlonfull1.png', full: '/assets/memory/bathlon1.webp' },
+      { label: '2/5', face: '/assets/memory/bathlonfull2.png', full: '/assets/memory/bathlon2.png' },
+      { label: '3/6', face: '/assets/memory/bathlonfull3.png', full: '/assets/memory/bathlon3.png' },
+    ],
+    effects: {
+      two: '공격력이 3%, 암흑 속성 피해가 7% 증가한다.',
+      four: '추가 피해 버프가 10% 상승한다. 공격 시 목표를 침식 상태로 만들며, 해당 기간에 목표의 암흑속성 저항이 15% 감소한다. 침식 상태는 8초간 지속되며, 동일 목표에 대해 10초의 쿨타임이 있다. 침식 상태의 목표를 공격할 시 폭발이 발생하여 600%의 암흑속성 피해를 입히며, 동일 목표에 대해 6초의 쿨타임이 있다.',
+    },
+  },
 };

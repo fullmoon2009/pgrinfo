@@ -18,7 +18,7 @@ export const petSkillData: Record<string, PetModal> = {
     skills: [
       {
         img: '/assets/petskills/redwolfactive.webp',
-        label: '그림자 추적.불',
+        label: '그림자 추적∙불',
         kind: 'active',
         level: 5,
         desc:
@@ -27,7 +27,7 @@ export const petSkillData: Record<string, PetModal> = {
 
       {
         img: '/assets/petskills/redwolfactive.webp',
-        label: '달빛 사냥.불',
+        label: '달빛 사냥∙불',
         kind: 'active',
         level: 5,
         desc:
@@ -81,7 +81,7 @@ export const petSkillData: Record<string, PetModal> = {
     skills: [
       {
         img: '/assets/petskills/speakeractive.webp',
-        label: '정예 행진곡.물리',
+        label: '정예 행진곡∙물리',
         kind: 'active',
         level: 5,
         desc:
@@ -90,7 +90,7 @@ export const petSkillData: Record<string, PetModal> = {
 
       {
         img: '/assets/petskills/speakeractive.webp',
-        label: '광휘의 선율.물리',
+        label: '광휘의 선율∙물리',
         kind: 'active',
         level: 5,
         desc:
@@ -145,7 +145,7 @@ export const petSkillData: Record<string, PetModal> = {
     skills: [
       {
         img: '/assets/petskills/crownactive.webp',
-        label: '구시대의 춤.암흑',
+        label: '구시대의 춤∙암흑',
         kind: 'active',
         level: 5,
         desc:
@@ -154,7 +154,7 @@ export const petSkillData: Record<string, PetModal> = {
       
         {
         img: '/assets/petskills/crownactive.webp',
-        label: '운명의 실린더.암흑',
+        label: '운명의 실린더∙암흑',
         kind: 'active',
         level: 5,
         desc:
@@ -198,7 +198,70 @@ export const petSkillData: Record<string, PetModal> = {
         label: '잘자, 로프라도스',
         kind: 'passive',
         level: 5,
-        desc: '릴리스 · 데모니사가 빌리를 장착한 상태에서 <span class="text-sky-400 font-semibold">카니발 매치</span>를 시작하고 <span class="text-sky-400 font-semibold">어둠의 포옹</span> 또는 <span class="text-sky-400 font-semibold">신비로운 그림자</span를 처음 시전할 시, 빌리를 소환해 협력 공격을 전개하고, <span class="text-sky-400 font-semibold">3000%</span>의 암흑속성 피해를 1회 입힌다. <span class="text-sky-400 font-semibold">꿈의 서막</span>의 기본 피해가 <span class="text-sky-400 font-semibold">75%</span> 상승한다. 카드 단계가 <span class="text-sky-400 font-semibold">C</span>/<span class="text-sky-400 font-semibold">B</span>/<span class="text-sky-400 font-semibold">A</span>/<span class="text-sky-400 font-semibold">S</span>/<span class="text-sky-400 font-semibold">SS</span>에 도달하면, 기본 피해가 추가로 <span class="text-sky-400 font-semibold">10%</span>/<span class="text-sky-400 font-semibold">20%</span>/<span class="text-sky-400 font-semibold">30%</span>/<span class="text-sky-400 font-semibold">40%</span>/<span class="text-sky-400 font-semibold">50%</span> 상승한다.',
+        desc: '릴리스 · 데모니사가 빌리를 장착한 상태에서 <span class="text-sky-400 font-semibold">카니발 매치</span>를 시작하고 <span class="text-sky-400 font-semibold">어둠의 포옹</span> 또는 <span class="text-sky-400 font-semibold">신비로운 그림자</span>를 처음 시전할 시, 빌리를 소환해 협력 공격을 전개하고, <span class="text-sky-400 font-semibold">3000%</span>의 암흑속성 피해를 1회 입힌다. <span class="text-sky-400 font-semibold">꿈의 서막</span>의 기본 피해가 <span class="text-sky-400 font-semibold">75%</span> 상승한다. 카드 단계가 <span class="text-sky-400 font-semibold">C</span>/<span class="text-sky-400 font-semibold">B</span>/<span class="text-sky-400 font-semibold">A</span>/<span class="text-sky-400 font-semibold">S</span>/<span class="text-sky-400 font-semibold">SS</span>에 도달하면, 기본 피해가 추가로 <span class="text-sky-400 font-semibold">10%</span>/<span class="text-sky-400 font-semibold">20%</span>/<span class="text-sky-400 font-semibold">30%</span>/<span class="text-sky-400 font-semibold">40%</span>/<span class="text-sky-400 font-semibold">50%</span> 상승한다.',
+      }
+    ],
+  },
+
+  pandora: {
+    level: 30,
+    skills: [
+      {
+        img: '/assets/petskills/pandoraactive.webp',
+        label: '혜성 궤적∙공허',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 서능이 목표를 향해 돌진하여 <span class="text-orange-400 font-semibold">2000%</span>의 공허속성 피해를 1회 입힌다.',
+      },
+      
+        {
+        img: '/assets/petskills/pandoraactive.webp',
+        label: '태양의 쇠락∙공허',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 서능이 주위의 적 유닛을 끌어모으고 아래로 내리찍어 <span class="text-orange-400 font-semibold">1800%</span>의 공허속성 피해를 1회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/pandora5.webp',
+        label: '순행 섬광',
+        kind: 'passive',
+        level: 5,
+        desc:
+          '서능의 액티브 스킬 피해가 <span class="text-sky-400 font-semibold">70%</span> 증가한다.',
+      },
+
+      {
+        img: '/assets/petskills/pandora4.webp',
+        label: '소멸 배열',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 공격력이 <span class="text-sky-400 font-semibold">100</span> 증가한다.',
+      },
+      {
+        img: '/assets/petskills/pandora3.webp',
+        label: '유성 소멸',
+        kind: 'passive',
+        level: 5,
+        desc: '서능이 액티브 스킬을 시전하면 장착한 캐릭터의 추가 피해 버프가 <span class="text-sky-400 font-semibold">5%</span> 상승한다. 8초간 지속. 중복 발동 시 지속 시간이 초기화된다.',
+      },
+
+      {
+        img: '/assets/petskills/pandora2.webp',
+        label: '운명 통합',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 공허속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승하며, <span class="text-sky-400 font-semibold">수상한 흔적</span> 보유 시 번개속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승한다.',
+      },
+
+      {
+        img: '/assets/petskills/pandora1.webp',
+        label: '별의 귀환',
+        kind: 'passive',
+        level: 5,
+        desc: '이스마엘·환일이 서능을 장착한 상태에서 <span class="text-sky-400 font-semibold">흐릿한 잔상</span> 4단계 시전 시, 서능을 소환하여 협력 공격을 진행하고 <span class="text-sky-400 font-semibold">500%</span>의 공허속성 피해를 6회 입힌다. <span class="text-sky-400 font-semibold">붕괴 각인</span> 획득 시, 5초간 자신의 공격력이 <span class="text-sky-400 font-semibold">40%</span> 상승한다. 중복 발동 시 지속 시간이 초기화된다.',
       }
     ],
   },

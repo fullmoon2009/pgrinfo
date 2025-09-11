@@ -74,7 +74,7 @@ const fullBodyOf = (c: CoatingItem) =>
       <span class="text-[12px] text-white/60">프리뷰를 클릭하면 확대</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="columns-1 md:columns-2 gap-4 text-left [column-fill:auto] md:[column-fill:balance]">
       <div
         v-for="c in data"
         :key="c.id"
