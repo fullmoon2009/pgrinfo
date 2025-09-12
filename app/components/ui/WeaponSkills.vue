@@ -88,7 +88,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
 </script>
 
 <template>
-  <div ref="rootEl" class="rounded-md bg-black/30 p-3 relative">
+  <div ref="rootEl" class="rounded-md bg-black/30 py-6 md:py-3 px-3 relative">
     <div
       v-if="openIdx !== null || weaponOpen"
       class="fixed inset-0 z-40 md:hidden"
@@ -136,7 +136,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
       </div>
 
       <!-- 무기 스킬 및 툴팁 -->
-      <div class="col-span-2 rounded-md relative">
+      <div class="col-span-2 rounded-md relative py-1 md:py-0">
         <div class="absolute -top-1 left-1/2 -translate-x-1/2">
           <span class="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-[12px]
                        bg-white/10 text-white border border-white/20 backdrop-blur-[2px] shadow whitespace-nowrap">

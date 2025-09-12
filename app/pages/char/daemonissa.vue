@@ -445,7 +445,7 @@ const myCoatings = computed(() =>
           <SectionPill text="장비 & 의식 세팅" />
 
           <div
-            class="col-span-2 bg-black/50 rounded-md px-4 text-white space-y-4"
+            class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4"
           >
             <WeaponSkills
               weapon-id="umbrella"
@@ -480,7 +480,7 @@ const myCoatings = computed(() =>
             />
           </div>
 
-          <div class="col-span-2 bg-black/50 rounded-md px-4 text-white">
+          <div class="col-span-2 bg-black/50 rounded-md py-5 px-4 text-white">
             <div
               role="tablist"
               class="flex gap-2 mb-4 mt-2 border-b border-white/20"

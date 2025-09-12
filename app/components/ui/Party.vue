@@ -127,7 +127,7 @@ const activeRoleIconSet = (ci: number) => {
       />
     </div>
 
-    <div class="grid grid-cols-3 gap-2 md:gap-2 ml-[2px] md:ml-[3px]">
+    <div class="grid grid-cols-3 gap-2 md:gap-2 ml-[2px] md:ml-[2px]">
       <div
         v-for="(col, ci) in columns"
         :key="'col-' + ci"
@@ -137,12 +137,12 @@ const activeRoleIconSet = (ci: number) => {
           <div
             v-for="(r, i) in activeRoleIconSet(ci)"
             :key="r.src + '|' + i"
-            class="w-10 h-10 md:w-[50px] md:h-[50px] rounded-md grid place-items-center"
+            class="w-11 h-11 md:w-[50px] md:h-[50px] rounded-md grid place-items-center"
             :class="r.cls"
           >
             <img
               :src="r.src"
-              class="max-w-full max-h-full w-auto h-auto object-contain"
+              class="max-w-full max-h-full w-auto h-auto object-cover block"
               alt="role"
             />
           </div>
@@ -165,12 +165,14 @@ const activeRoleIconSet = (ci: number) => {
                 :to="s.to"
                 class="relative group rounded-md focus:outline-none focus:ring-2 focus:ring-white/40"
               >
+              <div class="aspect-square">
                 <img
                   :src="s.img"
-                  class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
+                  class="h-[85px] w-[85px] md:h-[100px] md:w-[100px] object-cover block rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
+               </div> 
 
                 <span
                   v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
@@ -214,7 +216,7 @@ const activeRoleIconSet = (ci: number) => {
                 <!-- 카드 -->
                 <img
                   :src="s.img"
-                  class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
+                  class="h-[85px] w-[85px] md:h-[100px] md:w-[100px] object-cover rounded-md border-2 cursor-pointer group-hover:brightness-105 transition"
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
@@ -248,12 +250,14 @@ const activeRoleIconSet = (ci: number) => {
               </a>
 
               <div v-else class="relative">
+                <div class="aspect-square">
                 <img
                   :src="s.img"
-                  class="h-20 w-20 md:h-[100px] md:w-[100px] object-cover rounded-md border-2"
+                  class="h-[85px] w-[85px] md:h-[100px] md:w-[100px] object-cover block rounded-md border-2"
                   :class="s.borderClass || 'border-white/20'"
                   :alt="s.label"
                 />
+                </div>
                 <span
                   v-if="!s.badges?.length && s.badgeText && s.badgeText.trim()"
                   class="absolute left-1 top-1 z-10 rounded px-1.5 py-0.5 text-[9px] md:text-[10px] font-semibold bg-white/15 text-white border border-white/30 backdrop-blur-[2px]"
