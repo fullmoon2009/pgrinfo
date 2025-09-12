@@ -244,12 +244,12 @@ const slidesB = [
     typeIcon: "/assets/types/nihil.png",
     typeBorderCls: "border-2 border-[#C00088]",
     grid: [
-      { img: "/assets/memory/shake1.png", memId: MID.dv },
-      { img: "/assets/memory/shake2.png" },
-      { img: "/assets/memory/shake3.png" },
-      { img: "/assets/memory/shake1.png" },
-      { img: "/assets/memory/davinci2.png" },
-      { img: "/assets/memory/davinci3.png" },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/shake2.png", memId: MID.sh },
+      { img: "/assets/memory/shake3.png", memId: MID.sh },
+      { img: "/assets/memory/shake1.png", memId: MID.sh },
+      { img: "/assets/memory/davinci2.png", memId: MID.dv },
+      { img: "/assets/memory/davinci3.png", memId: MID.dv },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -661,6 +661,17 @@ const myCoatings = computed(() =>
               >
                 연소 사이클
               </button>
+
+              <div class="flex items-center gap-2 ml-auto">
+                <a
+                  href="https://arca.live/b/punigray/138476262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] md:text-[12px] bg-white/8 hover:bg-white/12 border border-white/20 transition"
+                >
+                  영상 출처 & 매커니즘 가이드
+                </a>
+              </div>
             </div>
 
             <!-- ===== 내부 컨테이너 ===== -->

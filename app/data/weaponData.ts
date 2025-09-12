@@ -37,5 +37,10 @@ export const weaponData: Record<string, WeaponTooltip> = {
     description: '공격력이 10% 증가한다. 필살-근원의 자태 시전 즉시 스킬볼 3개를 획득하며, 매번 출전 최대 6개의 스킬볼을 획득할 수 있다. 관측 기행으로 발동하는 속성 저항 감소/피해 증가 효과가 10% 상승한다.'
   },
 
+  chargeblade: {
+    title: '승화 전능참',
+    description: '공격력이 10% 증가한다. 과량치가 혜성 충돌의 기본 피해를 상승시키는 효과가 2배가 된다. 염화 분리의 기본 피해가 2배 증가한다.'
+  },
+
   
 }

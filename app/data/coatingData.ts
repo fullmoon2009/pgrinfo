@@ -114,7 +114,7 @@ export const coatingData: CoatingItem[] = [
     char: 'daemonissa',
     type: 'special',
     name: '팜므 파탈',
-    release: '2025-08-26',
+    release: '2025-06-10',
     price: '168 레인보우 카드',
     tag: '특수 코팅',
     images: {
@@ -168,7 +168,7 @@ export const coatingData: CoatingItem[] = [
     char: 'parhelion',
     type: 'special',
     name: '영혼의 제례',
-    release: '2025-08-26',
+    release: '2025-07-15',
     price: '168 레인보우 카드',
     tag: '특수 코팅',
     images: {
@@ -186,7 +186,7 @@ export const coatingData: CoatingItem[] = [
     char: 'parhelion',
     type: 'special',
     name: '성스러운 균형의 날개',
-    release: '2025-06-06',
+    release: '2025-04-28',
     price: '168 레인보우 카드',
     tag: '특수 코팅',
     images: {
@@ -204,7 +204,7 @@ export const coatingData: CoatingItem[] = [
     char: 'parhelion',
     type: 'normal',
     name: '초기 시리즈',
-    release: '2024-06-06',
+    release: '2024-04-28',
     price: '',
     tag: '',
     images: {
@@ -213,6 +213,61 @@ export const coatingData: CoatingItem[] = [
         '/assets/coatings/parhelionnm1.png',
         '/assets/coatings/parhelionnm2.png',
         '/assets/coatings/parhelionnm3.png'
+      ],
+    },
+  },
+
+  // ===== 망성 (startrail)
+  {
+    id: 'startrail-special-02',          
+    char: 'startrail',
+    type: 'special',
+    name: '스타워드 드래곤',
+    release: '2025-06-13',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/startrailspcoatbg2.png',
+      portraits: [
+        '/assets/coatings/startrailspcoat2.png',
+        '/assets/coatings/startrailspcoatw2.png',
+      ],
+      fullBody: '/assets/coatings/startrailspcoats2.png',
+      long: '/assets/coatings/startrailspcoatl2.png'
+    },
+  },
+  {
+    id: 'startrail-special-01',             
+    char: 'startrail',
+    type: 'special',
+    name: '캔디 라이더',
+    release: '2025-03-24',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/startrailspcoatbg1.png',
+      portraits: [
+        '/assets/coatings/startrailspcoat1.png',
+        '/assets/coatings/startrailspcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/startrailspcoats1.png',
+      long: '/assets/coatings/startrailspcoatl1.png'
+    },
+  },
+  {
+    id: 'startrail-normal',
+    char: 'startrail',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-03-24',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/startrailnmbg.png',
+      verticals: [
+        '/assets/coatings/startrailnm1.png',
+        '/assets/coatings/startrailnm2.png',
+        '/assets/coatings/startrailnm3.png'
       ],
     },
   },

@@ -249,9 +249,7 @@ const party1 = {
           label: "세레나 · 희성",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
-          roleIcons: [
-            "/assets/roleIcons/atk.png"
-          ],
+          roleIcons: ["/assets/roleIcons/atk.png"],
         },
       ],
     },
@@ -262,9 +260,7 @@ const party1 = {
           label: "함영 · 단심",
           borderClass: "border-red-500",
           to: "/char/solacetune",
-          roleIcons: [
-            "/assets/roleIcons/arm.png"
-          ],
+          roleIcons: ["/assets/roleIcons/arm.png"],
         },
       ],
       showNav: false,
@@ -277,9 +273,7 @@ const party1 = {
           borderClass: "border-yellow-400",
           to: "/char/echo",
           badges: [{ text: "선발" }],
-          roleIcons: [
-            "/assets/roleIcons/amp.png"
-          ],
+          roleIcons: ["/assets/roleIcons/amp.png"],
         },
       ],
       showNav: true,
@@ -298,9 +292,7 @@ const party2 = {
           label: "세레나 · 희성",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
-          roleIcons: [
-            "/assets/roleIcons/atk.png"
-          ],
+          roleIcons: ["/assets/roleIcons/atk.png"],
         },
       ],
     },
@@ -311,9 +303,7 @@ const party2 = {
           label: "반즈 · 루시드",
           borderClass: "border-red-500",
           to: "/char/lucid",
-          roleIcons: [
-            "/assets/roleIcons/arm.png"
-          ],
+          roleIcons: ["/assets/roleIcons/arm.png"],
         },
       ],
       showNav: false,
@@ -326,9 +316,7 @@ const party2 = {
           borderClass: "border-yellow-400",
           to: "/char/echo",
           badges: [{ text: "선발" }],
-          roleIcons: [
-            "/assets/roleIcons/amp.png"
-          ],
+          roleIcons: ["/assets/roleIcons/amp.png"],
         },
       ],
     },
@@ -627,6 +615,17 @@ const myCoatings = computed(() =>
               >
                 결빙 사이클
               </button>
+
+              <div class="flex items-center gap-2 ml-auto">
+                <a
+                  href="https://arca.live/b/punigray/137974062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] md:text-[12px] bg-white/8 hover:bg-white/12 border border-white/20 transition"
+                >
+                  영상 출처 & 매커니즘 가이드
+                </a>
+              </div>
             </div>
 
             <!-- ===== 내부 컨테이너 ===== -->

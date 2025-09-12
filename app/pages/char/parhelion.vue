@@ -585,6 +585,17 @@ const myCoatings = computed(() =>
               >
                 결빙 사이클
               </button> -->
+
+              <div class="flex items-center gap-2 ml-auto">
+                <a
+                  href="https://arca.live/b/punigray/132398725"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] md:text-[12px] bg-white/8 hover:bg-white/12 border border-white/20 transition"
+                >
+                  영상 출처 & 매커니즘 가이드
+                </a>
+              </div>
             </div>
 
             <!-- ===== 내부 컨테이너 ===== -->

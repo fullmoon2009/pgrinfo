@@ -228,6 +228,9 @@ const party1 = {
           label: "릴리스 · 데모니사",
           borderClass: "border-blue-500",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
     },
@@ -238,12 +241,18 @@ const party1 = {
           label: "카레니나 · 휘효",
           borderClass: "border-red-500",
           to: "/char/scire",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
         {
           img: "/assets/portrait/parhelion2.png",
           label: "이스마엘 · 환일",
           borderClass: "border-red-500",
           to: "/char/parhelion",
+          roleIcons: [
+            "/assets/roleIcons/observer.webp"
+          ],
         },
       ],
       showNav: true,
@@ -256,6 +265,9 @@ const party1 = {
           borderClass: "border-yellow-400",
           to: "/char/huimu",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
       showNav: true,
@@ -274,7 +286,10 @@ const party2 = {
           label: "루시아 · 서염",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
-          to: "/char/pyroath"
+          to: "/char/pyroath",
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
     },
@@ -284,9 +299,21 @@ const party2 = {
           img: "/assets/portrait/daemonissa2.png",
           label: "릴리스 · 데모니사",
           borderClass: "border-red-500",
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
+        },
+        {
+          img: "/assets/portrait/scire2.png",
+          label: "카레니나 · 휘효",
+          borderClass: "border-red-500",
+          to: "/char/scire",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
-      showNav: false,
+      showNav: true,
     },
     {
       slides: [
@@ -296,6 +323,9 @@ const party2 = {
           borderClass: "border-yellow-400",
           to: "/char/startrail",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
     },
@@ -594,6 +624,17 @@ const myCoatings = computed(() =>
               >
                 결빙 사이클
               </button>
+
+              <div class="flex items-center gap-2 ml-auto">
+                <a
+                  href="https://arca.live/b/punigray/132350475"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] md:text-[12px] bg-white/8 hover:bg-white/12 border border-white/20 transition"
+                >
+                  영상 출처 & 매커니즘 가이드
+                </a>
+              </div>
             </div>
 
             <!-- ===== 내부 컨테이너 ===== -->

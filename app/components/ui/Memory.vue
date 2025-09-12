@@ -194,7 +194,7 @@ const sizeClass = (label: string) => {
 </script>
 
 <template>
-  <div ref="wrapEl" class="relative rounded-md bg-black/30 p-3">
+  <div ref="wrapEl" class="relative rounded-md bg-black/30 p-3 mb-1">
     <div class="flex gap-2">
       <slot name="tabs"></slot>
     </div>
