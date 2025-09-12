@@ -266,5 +266,135 @@ export const petSkillData: Record<string, PetModal> = {
     ],
   },
 
+  anglefish: {
+    level: 30,
+    skills: [
+      
+      
+        {
+        img: '/assets/petskills/anglefishactive.webp',
+        label: '미끼 사냥∙번개',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 아귀가 목표를 향해 돌진하고 주위의 적 유닛을 끌어모아 <span class="text-orange-400 font-semibold">1800%</span>의 번개속성 피해를 1회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefishactive.webp',
+        label: '지느러미 광선∙번개',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전 시 아귀가 공중으로 비약하여 목표를 향해 레이저를 발사하고 <span class="text-orange-400 font-semibold">500%</span>의 번개속성 피해를 1회 입힌다. 이후 미사일을 발사하여 <span class="text-orange-400 font-semibold">250%</span>의 번개속성 피해를 6회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish5.webp',
+        label: '방패 돌진',
+        kind: 'passive',
+        level: 5,
+        desc:
+          '아귀의 액티브 스킬 피해가 <span class="text-sky-400 font-semibold">70%</span> 증가한다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish4.webp',
+        label: '형광 효소',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 공격력이 <span class="text-sky-400 font-semibold">100</span> 증가한다.',
+      },
+      {
+        img: '/assets/petskills/anglefish3.webp',
+        label: '뾰족한 송곳니',
+        kind: 'passive',
+        level: 5,
+        desc: '아귀가 액티브 스킬을 시전하면 장착한 캐릭터의 추가 피해 버프가 <span class="text-sky-400 font-semibold">5%</span> 상승한다. 8초간 지속. 중복 발동 시 지속 시간이 초기화된다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish2.webp',
+        label: '우주의 힘',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 번개속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승하며, <span class="text-sky-400 font-semibold">화염 문장</span> 또는 <span class="text-sky-400 font-semibold">소각 문장</span> 보유 시 불속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승한다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish1.webp',
+        label: '적염 회오리',
+        kind: 'passive',
+        level: 5,
+        desc: '망성이 아귀를 장착한 상태에서 <span class="text-sky-400 font-semibold">혜성 충돌</span> 또는 강화 효과를 지닌 <span class="text-sky-400 font-semibold">염화 분리</span>를 시전할 경우, 아귀를 소환하여 협력 공격을 진행하고 <span class="text-sky-400 font-semibold">1250%</span>의 번개속성 피해를 2회 입힌다. <span class="text-sky-400 font-semibold">유광</span>, <span class="text-sky-400 font-semibold">우주의 일격</span>, <span class="text-sky-400 font-semibold">별의 분쇄</span>의 기본 피해가 <span class="text-sky-400 font-semibold">60%</span> 상승한다.',
+      }
+    ],
+  },
+
+  raven: {
+    level: 30,
+    skills: [
+      
+      
+        {
+        img: '/assets/petskills/anglefishactive.webp',
+        label: '금빛 깃털∙불',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 습공이 목표 주위에서 선회한 후 내려찍고, 주위의 적 유닛을 끌어모아 <span class="text-orange-400 font-semibold">1800%</span>의 불속성 피해를 1회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefishactive.webp',
+        label: '화염 투하∙불',
+        kind: 'active',
+        level: 5,
+        desc:
+          '임의로 기본 스킬볼 6개를 소모하면, 보조기 버튼이 활성화된다. 시전하면 습공이 공중에서 목표를 향해 화염을 분사해 <span class="text-orange-400 font-semibold">500%</span>의 불속성 피해를 4회 입힌다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish5.webp',
+        label: '불빛 활공',
+        kind: 'passive',
+        level: 5,
+        desc:
+          '습공의 액티브 스킬 피해가 <span class="text-sky-400 font-semibold">70%</span> 증가한다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish4.webp',
+        label: '반짝이는 빛',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 공격력이 <span class="text-sky-400 font-semibold">100</span> 증가한다.',
+      },
+      {
+        img: '/assets/petskills/anglefish3.webp',
+        label: '빛나는 날개',
+        kind: 'passive',
+        level: 5,
+        desc: '슴공이 액티브 스킬을 시전하면 장착한 캐릭터의 추가 피해 버프가 <span class="text-sky-400 font-semibold">5%</span> 상승한다. 8초간 지속. 중복 발동 시 지속 시간이 초기화된다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish2.webp',
+        label: '타오르는 불꽃',
+        kind: 'passive',
+        level: 5,
+        desc: '장착한 캐릭터의 불속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승하며, 뇌전 폭풍 상태 기간에 번개속성 피해가 <span class="text-sky-400 font-semibold">10%</span> 상승한다.',
+      },
+
+      {
+        img: '/assets/petskills/anglefish1.webp',
+        label: '영광의 빛',
+        kind: 'passive',
+        level: 5,
+        desc: '루시아·서염이 습공을 장착한 상태에서 <span class="text-sky-400 font-semibold">일반 공격-휘광 전개</span>를 시전할 시, 습공을 소환해 협력 공격을 진행하고, <span class="text-sky-400 font-semibold">2500%</span>의 불속성 피해를 1회 입힌다. <span class="text-sky-400 font-semibold">휘광 각인</span>은 <span class="text-sky-400 font-semibold">필살-합심의 절단</span>, <span class="text-sky-400 font-semibold">필살-태양을 뚫는 빛</span>의 기본 피해 증폭 효과를 <span class="text-sky-400 font-semibold">20%</span> 상승시킨다.',
+      }
+    ],
+  },
+
 
 }

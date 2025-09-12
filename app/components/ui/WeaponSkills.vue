@@ -95,7 +95,7 @@ const weaponTip = computed<WeaponTooltip | undefined>(() => {
       @click="openIdx = null; weaponOpen = false"
     />
 
-    <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 md:pb-5 md:h-full">
+    <div class="grid grid-cols-3 md:grid-cols-3 gap-4 items-center md:pt-5 px-2 md:px-3 md:pb-5 md:h-full">
       <!-- 무기 박스 -->
       <div class="md:col-span-1 flex flex-col items-center">
         <div

@@ -301,8 +301,8 @@ const slidesB = [
     tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
     typeName: "습광",
     chipText: "하이젠 x4",
-    chipText2: "아인슈타나 x2",
-    chipText3: "골고다 x2",
+    chipText2: "아인 x2",
+    chipText3: "골고다(5) x2",
   },
 ];
 
@@ -460,7 +460,7 @@ const myCoatings = computed(() =>
       rightContainerClass="w-[125px] h-[256px]"
       rightFit="cover"
       rightObjectPosition="45% 30%"
-      rightImgClass="scale-[2] origin-[55%_24%] translate-y-[23%]"
+      rightImgClass="scale-[2] origin-[48%_24%] translate-y-[23%]"
     />
 
     <!-- 이름 배지 -->
@@ -530,7 +530,7 @@ const myCoatings = computed(() =>
           <SectionPill text="장비 & 의식 세팅" />
 
           <div
-            class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4"
+            class="col-span-2 bg-black/30 rounded-md p-4 text-white space-y-4"
           >
             <WeaponSkills
               weapon-id="chargeblade"
@@ -565,7 +565,7 @@ const myCoatings = computed(() =>
             />
           </div>
 
-          <div class="col-span-2 bg-black/50 rounded-md px-4 text-white">
+          <div class="col-span-2 bg-black/30 rounded-md py-5 md:py-0 px-4 text-white">
             <div
               role="tablist"
               class="flex gap-2 mb-4 mt-2 border-b border-white/20"
@@ -626,7 +626,7 @@ const myCoatings = computed(() =>
         <div
           id="party"
           :class="[
-            'w-full mx-auto mt-6 grid gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30 party',
+            'w-full mx-auto mt-6 grid gap-2 px-6 py-3 pb-4 rounded-md bg-[#0A0A23]/30 party',
             hasParty2
               ? 'max-w-full md:max-w-4xl grid-cols-1 md:grid-cols-2'
               : 'max-w-full md:max-w-[500px] grid-cols-1 place-items-center',

@@ -74,11 +74,11 @@ const fullBodyOf = (c: CoatingItem) =>
       <span class="text-[12px] text-white/60">프리뷰를 클릭하면 확대</span>
     </div>
 
-    <div class="columns-1 md:columns-2 gap-4 text-left [column-fill:auto] md:[column-fill:balance]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left items-start">
       <div
         v-for="c in data"
         :key="c.id"
-        class="mb-4 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
+        class="rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
       >
         <!-- ================== normal 레이아웃 ================== -->
         <div v-if="c.type === 'normal'" class="p-3 space-y-2">
@@ -103,7 +103,6 @@ const fullBodyOf = (c: CoatingItem) =>
               :key="i"
               class="relative rounded-lg overflow-hidden border border-white/10 bg-black/30"
             >
-              <!-- vertical 이미지 -->
               <img
                 :src="img"
                 class="block w-full py-2 max-h-[210px] object-contain cursor-zoom-in"
@@ -136,9 +135,7 @@ const fullBodyOf = (c: CoatingItem) =>
           <div class="rounded-xl border border-white/10 p-2">
             <div class="grid grid-cols-3 gap-2 items-center">
               <!-- 코팅 -->
-              <div
-                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
-              >
+              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
                 <div class="aspect-[3/4] grid place-items-center">
                   <img
                     :src="portrait0Of(c)"
@@ -148,9 +145,7 @@ const fullBodyOf = (c: CoatingItem) =>
                 </div>
               </div>
               <!-- 무기 -->
-              <div
-                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
-              >
+              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
                 <div class="aspect-[3/4] grid place-items-center">
                   <img
                     :src="portrait1Of(c)"
@@ -160,9 +155,7 @@ const fullBodyOf = (c: CoatingItem) =>
                 </div>
               </div>
               <!-- 전신 -->
-              <div
-                class="rounded-lg overflow-hidden border border-white/10 bg-black/30"
-              >
+              <div class="rounded-lg overflow-hidden border border-white/10 bg-black/30">
                 <div class="aspect-[9/16] grid place-items-center">
                   <img
                     :src="fullBodyOf(c)"
@@ -221,9 +214,7 @@ const fullBodyOf = (c: CoatingItem) =>
 
           <div class="mt-2 flex flex-wrap items-center gap-2">
             <template v-if="c.type === 'normal' || c.type === 'dorm'">
-              <span class="text-[12px] text-white/70"
-                >출시 {{ c.release }}</span
-              >
+              <span class="text-[12px] text-white/70">출시 {{ c.release }}</span>
               <span class="text-white/30">·</span>
               <span class="text-[12px] text-white/70">{{ c.price }}</span>
             </template>
@@ -244,15 +235,9 @@ const fullBodyOf = (c: CoatingItem) =>
 
         <transition name="fade">
           <div v-if="c.images.long && isOpen(c.id)" class="px-4 pb-4">
-            <div
-              class="rounded-lg overflow-hidden border border-white/10 bg-black/40"
-            >
+            <div class="rounded-lg overflow-hidden border border-white/10 bg-black/40">
               <div class="w-full grid place-items-center">
-                <img
-                  :src="c.images.long"
-                  class="max-w-full object-contain"
-                  alt=""
-                />
+                <img :src="c.images.long" class="max-w-full object-contain" alt="" />
               </div>
             </div>
 
@@ -271,7 +256,6 @@ const fullBodyOf = (c: CoatingItem) =>
       </div>
     </div>
   </div>
-
 
   <transition name="fade">
     <div

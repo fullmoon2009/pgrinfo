@@ -32,9 +32,9 @@ const fitClass = computed(() => {
   }
 })
 
-const imgStyle = computed(() => {
-  return props.rightObjectPosition ? { objectPosition: props.rightObjectPosition } : {}
-})
+// const imgStyle = computed(() => {
+//   return props.rightObjectPosition ? { objectPosition: props.rightObjectPosition } : {}
+// })
 </script>
 
 <template>
@@ -61,7 +61,7 @@ const imgStyle = computed(() => {
       <img
         :src="rightTall"
         :class="['w-full h-full', fitClass, rightImgClass]"
-        :style="imgStyle"
+      
       />
     </div>
   </div>

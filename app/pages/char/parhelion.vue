@@ -335,8 +335,8 @@ const myCoatings = computed(() =>
       rightTall="/assets/standings/parhelionS.png"
       rightContainerClass="w-[125px] h-[256px]"
       rightFit="cover"
-      rightObjectPosition="70% 40%"
-      rightImgClass="scale-[2] origin-[55%_30%] translate-y-[25%]"
+      rightObjectPosition="65% 40%"
+      rightImgClass="scale-[2] origin-[80%_32%] translate-y-[25%]"
     />
 
     <!-- 이름 배지 -->
@@ -406,7 +406,7 @@ const myCoatings = computed(() =>
           <SectionPill text="장비 & 의식 세팅" />
 
           <div
-            class="col-span-2 bg-black/50 rounded-md p-4 text-white space-y-4"
+            class="col-span-2 bg-black/30 rounded-md p-4 text-white space-y-4"
           >
             <WeaponSkills
               weapon-id="key"
@@ -441,7 +441,7 @@ const myCoatings = computed(() =>
             />
           </div>
 
-          <div class="col-span-2 bg-black/50 rounded-md py-5 px-4 text-white">
+          <div class="col-span-2 bg-black/30 rounded-md py-5 px-4 text-white">
             <div
               role="tablist"
               class="flex gap-2 mb-4 mt-2 border-b border-white/20"
@@ -502,7 +502,7 @@ const myCoatings = computed(() =>
         <div
           id="party"
           :class="[
-            'w-full mx-auto mt-6 grid gap-2 px-6 py-3 rounded-md bg-[#0A0A23]/30 party',
+            'w-full mx-auto mt-6 grid gap-2 px-6 py-3 pb-4 rounded-md bg-[#0A0A23]/30 party',
             hasParty2
               ? 'max-w-full md:max-w-4xl grid-cols-1 md:grid-cols-2'
               : 'max-w-full md:max-w-[500px] grid-cols-1 place-items-center',

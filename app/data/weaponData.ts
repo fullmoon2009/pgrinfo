@@ -42,5 +42,10 @@ export const weaponData: Record<string, WeaponTooltip> = {
     description: '공격력이 10% 증가한다. 과량치가 혜성 충돌의 기본 피해를 상승시키는 효과가 2배가 된다. 염화 분리의 기본 피해가 2배 증가한다.'
   },
 
+  tachi: {
+    title: '영원의 화염',
+    description: '공격력이 10% 증가한다. 필살-합심의 절단 시전 후 스킬볼이 3개 회복되며, 염뢰 형태 진입 시 쿨타임 상태가 아닌 초산 공간을 발동한다.'
+  },
+
   
 }

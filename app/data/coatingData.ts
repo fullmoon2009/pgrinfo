@@ -272,4 +272,79 @@ export const coatingData: CoatingItem[] = [
     },
   },
 
+  // ===== 서염 (pyroath)
+  {
+    id: 'pyroath-special-03',          
+    char: 'pyroath',
+    type: 'special',
+    name: '청해의 유광',
+    release: '2025-08-26',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/pyroathspcoatbg3.jpg',
+      portraits: [
+        '/assets/coatings/pyroathspcoat3.png',
+        '/assets/coatings/pyroathspcoatw3.png',
+      ],
+      fullBody: '/assets/coatings/pyroathspcoats3.png',
+      long: '/assets/coatings/pyroathspcoatl3.jpg'
+    },
+  },
+
+  {
+    id: 'pyroath-special-02',             
+    char: 'pyroath',
+    type: 'special',
+    name: '여명의 약속',
+    release: '2025-06-06',
+    price: '500 레인보우 카드',
+    tag: '가챠 코팅',
+    images: {
+      banner: '/assets/coatings/pyroathspcoatbg2.jpg',
+      portraits: [
+        '/assets/coatings/pyroathspcoat2.png',
+        '/assets/coatings/pyroathspcoatw2.png',
+      ],
+      fullBody: '/assets/coatings/pyroathspcoats2.png',
+      long: '/assets/coatings/pyroathspcoatl2.jpg'
+    },
+  },
+  
+  {
+    id: 'pyroath-special-01',             
+    char: 'pyroath',
+    type: 'special',
+    name: '빛의 찬가',
+    release: '2025-03-17',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/pyroathspcoatbg1.jpg',
+      portraits: [
+        '/assets/coatings/pyroathspcoat1.png',
+        '/assets/coatings/pyroathspcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/pyroathspcoats1.png',
+      long: '/assets/coatings/pyroathspcoatl1.jpg'
+    },
+  },
+  {
+    id: 'pyroath-normal',
+    char: 'pyroath',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-03-17',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/pyroathnmbg.png',
+      verticals: [
+        '/assets/coatings/pyroathnm1.png',
+        '/assets/coatings/pyroathnm2.png',
+        '/assets/coatings/pyroathnm3.png'
+      ],
+    },
+  },
+
 ]
