@@ -294,6 +294,9 @@ const party1 = {
           borderClass: "border-blue-500",
           to: "/char/pyroath",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
     },
@@ -304,6 +307,9 @@ const party1 = {
           label: "베라 · 작망",
           borderClass: "border-red-500",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
       showNav: false,
@@ -315,12 +321,18 @@ const party1 = {
           label: "와타나베 · 진명",
           borderClass: "border-yellow-400",
           to: "/char/epitaph",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
         {
           img: "/assets/portrait/startrail2.png",
           label: "나나미 · 망성",
           borderClass: "border-yellow-400",
           to: "/char/startrail",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
       showNav: true,
@@ -339,6 +351,9 @@ const party2 = {
           label: "베라 · 작망",
           borderClass: "border-blue-500",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
     },
@@ -350,6 +365,9 @@ const party2 = {
           borderClass: "border-red-500",
           to: "/char/crimsonweave",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
       showNav: false,
@@ -361,6 +379,9 @@ const party2 = {
           label: "와타나베 · 진명",
           borderClass: "border-yellow-400",
           to: "/char/epitaph",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
     },
@@ -370,16 +391,6 @@ const party2 = {
 // 파티 2가 존재하지 않을 시 사용
 // const party2 = ref<Party | null>(null)
 
-const roleIconsParty1 = [
-  "/assets/roleIcons/atk.png",
-  "/assets/roleIcons/amp.png",
-  "/assets/roleIcons/arm.png",
-];
-const roleIconsParty2 = [
-  "/assets/roleIcons/amp.png",
-  "/assets/roleIcons/atk.png",
-  "/assets/roleIcons/arm.png",
-];
 
 const hasParty2 = computed(
   () => !!party2 && Array.isArray(party2.columns) && party2.columns.length > 0

@@ -604,7 +604,7 @@ export const charSkillData: CharSkillMap = {
             body: [
               `<span class="text-[17px] font-bold">빗물의 서곡-<span class="text-blue-400 font-semibold">60 필살 에너지+필살기 터치/길게 누르기</span></span><br>
   세레나가 연주를 준비하며 <span class="text-red-400 font-semibold">무아 상태</span>에 진입하고 물리 피해를 입힌다. 시전 기간 동안 <span class="text-red-400 font-semibold">타임스톱 연산</span>이 발동되고 초산 공간의 쿨타임이 즉시 초기화된다. <span class="text-red-400 font-semibold">무아 상태</span> 시 상태이상 면역 효과를 획득하고, <span class="text-red-400 font-semibold">변주치</span>를 지속적으로 획득한다.`,
-              `<span class="text-red-400 font-semibold">480%</span>의 물리 피해를 입힌다.`,
+              `-<span class="text-red-400 font-semibold">480%</span>의 물리 피해를 입힌다.`,
               `-길게 눌러 시전 시, 현재 <span class="text-red-400 font-semibold">극빙층</span>이 10단계 이상이면 <span class="text-red-400 font-semibold">얼음 가시</span>를 생성한다.`,
               `-초당 <span class="text-red-400 font-semibold">3 변주치</span>를 획득한다.<br><br><br>
   
@@ -705,35 +705,34 @@ export const charSkillData: CharSkillMap = {
               { text: "코어 패시브", cls: "bg-white/10 border-white/20" },
             ],
             body: [
-              // ---- 독주 영역 ----
               `<span class="text-[17px] font-bold">독주 영역</span><br>
-  세레나는 평소에 <span class="text-red-400 font-semibold">검을 들고</span> 공격하지만, <span class="text-red-400 font-semibold">무아 상태</span>가 되면 <span class="text-red-400 font-semibold">첼로를 들고</span> 공격한다. 회피로는 초산 공간에 진입할 수 없으며, <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span>/<span class="text-red-400 font-semibold">일반 공격-전환 연주</span>를 통해서만 초산 공간을 발동할 수 있다. 자신이 발동한 초산 공간에 진입하면 <span class="text-red-400 font-semibold">독주</span> 상태가 된다.<br><br><br>`,
+  세레나는 평소에 <span class="text-red-400 font-semibold">검을 들고</span> 공격하지만, <span class="text-red-400 font-semibold">무아 상태</span>가 되면 <span class="text-red-400 font-semibold">첼로를 들고</span> 공격한다. 회피로는 초산 공간에 진입할 수 없으며, <span class="text-red-400 font-semibold">일반 공격-음검의 울림</span>/<span class="text-red-400 font-semibold">일반 공격-전환 연주</span>를 통해서만 초산 공간을 발동할 수 있다. 자신이 발동한 초산 공간에 진입하면 <span class="text-red-400 font-semibold">독주</span> 상태가 된다.<br><br><br>
 
-              // ---- 협주볼 ----
-              `<span class="text-[17px] font-bold">협주볼-<span class="text-blue-400 font-semibold">무아 상태+협주볼 터치</span></span><br>
+              
+              <span class="text-[17px] font-bold">협주볼-<span class="text-blue-400 font-semibold">무아 상태+협주볼 터치</span></span><br>
   <span class="text-red-400 font-semibold">무아 상태</span>에 진입하면 스킬볼 중 6개가 <span class="text-red-400 font-semibold">협주볼</span>로 전환되며, <span class="text-red-400 font-semibold">무아 상태</span> 기간에는 <span class="text-red-400 font-semibold">협주볼</span>만 획득하고 사용할 수 있다. 시전 후 물리 피해를 입히고, <span class="text-red-400 font-semibold">음표</span>, <span class="text-red-400 font-semibold">변주치</span>, <span class="text-red-400 font-semibold">선율 포인트</span>, <span class="text-red-400 font-semibold">필살 에너지</span>를 획득한다. <span class="text-red-400 font-semibold">무아 상태</span> 종료 후 나머지 스킬볼을 반환한다.`,
               `-<span class="text-red-400 font-semibold">600%</span>의 물리 피해를 입힌다.`,
               `-스킬볼 3개를 소모할 때마다 <span class="text-red-400 font-semibold">1 음표</span>를 획득한다.`,
               `-<span class="text-red-400 font-semibold">얼음 가시</span> 지속 기간 동안 <span class="text-red-400 font-semibold">1600%</span>의 결빙 피해를 입힌다.`,
-              `-시전 후 <span class="text-red-400 font-semibold">5 변주치</span>, <span class="text-red-400 font-semibold">10 선율 포인트</span>, <span class="text-red-400 font-semibold">5 필살 에너지</span>를 획득한다.<br><br><br>`,
+              `-시전 후 <span class="text-red-400 font-semibold">5 변주치</span>, <span class="text-red-400 font-semibold">10 선율 포인트</span>, <span class="text-red-400 font-semibold">5 필살 에너지</span>를 획득한다.<br><br><br>
 
-              // ---- 격정의 선율 ----
-              `<span class="text-[17px] font-bold">격정의 선율-<span class="text-blue-400 font-semibold">무아 상태+60 선율 포인트+회피 길게 누르기</span></span><br>
+    
+              <span class="text-[17px] font-bold">격정의 선율-<span class="text-blue-400 font-semibold">무아 상태+60 선율 포인트+회피 길게 누르기</span></span><br>
   세레나는 <span class="text-red-400 font-semibold">무아 상태</span>에서 <span class="text-red-400 font-semibold">협주볼</span>을 시전하면 <span class="text-red-400 font-semibold">선율 포인트</span>를 축적할 수 있다. 상한 <span class="text-red-400 font-semibold">60</span>. 시전 시 <span class="text-red-400 font-semibold">60 선율 포인트</span>를 소모하여 분신을 소환해 공격하고, 물리 피해를 입히며 <span class="text-red-400 font-semibold">변주치</span>와 <span class="text-red-400 font-semibold">필살 에너지</span>를 획득한다.`,
               `-<span class="text-red-400 font-semibold">4000%</span>의 물리 피해를 입힌다.`,
               `-<span class="text-red-400 font-semibold">얼음 가시</span> 지속 기간 동안 <span class="text-red-400 font-semibold">10000%</span>의 결빙 피해를 입힌다.`,
-              `-시전 기간에 무적 상태가 되고 필살기를 시전할 수 없다. 시전 후 <span class="text-red-400 font-semibold">30 변주치</span>와 <span class="text-red-400 font-semibold">60 필살 에너지</span>를 획득한다.<br><br><br>`,
+              `-시전 기간에 무적 상태가 되고 필살기를 시전할 수 없다. 시전 후 <span class="text-red-400 font-semibold">30 변주치</span>와 <span class="text-red-400 font-semibold">60 필살 에너지</span>를 획득한다.<br><br><br>
 
-              // ---- 장송 전주곡 ----
-              `<span class="text-[17px] font-bold">장송 전주곡-<span class="text-blue-400 font-semibold">무아 상태+100 변주치</span></span><br>
+
+              <span class="text-[17px] font-bold">장송 전주곡-<span class="text-blue-400 font-semibold">무아 상태+100 변주치</span></span><br>
   세레나가 <span class="text-red-400 font-semibold">무아 상태</span>에서 특수 스킬을 시전하면 <span class="text-red-400 font-semibold">변주치</span>를 축적할 수 있으며, 상한은 <span class="text-red-400 font-semibold">100</span>이다. <span class="text-red-400 font-semibold">변주치</span>가 상한에 도달하면 자신은 <span class="text-red-400 font-semibold">장송 전주곡</span> 상태가 되고 즉시 <span class="text-red-400 font-semibold">90 필살 에너지</span>를 획득한다.`,
               `-<span class="text-red-400 font-semibold">장송 전주곡</span> 상태가 되면 모든 <span class="text-red-400 font-semibold">선율 포인트</span>가 즉시 초기화된다.`,
               `-7초간 지속되는 <span class="text-red-400 font-semibold">장송 전주곡</span> 상태 진입 시 <span class="text-red-400 font-semibold">검을 들고</span> 공격하며, 종료 시 자동으로 <span class="text-red-400 font-semibold">필살-바람의 울음</span>을 시전한다.`,
               `-<span class="text-red-400 font-semibold">장송 전주곡</span> 지속 기간 동안, 스킬볼이 무제한으로 전환된다.`,
-              `-<span class="text-red-400 font-semibold">장송 전주곡</span> 종료 시, 모든 <span class="text-red-400 font-semibold">음표</span>가 초기화된다.<br><br><br>`,
+              `-<span class="text-red-400 font-semibold">장송 전주곡</span> 종료 시, 모든 <span class="text-red-400 font-semibold">음표</span>가 초기화된다.<br><br><br>
 
-              // ---- 효과: 결빙 ----
-              `<span class="text-[17px] font-bold">효과: 결빙</span><br>
+
+              <span class="text-[17px] font-bold">효과: 결빙</span><br>
   일부 스킬은 <span class="text-red-400 font-semibold">결빙 게이지</span>를 누적할 수 있다. 게이지가 가득 차면 게이지를 초기화하고 <span class="text-red-400 font-semibold">극빙</span>을 시전해 결빙 피해를 입히며, 특정 스킬 시전 시, 모든 <span class="text-red-400 font-semibold">극빙층</span>을 소모해 <span class="text-red-400 font-semibold">얼음 가시</span>를 생성하여 주위에 결빙 피해를 입힌다. <span class="text-red-400 font-semibold">얼음 가시</span>는 일정 기간 지속되며, 이 기간에 결빙 피해를 입히면 <span class="text-red-400 font-semibold">얼음 응집</span>을 일으켜 추가로 결빙 피해를 입히고, <span class="text-red-400 font-semibold">빙결치</span>를 누적한다. <span class="text-red-400 font-semibold">얼음 가시</span> 지속 기간 종료 시, <span class="text-red-400 font-semibold">얼음 폭파</span>를 일으키며, 현재 <span class="text-red-400 font-semibold">빙결치</span>에 따라 결빙 피해를 입힌다. <span class="text-red-400 font-semibold">결빙 게이지</span>, <span class="text-red-400 font-semibold">극빙층</span>, <span class="text-red-400 font-semibold">얼음 가시</span>, <span class="text-red-400 font-semibold">빙결치</span>는 결빙 효과를 보유한 다음 캐릭터에게 계승된다.`,
               `-<span class="text-red-400 font-semibold">결빙치</span>가 <span class="text-red-400 font-semibold">100</span>에 도달할 시, <span class="text-red-400 font-semibold">극빙</span>을 1회 시전해 <span class="text-red-400 font-semibold">100%</span>의 결빙 피해를 입히고, 1단계의 <span class="text-red-400 font-semibold">극빙층</span>을 누적한다. 상한은 <span class="text-red-400 font-semibold">10단계</span>이다.`,
               `-<span class="text-red-400 font-semibold">극빙층</span>이 0보다 많을 경우, 일부 스킬 시전 시 <span class="text-red-400 font-semibold">극빙층</span>을 초기화하며, 전장에 <span class="text-red-400 font-semibold">얼음 가시</span>를 생성해 <span class="text-red-400 font-semibold">180%</span>의 결빙 피해를 입힌다. 응결 시, <span class="text-red-400 font-semibold">극빙층</span>을 1단계 소모할 때마다 <span class="text-red-400 font-semibold">얼음 가시</span>의 지속 시간이 <span class="text-red-400 font-semibold">1초</span> 상승한다.`,
@@ -847,6 +846,400 @@ export const charSkillData: CharSkillMap = {
               
               <span class="text-[17px] font-bold">3레벨-<span class="text-blue-400 font-semibold">SSS+ 승급 해제</span></span><br>
               <span class="text-red-400 font-semibold">운류의 관통</span>, <span class="text-red-400 font-semibold">협주볼</span>, 스킬볼의 추가 피해가 <span class="text-red-400 font-semibold">40%</span> 상승한다.`,
+            ],
+          },
+        },
+      ],
+    },
+  ],
+
+  parhelion: [
+    {
+      label: "스킬볼",
+      tier: "orb",
+      items: [
+        {
+          id: "parhelionred",
+          tier: "orb",
+          name: "심연의 침전",
+          icon: "/assets/skillball/parhelionred.webp",
+          subText: "적색 스킬볼",
+          accent: "ring-1 ring-rose-400/40 bg-white/5",
+          detail: {
+            title: "심연의 침전",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "적색 스킬볼",
+                cls: "bg-red-500/15 border-red-400/30 text-red-300",
+              },
+            ],
+             body: [
+              `<span class="text-[17px] font-bold">스치는 별똥별-<span class="text-blue-400 font-semibold">적색 스킬볼 터치</span></span><br>
+               무릎으로 목표를 걷어차 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">잔상치</span>와 <span class="text-red-400 font-semibold">붕괴치</span>를 획득한다. 시전 시 <span class="text-red-400 font-semibold">관측 기행</span>에 따라 특수 능력을 발동한다.`,
+              `-소모한 스킬볼 개수에 따라 시전 후 <span class="text-red-400 font-semibold">10</span>/<span class="text-red-400 font-semibold">20</span>/<span class="text-red-400 font-semibold">30</span> 잔상치와 <span class="text-red-400 font-semibold">15</span>/<span class="text-red-400 font-semibold">30</span>/<span class="text-red-400 font-semibold">45</span> 붕괴치를 획득한다.`,
+              `-소모한 스킬볼 개수에 따라 <span class="text-red-400 font-semibold">140%</span>/<span class="text-red-400 font-semibold">280%</span>/<span class="text-red-400 font-semibold">420%</span>의 공허속성 피해를 입힌다.`,
+              `-시전 중 상태이상 면역을 획득한다.<br><br><br>
+              
+              <span class="text-[17px] font-bold">구조 붕해-<span class="text-blue-400 font-semibold">스치는 별똥별 동작 중+적색 스킬볼 터치</span></span><br>
+              목표를 짓밟아 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">잔상치</span>와 <span class="text-red-400 font-semibold">붕괴치</span>를 얻고, 즉시 <span class="text-red-400 font-semibold">흐릿한 잔상</span> 4단계를 시전한다. 시전 시 <span class="text-red-400 font-semibold">관측 기행</span>에 따라 특수 능력을 발동한다.`,
+              `-소모한 스킬볼 개수에 따라 시전 후 <span class="text-red-400 font-semibold">10</span>/<span class="text-red-400 font-semibold">20</span>/<span class="text-red-400 font-semibold">30</span> 잔상치와 <span class="text-red-400 font-semibold">15</span>/<span class="text-red-400 font-semibold">30</span>/<span class="text-red-400 font-semibold">45</span> 붕괴치를 획득한다.`,
+              `-소모한 스킬볼 개수에 따라 <span class="text-red-400 font-semibold">150%</span>/<span class="text-red-400 font-semibold">300%</span>/<span class="text-red-400 font-semibold">450%</span>의 공허속성 피해를 입힌다.`,
+              `-시전 중 상태이상 면역을 획득한다.`,
+            ],
+          },
+        },
+        {
+          id: "parhelionyellow",
+          tier: "orb",
+          name: "저편의 형상",
+          icon: "/assets/skillball/parhelionyellow.webp",
+          subText: "황색 스킬볼",
+          accent: "ring-1 ring-amber-300/40 bg-white/5",
+          detail: {
+            title: "저편의 형상",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "황색 스킬볼",
+                cls: "bg-amber-400/15 border-amber-400/30 text-amber-200",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">저편의 형상-<span class="text-blue-400 font-semibold">황색 스킬볼 터치</span></span><br>
+               이스마엘 · 환일은 황색 스킬볼을 1개만 보유하며, 항상 가장 오른쪽에 고정된다. 터치 시 <span class="text-red-400 font-semibold">형상 금역</span>을 시전해 공허속성 피해를 입힌다.`,
+              `-시전 후 <span class="text-blue-400 font-semibold">12 필살 에너지</span>를 획득한다.`,
+              `-시전 시 3체인으로 간주하며 <span class="text-blue-400 font-semibold">270%</span>의 공허속성 피해를 입힌다.`,
+              `-<span class="text-blue-400 font-semibold">형상 금역</span>은 <span class="text-blue-400 font-semibold">6초간</span> 지속된다. <span class="text-blue-400 font-semibold">형상 금역</span>이 존재하는 동안 <span class="text-blue-400 font-semibold">흐릿한 잔상</span>의 기본 피해가 <span class="text-blue-400 font-semibold">100%</span> 상승한다.`,
+              `-시전 후 황색 스킬볼이 소모되지 않지만, <span class="text-blue-400 font-semibold">20초간</span> 쿨타임이 적용된다.`,
+            ],
+          },
+        },
+        {
+          id: "parhelionblue",
+          tier: "orb",
+          name: "우주의 영탄",
+          icon: "/assets/skillball/parhelionblue.webp",
+          subText: "청색 스킬볼",
+          accent: "ring-1 ring-sky-300/40 bg-white/5",
+          detail: {
+            title: "우주의 영탄",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "청색 스킬볼",
+                cls: "bg-sky-400/15 border-sky-400/30 text-sky-200",
+              },
+            ],
+           body: [
+              `<span class="text-[17px] font-bold"별들의 춤-<span class="text-blue-400 font-semibold">청색 스킬볼 터치</span></span><br>
+  쌍성 투영을 소환하여 목표를 공격하고 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">붕괴치</span>를 획득한다.`,
+              `-소모한 스킬볼 개수에 따라 시전 후 15/30/45 붕괴치를 획득한다.`,
+              `-소모한 스킬볼 개수에 따라 <span class="text-red-400 font-semibold">60%</span>/<span class="text-red-400 font-semibold">120%</span>/<span class="text-red-400 font-semibold">180%</span>의 공허속성 피해를 입힌다.<br><br><br>
+  
+  <span class="text-[17px] font-bold">성핵 격동-<span class="text-blue-400 font-semibold">별들의 춤 동작 중+청색 스킬볼 터치</span></span><br>
+  행성 투영을 폭파시켜 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">붕괴치</span>를 획득한다.`,
+`-소모한 스킬볼 개수에 따라 시전 후 15/30/45 붕괴치를 획득한다.`,
+              `-소모한 스킬볼 개수에 따라 <span class="text-red-400 font-semibold">70%</span>/<span class="text-red-400 font-semibold">140%</span>/<span class="text-red-400 font-semibold">210%</span>의 공허속성 피해를 입힌다.<br><br><br>
+
+
+              <span class="text-[17px] font-bold">차원의 여광-<span class="text-blue-400 font-semibold">유람 형태+회피 길게 누르기</span></span><br>
+  에너지를 모아 목표를 향해 발사하여 공허속성 피해를 입힌다. 시전 후 이전에 소모한 청색 스킬볼에 따라 <span class="text-red-400 font-semibold">붕괴치</span>를 획득한다.`,
+              `-누적 소모한 청색 스킬볼에 따라 1개당 <span class="text-red-400 font-semibold">15 붕괴치</span>를 획득하며, 청색 스킬볼은 최대 6개까지 누적된다.`,
+              `-<span class="text-red-400 font-semibold">400%</span>의 공허속성 피해를 입힌다.`,
+            ],
+          },
+        },
+      ],
+    },
+    {
+      label: "액티브 스킬",
+      tier: "active",
+      items: [
+        {
+          id: "basic_attack",
+          tier: "active",
+          name: "소멸의 잠언",
+          icon: "/assets/skillball/parhelionbasic.webp",
+          subText: "일반 공격",
+          accent: "ring-1 ring-white/20 bg-white/5",
+          detail: {
+            title: "소멸의 잠언",
+            levelText: "Level 18",
+            badges: [{ text: "일반 공격", cls: "bg-white/10 border-white/20" }],
+            body: [
+              `<span class="text-[17px] font-bold">끝없는 허공-<span class="text-blue-400 font-semibold">유람 형태+일반 공격 터치</span></span><br>
+               물질 투영을 소환하여 목표를 공격하고 공허속성 피해를 입힌다. <span class="text-red-400 font-semibold">형상 금역</span> 발동 기간 동안 4단계 일반 공격을 추가할 수 있다.`,
+              `-일반 공격을 가하면 총 <span class="text-red-400 font-semibold">300%</span>의 공허속성 피해를 입힌다.`,
+              `-형상 금역 발동 시, 이후 추가로 시전하는 일반 공격이 총 <span class="text-red-400 font-semibold">550%</span>의 공허속성 피해를 입힌다.<br><br><br>
+             
+              
+              <span class="text-[17px] font-bold">혼란의 은하수-<span class="text-blue-400 font-semibold">지배 형태+일반 공격 터치</span></span><br>
+              행성 투영을 소환하여 목표를 공격하고, 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">잔상치</span>를 획득한다.`,
+              `-시전 후 <span class="text-red-400 font-semibold">10</span>/<span class="text-red-400 font-semibold">20</span>/<span class="text-red-400 font-semibold">30</span>/<span class="text-red-400 font-semibold">30</span>/<span class="text-red-400 font-semibold">60</span>의 <span class="text-red-400 font-semibold">잔상치</span>를 획득한다.`,
+              `-총 <span class="text-red-400 font-semibold">620%</span>의 공허속성 피해를 입힌다.`,
+              `-4단계 일반 공격 후 적색 스킬볼을 터치하면 <span class="text-red-400 font-semibold">구조 붕해</span>를 시전한다.`,
+             
+    
+            ],
+          },
+        },
+        {
+          id: "signature",
+          tier: "active",
+          name: "고해성사",
+          icon: "/assets/skillball/parhelionult.webp",
+          subText: "필살기",
+          accent: "ring-1 ring-rose-300/40 bg-white/5",
+          detail: {
+            title: "고해성사",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "필살기",
+                cls: "bg-rose-500/15 border-rose-400/30 text-rose-200",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">근원의 자태-<span class="text-blue-400 font-semibold">30 필살 에너지+필살기 터치</span></span><br>
+  고차원의 자신과 연결되어 지배 형태에 진입하고 공허속성 피해를 입힌다. 시전 기간에 타임스톱 연산이 발동된다. 시전 시 영역 초월 효과를 보유하면, 지속 시간이 초기화된다. 시전 후 쿨타임 상태가 아닌 초산 공간을 발동하며, 관측 기행에 따라 특수 능력을 발동하고, 초차원 영역을 1개 남긴다.`,
+              `-<span class="text-red-400 font-semibold">1600%</span>의 공허속성 피해를 입힌다.`,
+              `-<span class="text-red-400 font-semibold">관측 기행</span>에 따라 다양한 효과를 발동한다.<br><br><br>
+  
+  <span class="text-[17px] font-bold">소멸의 징벌-<span class="text-blue-400 font-semibold">90 필살 에너지+필살기 터치</span></span><br>
+  현실을 깨뜨려 우주를 재구성하고 공허속성 피해를 입힌다. 그 후 <span class="text-red-400 font-semibold">지배 형태</span>가 종료된다. 시전 기간에 <span class="text-red-400 font-semibold">타임스톱 연산</span>이 발동되며, 시전 후 <span class="text-red-400 font-semibold">초차원 영역</span>을 1개 남긴다.`,
+              `-5185.29%의 공허속성 피해를 입힌다<br><br><br>
+
+              <span class="text-[17px] font-bold">초차원 영역</span><br>
+  <span class="text-red-400 font-semibold">필살-근원의 자태</span> 또는 <span class="text-red-400 font-semibold">필살-소멸의 징벌</span> 시전 후, 전장에 <span class="text-red-400 font-semibold">초차원 영역</span>을 남겨 공허속성 피해를 입힌다.`,
+              `-<span class="text-red-400 font-semibold">초차원 영역</span>은 적에게 초당 <span class="text-red-400 font-semibold">5%</span>의 공허속성 피해를 입힌다. <span class="text-red-400 font-semibold">12초간</span> 지속. 중복 발동 시 지속 시간이 초기화된다.`,
+            ],
+          },
+        },
+        {
+          id: "qte",
+          tier: "active",
+          name: "별자리 축복",
+          icon: "/assets/skillball/qte.webp",
+          subText: "QTE",
+          accent: "ring-1 ring-rose-300/40 bg-white/5",
+          detail: {
+            title: "별자리 축복",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "QTE",
+                cls: "bg-white-500/15 border-white-400/30 text-white-200",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">QTE-<span class="text-blue-400 font-semibold">QTE 터치</span></span><br>
+               열쇠 지팡이를 목표를 향해 걷어차 공허속성 피해를 입힌다. 시전 후 <span class="text-red-400 font-semibold">관측 기행</span>에 따라 특수 능력을 발동한다.`,
+              `-<span class="text-red-400 font-semibold">600%</span>의 공허속성 피해를 입힌다.`,
+              `-<span class="text-red-400 font-semibold">관측 기행</span>에 따라 다양한 효과를 발동한다.`,
+            ],
+          },
+        },
+        {
+          id: "class",
+          tier: "active",
+          name: "관측자",
+          icon: "/assets/skillball/parhelioncore.webp",
+          subText: "직업 스킬",
+          accent: "ring-1 ring-rose-300/40 bg-white/5",
+          detail: {
+            title: "관측자",
+            levelText: "Level 18",
+            badges: [
+              {
+                text: "직업 스킬",
+                cls: "bg-white-500/15 border-white-400/30 text-white-200",
+              },
+            ],
+            body: [
+               `<span class="text-red-400 font-semibold">관측 기행</span>에 따라 각기 다른 능력을 획득한다.`,
+              `-자신이 아머형일 경우: 공격 시 목표의 추가 피해 감소 효과를 <span class="text-red-400 font-semibold">20%</span> 감소시킨다. <span class="text-red-400 font-semibold">5초</span>간 지속.`,
+              `-자신이 불속성/암흑속성 증폭형일 경우: 모든 아군 멤버가 전환되어 출전 시, 공격력이 <span class="text-red-400 font-semibold">20%</span> 증가하고, 이스마엘 · 환일의 대응하는 속성 피해 버프가 <span class="text-red-400 font-semibold">20%</span> 증가한다. <span class="text-red-400 font-semibold">10초간</span> 지속.`,
+              `-자신이 다른 속성의 증폭형일 경우: 모든 아군 멤버가 전환되어 출전 시, 공격력이 <span class="text-red-400 font-semibold">10%</span> 증가하고, 이스마엘 · 환일의 대응하는 속성 피해 버프가 <span class="text-red-400 font-semibold">10%</span> 증가한다. <span class="text-red-400 font-semibold">10초간</span> 지속.`,
+            ],
+          },
+        },
+        {
+          id: "awaken",
+          tier: "active",
+          name: "최종 해방",
+          icon: "/assets/skillball/haebang.webp",
+          subText: "최종 해방",
+          accent: "ring-1 ring-rose-300/40 bg-white/5",
+          detail: {
+            title: "최종 해방",
+            levelText: "Level 1",
+            badges: [
+              {
+                text: "최종 해방",
+                cls: "bg-white-500/15 border-white-400/30 text-white-200",
+              },
+            ],
+            body: [`처음 전투 진입 시 3개의 스킬볼을 즉시 획득한다.`],
+          },
+        },
+      ],
+    },
+    {
+      label: "패시브 스킬",
+      tier: "passive",
+      items: [
+        {
+          id: "core_passive",
+          tier: "passive",
+          name: "신성한 시야",
+          icon: "/assets/skillball/parhelioncore.webp",
+          subText: "코어 패시브",
+          accent: "ring-1 ring-white/20 bg-white/5",
+          detail: {
+            title: "신성한 시야",
+            levelText: "Level 18",
+            badges: [
+              { text: "코어 패시브", cls: "bg-white/10 border-white/20" },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">관측 기행</span><br>
+  이스마엘 · 환일은 <span class="text-red-400 font-semibold">관측 기행</span>에 따라 자신의 능력을 결정한다. <span class="text-red-400 font-semibold">관측 기행</span>의 능력은 <span class="text-red-400 font-semibold">추후 다른 구조체의 등장과 함께 강화된다.</span>`,
+              `-파티에 1개 속성의 아머형만 있을 경우, 이스마엘·환일은 해당 속성의 증폭형이 된다.`,
+              `-파티에 1개 속성의 보조형/증폭형만 있을 경우, 이스마엘·환일은 해당 속성의 아머형이 된다.<br><br><br>
+
+
+              <span class="text-[17px] font-bold">환일 아우라</span><br>
+  이스마엘 · 환일이 <span class="text-red-400 font-semibold">유람 형태</span>일 시, 모든 스킬볼이 청색 스킬볼로 전환된다. <span class="text-red-400 font-semibold">지배 형태</span>일 시, 모든 스킬볼이 적색 스킬볼로 전환된다.<br><br><br>
+
+              <span class="text-[17px] font-bold">환상의 잔영-<span class="text-blue-400 font-semibold">회피 연속 터치</span></span><br>
+  회피 시 투영을 시전하여 공허속성 피해를 입힌다. 회피 연속 터치 시 <span class="text-red-400 font-semibold">잔상 흔적</span>이 시전된다. 지배 형태에서 <span class="text-red-400 font-semibold">30 잔상치</span>를 소모하면 <span class="text-red-400 font-semibold">흐릿한 잔상</span>을 시전해 공허속성 피해를 입힐 수 있다. <span class="text-red-400 font-semibold">흐릿한 잔상</span>은 더 많은 피해를 입히고, <span class="text-red-400 font-semibold">필살 에너지</span>를 회복하며 회피치가 소모되지 않는다. 5단계의 <span class="text-red-400 font-semibold">흐릿한 잔상</span>을 시전하면 <span class="text-red-400 font-semibold">붕괴 각인</span>을 획득한다.`,
+              `-회피 시 투영을 시전하여 <span class="text-red-400 font-semibold">80%</span>의 공허속성 피해를 입힌다.`,
+              `-잔상치 상한은 <span class="text-red-400 font-semibold">150</span>이다.`,
+              `-<span class="text-red-400 font-semibold">유람 형태</span>에서 <span class="text-red-400 font-semibold">잔상 흔적</span>을 시전하면 <span class="text-red-400 font-semibold">100%</span>/<span class="text-red-400 font-semibold">120%</span>/<span class="text-red-400 font-semibold">120%</span>/<span class="text-red-400 font-semibold">180%</span>/<span class="text-red-400 font-semibold">250%</span>의 공허속성 피해를 입힌다.`,
+              `-지배 형태에서 잔상 흔적을 시전하면 주위의 적 유닛을 끌어모아 <span class="text-red-400 font-semibold">660%</span>/<span class="text-red-400 font-semibold">990%</span>/<span class="text-red-400 font-semibold">1210%</span>/<span class="text-red-400 font-semibold">1110%</span>/<span class="text-red-400 font-semibold">1540%</span>의 공허속성 피해를 입히고, <span class="text-red-400 font-semibold">12 필살 에너지</span>를 회복한다.`,
+              `-<span class="text-red-400 font-semibold">흐릿한 잔상</span> 시전 기간에 무적 상태가 된다.`,
+              `-회피치가 충분하면 <span class="text-red-400 font-semibold">잔상 흔적</span> 시전 중 무적 상태가 된다. 회피치가 부족하면, <span class="text-red-400 font-semibold">잔상 흔적</span> 시전 기간에 상태이상 면역과 <span class="text-red-400 font-semibold">50%</span>의 피해 감소 효과를 획득한다.<br><br><br>
+
+
+              <span class="text-[17px] font-bold">차원 붕괴-<span class="text-blue-400 font-semibold">지배 형태+붕괴 각인 보유+회피 길게 누르기</span></span><br>
+  힘을 응집하여 목표가 있는 공간을 파괴한다. 주위의 적 유닛을 끌어모아 공허속성 피해를 입히고 필살 에너지를 획득한다. <span class="text-red-400 font-semibold">붕괴치</span>는 해당 피해를 증가시킨다.`,
+              `-<span class="text-red-400 font-semibold">붕괴치</span>의 상한은 <span class="text-red-400 font-semibold">360</span>이고, <span class="text-red-400 font-semibold">붕괴치</span> 1당 <span class="text-red-400 font-semibold">차원 붕괴</span>의 기본 피해가 0.5% 증가한다.`,
+              `-<span class="text-red-400 font-semibold">3600%</span>의 공허속성 피해를 입힌다.`,
+              `-시전 기간에 무적 상태가 되고, <span class="text-red-400 font-semibold">필살-소멸의 징벌</span>을 시전할 수 없다`,
+              `-시전 후 <span class="text-red-400 font-semibold">15 필살 에너지</span>를 획득한다.<br><br><br>
+
+
+              <span class="text-[17px] font-bold">혼란의 표식</span><br>
+  이스마엘 · 환일이 <span class="text-red-400 font-semibold">지배 형태</span>일 때, 안정 역장에 대한 기본 피해 효율이 <span class="text-red-400 font-semibold">100%</span> 상승한다.`,
+            ],
+          },
+        },
+        {
+          id: "leader",
+          tier: "passive",
+          name: "대장·권세 수정",
+          icon: "/assets/skillball/parhelionleader.webp",
+          subText: "대장 스킬",
+          accent: "ring-1 ring-fuchsia-300/40 bg-white/5",
+          detail: {
+            title: "대장·권세 수정",
+            levelText: "Level 1",
+            badges: [
+              {
+                text: "대장 스킬",
+                cls: "bg-red-500/15 border-red-400/30 text-red-200",
+              },
+            ],
+            body: [
+              `아군 전체의 공허속성 피해가 <span class="text-red-400 font-semibold">10%</span>, 관측자의 피해가 <span class="text-red-400 font-semibold">10%</span> 증가한다.`,
+            ],
+          },
+        },
+        {
+          id: "core_passive",
+          tier: "passive",
+          name: "예언의 주사위",
+          icon: "/assets/skillball/parhelions.webp",
+          subText: "SS 승급 패시브",
+          accent: "ring-1 ring-white/20 bg-white/5",
+          detail: {
+            title: "예언의 주사위",
+            levelText: "Level 2",
+            badges: [
+              {
+                text: "SS 승급 패시브",
+                cls: "bg-red-500/15 border-red-400/30 text-red-200",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">S5 승급 해제</span></span><br>
+              <span class="text-[17px] font-bold">필살-근원의 자태</span>/<span class="text-[17px] font-bold">필살-소멸의 징벌</span>, <span class="text-[17px] font-bold">차원 붕괴</span> 시전 시, 쿨타임 기간이 아닌 QTE를 발동한다.<br><br><br>
+              
+             
+              
+              <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SS 승급 해제</span></span><br>
+              <span class="text-[17px] font-bold">지배 형태</span> 기간 동안 추가 피해가 <span class="text-[17px] font-bold">30%</span> 상승한다. <span class="text-[17px] font-bold">필살-근원의 자태</span>에 필요한 필살 에너지가 <span class="text-[17px] font-bold">12</span>까지 감소한다. <span class="text-[17px] font-bold">형상 금역</span> 존재 시, <span class="text-[17px] font-bold">흐릿한 잔상</span>을 시전할 때마다 스킬볼 1개를 획득한다.`,
+            ],
+          },
+        },
+        {
+          id: "core_passive",
+          tier: "passive",
+          name: "계시의 직조기",
+          icon: "/assets/skillball/parhelionss.webp",
+          subText: "SSS 승급 패시브",
+          accent: "ring-1 ring-white/20 bg-white/5",
+          detail: {
+            title: "계시의 직조기",
+            levelText: "Level 2",
+            badges: [
+              {
+                text: "SSS 승급 패시브",
+                cls: "bg-amber-400/15 border-amber-400/30 text-amber-200",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">SS3 승급 해제</span></span><br>
+              출전 후 처음으로 <span class="text-red-400 font-semibold">차원의 여광</span>을 시전할 시, <span class="text-red-400 font-semibold">180 붕괴치</span>와 <span class="text-red-400 font-semibold">붕괴 각인</span>을 획득한다. <span class="text-red-400 font-semibold">필살-소멸의 징벌</span>의 기본 피해가 <span class="text-red-400 font-semibold">60%</span> 상승한다. <span class="text-red-400 font-semibold">형상 금역</span> 존재 시 <span class="text-red-400 font-semibold">흐릿한 잔상</span>을 시전할 때마다 <span class="text-red-400 font-semibold">3 필살 에너지</span>를 추가로 획득한다. <span class="text-red-400 font-semibold">관측 기행</span>에 따라 발동하는 특수 능력 효과가 상승한다.<br><br><br>
+              
+             
+              
+              <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SSS 승급 해제</span></span><br>
+              <span class="text-red-400 font-semibold">붕괴치</span>의 피해 증폭 효과가 <span class="text-red-400 font-semibold">50%</span> 상승한다. <span class="text-red-400 font-semibold">흐릿한 잔상</span>의 5번째 단계에서 3체인 스킬볼을 1회 입력하면, <span class="text-red-400 font-semibold">1000%의 공허속성 피해</span>를 추가로 1회 입히고 <span class="text-red-400 font-semibold">180 붕괴치</span>를 획득한다. <span class="text-red-400 font-semibold">관측 기행</span>에 따라 발동하는 특수 능력 효과가 상승한다. 안정 역장의 기본 피해 효율 상승 효과가 <span class="text-red-400 font-semibold">150%</span>까지 증가한다.`,
+             
+            ],
+          },
+        },
+        {
+          id: "core_passive",
+          tier: "passive",
+          name: "운명의 시",
+          icon: "/assets/skillball/parhelionsss.webp",
+          subText: "SSS+ 승급 패시브",
+          accent: "ring-1 ring-white/20 bg-white/5",
+          detail: {
+            title: "운명의 시",
+            levelText: "Level 3",
+            badges: [
+              {
+                text: "SSS+ 승급 패시브",
+                cls: "bg-red-500/15 border-red-400/30 text-red-300",
+              },
+            ],
+            body: [
+              `<span class="text-[17px] font-bold">1레벨-<span class="text-blue-400 font-semibold">SSS3 승급 해제</span></span><br>
+              <span class="text-red-400 font-semibold">필살-근원의 자태</span>, <span class="text-red-400 font-semibold">필살-소멸의 징벌</span>의 추가 피해가 <span class="text-red-400 font-semibold">30%</span> 상승한다.<br><br><br>
+              
+             
+              
+              <span class="text-[17px] font-bold">2레벨-<span class="text-blue-400 font-semibold">SSS6 승급 해제</span></span><br>
+              <span class="text-red-400 font-semibold">흐릿한 잔상</span>, 스킬볼의 추가 피해가 <span class="text-red-400 font-semibold">30%</span> 상승한다.<br><br><br>
+              
+             
+              
+              <span class="text-[17px] font-bold">3레벨-<span class="text-blue-400 font-semibold">SSS+ 승급 해제</span></span><br>
+              <span class="text-red-400 font-semibold">차원 붕괴</span>의 추가 피해가 <span class="text-red-400 font-semibold">30%</span> 상승한다.`,
             ],
           },
         },

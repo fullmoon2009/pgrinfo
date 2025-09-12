@@ -249,6 +249,9 @@ const party1 = {
           label: "세레나 · 희성",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
     },
@@ -259,6 +262,9 @@ const party1 = {
           label: "함영 · 단심",
           borderClass: "border-red-500",
           to: "/char/solacetune",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
       showNav: false,
@@ -271,6 +277,9 @@ const party1 = {
           borderClass: "border-yellow-400",
           to: "/char/echo",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
       showNav: true,
@@ -289,6 +298,9 @@ const party2 = {
           label: "세레나 · 희성",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
         },
       ],
     },
@@ -299,6 +311,9 @@ const party2 = {
           label: "반즈 · 루시드",
           borderClass: "border-red-500",
           to: "/char/lucid",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
       showNav: false,
@@ -311,6 +326,9 @@ const party2 = {
           borderClass: "border-yellow-400",
           to: "/char/echo",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
     },

@@ -207,8 +207,30 @@ const party1 = {
           label: "이스마엘 · 환일",
           borderClass: "border-blue-500",
           badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/observer.webp"
+          ],
+        },
+        {
+          img: "/assets/portrait/startrail2.png",
+          label: "나나미 · 망성",
+          borderClass: "border-blue-500",
+          to: "/char/startrail",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
+        },
+        {
+          img: "/assets/portrait/lucid2.png",
+          label: "반즈 · 루시드",
+          borderClass: "border-blue-500",
+          to: "/char/lucid",
+          roleIcons: [
+            "/assets/roleIcons/arm.png"
+          ],
         },
       ],
+      showNav: true
     },
     {
       slides: [
@@ -218,6 +240,9 @@ const party1 = {
           borderClass: "border-red-500",
           to: "/char/oblivion",
           badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/ann.webp"
+          ],
         },
       ],
       showNav: true,
@@ -228,7 +253,10 @@ const party1 = {
           img: "/assets/portrait/geiravor2.png",
           label: "베라 · 작망",
           borderClass: "border-yellow-400",
-          to: "/char/geiravor"
+          to: "/char/geiravor",
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
         },
       ],
       showNav: true,
@@ -278,16 +306,6 @@ const party1 = {
 // 파티 2가 존재하지 않을 시 사용
 const party2 = ref<Party | null>(null)
 
-const roleIconsParty1 = [
-  "/assets/roleIcons/observer.webp",
-  "/assets/roleIcons/ann.webp",
-  "/assets/roleIcons/amp.png",
-];
-const roleIconsParty2 = [
-  "/assets/roleIcons/atk.png",
-  "/assets/roleIcons/amp.png",
-  "/assets/roleIcons/arm.png",
-];
 
 const hasParty2 = computed(
   () => !!party2 && Array.isArray(party2.columns) && party2.columns.length > 0

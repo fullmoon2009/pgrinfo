@@ -11,6 +11,31 @@ const activeMem = computed<MemorySetData | null>(() =>
   activeMemId.value ? memoryData[activeMemId.value] ?? null : null
 );
 
+const isSliding = ref(false);
+
+const overlayShown = ref(true);
+
+const waitFrames = (n = 2) =>
+  new Promise<void>((resolve) => {
+    const step = (i: number) =>
+      i > 0 ? requestAnimationFrame(() => step(i - 1)) : resolve();
+    step(n);
+  });
+
+const onSlideStart = () => {
+  overlayShown.value = false;     
+  isSliding.value = true;
+  openTierFor.value = null;
+};
+
+const onSlideEnd = async () => {
+  await nextTick();
+  await waitFrames(2);
+  updateTierBtnPos();             
+  isSliding.value = false;
+  overlayShown.value = true;      
+};
+
 
 const wrapEl = ref<HTMLElement | null>(null); 
 const tierBtnPos = ref<{ top: number; left: number }>({ top: 0, left: 0 });
@@ -177,14 +202,16 @@ const sizeClass = (label: string) => {
     <!-- 패널A -->
     <slot name="panelA">
       <Carousel
-        ref="carouselA"
-        :items-to-show="1"
-        :wrap-around="true"
-        :autoplay="0"
-        :pause-autoplay-on-hover="false"
-        :navigation-enabled="slidesLen > 1"
-        class="memory"
-      >
+  ref="carouselA"
+  :items-to-show="1"
+  :wrap-around="true"
+  :autoplay="0"
+  :pause-autoplay-on-hover="false"
+  :navigation-enabled="slidesLen > 1"
+  class="memory"
+  @slide-start="onSlideStart"
+  @slide-end="onSlideEnd"
+>
         <Slide v-for="(s, idx) in tabA" :key="'a' + idx">
           <div class="w-full flex flex-col items-center">
             <div class="mb-3 flex justify-center">
@@ -200,7 +227,7 @@ const sizeClass = (label: string) => {
                 <span
                   data-tier-anchor
                   :data-tier-idx="idx"
-                  class="absolute top-[27px] -translate-y-1/2 left-[calc(100%+75px)] w-0 h-0"
+                  class="absolute top-[40px] -translate-y-1/2 left-[calc(100%+70px)] w-0 h-0"
                 ></span>
               </div>
             </div>
@@ -296,12 +323,13 @@ const sizeClass = (label: string) => {
         </template>
       </Carousel>
 
-      <div class="pointer-events-none absolute inset-0 z-[60]">
-        <div
-          class="pointer-events-auto absolute -translate-x-full"
-          :style="{ top: tierBtnPos.top + 'px', left: tierBtnPos.left + 'px' }"
-          @click.stop
-        >
+      <transition name="fade">
+  <div v-if="overlayShown" class="pointer-events-none absolute inset-0 z-[60]">
+    <div
+      class="pointer-events-auto absolute -translate-x-full"
+      :style="{ top: tierBtnPos.top + 'px', left: tierBtnPos.left + 'px' }"
+      @click.stop
+    >
           <div class="relative">
             <button
               type="button"
@@ -343,6 +371,7 @@ const sizeClass = (label: string) => {
           </div>
         </div>
       </div>
+      </transition>
     </slot>
 
     <!-- ===== 모달 / 라이트박스 ===== -->
@@ -513,7 +542,11 @@ const sizeClass = (label: string) => {
 
 <style scoped>
 .fade-enter-active,
-.fade-leave-active { transition: opacity .18s ease }
+.fade-leave-active { transition: opacity .12s ease }
 .fade-enter-from,
 .fade-leave-to { opacity: 0 }
+
+.fade-enter-active, .fade-leave-active { transition: opacity .12s ease }
+.fade-enter-from, .fade-leave-to { opacity: 0 }
+
 </style>
