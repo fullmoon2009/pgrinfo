@@ -274,7 +274,7 @@ export const coatingData: CoatingItem[] = [
 
   // ===== 서염 (pyroath)
   {
-    id: 'pyroath-special-03',          
+    id: 'pyroath-special-02',          
     char: 'pyroath',
     type: 'special',
     name: '청해의 유광',
@@ -293,9 +293,9 @@ export const coatingData: CoatingItem[] = [
   },
 
   {
-    id: 'pyroath-special-02',             
+    id: 'pyroath-gacha-01',             
     char: 'pyroath',
-    type: 'special',
+    type: 'gacha',
     name: '여명의 약속',
     release: '2025-06-06',
     price: '500 레인보우 카드',
@@ -310,7 +310,7 @@ export const coatingData: CoatingItem[] = [
       long: '/assets/coatings/pyroathspcoatl2.jpg'
     },
   },
-  
+
   {
     id: 'pyroath-special-01',             
     char: 'pyroath',
@@ -343,6 +343,43 @@ export const coatingData: CoatingItem[] = [
         '/assets/coatings/pyroathnm1.png',
         '/assets/coatings/pyroathnm2.png',
         '/assets/coatings/pyroathnm3.png'
+      ],
+    },
+  },
+
+  // ===== 루시드 (lucid)
+  {
+    id: 'lucid-dorm-01',             
+    char: 'lucid',
+    type: 'dorm',
+    name: '엄한 속의 추적자',
+    release: '2025-02-13',
+    price: '숙소 코인',
+    tag: '숙소 코팅',
+    images: {
+      banner: '/assets/coatings/luciddormcoatbg1.jpg',
+      portraits: [
+        '/assets/coatings/luciddormcoat1.png',
+        '/assets/coatings/luciddormcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/luciddormcoats1.png',
+      long: '/assets/coatings/luciddormcoatl1.jpg'
+    },
+  },
+  {
+    id: 'lucid-normal',
+    char: 'lucid',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-02-13',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/lucidnmbg.jpg',
+      verticals: [
+        '/assets/coatings/lucidnm1.png',
+        '/assets/coatings/lucidnm2.png',
+        '/assets/coatings/lucidnm3.png'
       ],
     },
   },

@@ -24,7 +24,7 @@ const segClass = (m: "guide" | "coating") =>
 
 const cycleTab = ref<"tabA" | "tabB">("tabA");
 
-const cyclerankTab = ref<"ss" | "sss">("ss");
+const cyclerankTab = ref<"전랭크">("전랭크");
 
 const currentSection = computed(() => {
   const key = `${cycleTab.value}:${cyclerankTab.value}` as const;
@@ -34,13 +34,13 @@ const currentSection = computed(() => {
 const mode = ref<"first" | "repeat">("first");
 
 const allowedRanksByTab = {
-  tabA: ["ss" | "sss"] as const,
-  tabB: ["ss" | "sss"] as const,
+  tabA: ["전랭크"] as const,
+  tabB: ["전랭크"] as const,
 } as const;
 
 const lastRankByTab: Record<"tabA" | "tabB", typeof cyclerankTab.value> = {
-  tabA: "ss",
-  tabB: "ss",
+  tabA: "전랭크",
+  tabB: "전랭크",
 };
 
 function isRankValidForTab(tab: "tabA" | "tabB", rank: string) {
@@ -89,8 +89,8 @@ const weaponSkills = [
 ];
 
 const MID = {
-  hs: "herschell",
-  he: "heisen",
+  ls: "liston",
+  ji: "jiyuan",
   dv: "davinci",
   sh: "shakespeare",
   ein: "einsteina",
@@ -101,15 +101,15 @@ const MID = {
 
 const slidesA = [
   {
-    typeIcon: "/assets/types/lightning.png",
-    typeBorderCls: "border-2 border-amber-300",
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/heisen2.png", memId: MID.he },
-      { img: "/assets/memory/heisen3.png", memId: MID.he },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/liston2.png", memId: MID.ls },
+      { img: "/assets/memory/liston3.png", memId: MID.ls },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -117,74 +117,47 @@ const slidesA = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailult.webp",
+    ultIcon: "/assets/skillball/lucidult.webp",
     ultLabel: "필살기",
     tierBadge: { text: "전랭크", cls: "" },
-    typeName: "뇌속성",
-    chipText: "허셜 x4",
-    chipText2: "하이젠 x4",
+    typeName: "빙속성",
+    chipText: "리스턴 x4",
+    chipText2: "주원 x4",
     chipText3: "",
   },
   {
-    typeIcon: "/assets/types/lightning.png",
-    typeBorderCls: "border-2 border-amber-300",
+    typeIcon: "/assets/types/freeze.png",
+    typeBorderCls: "border-2 border-blue-500",
     grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/ein2.png", memId: MID.ein },
-      { img: "/assets/memory/ein3.png", memId: MID.ein },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/liston2.png", memId: MID.ls },
+      { img: "/assets/memory/liston3.png", memId: MID.ls },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
     ],
     atkIcons: [
-      "/assets/memory/memoryatk1.png",
-      "/assets/memory/memoryatk2.png",
-      "/assets/memory/memoryatk3.png",
+      "/assets/skillball/lucidred.webp",
     ],
-    atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailult.webp",
-    ultLabel: "필살기",
-    tierBadge: { text: "전랭크(공진 X)", cls: "" },
-    typeName: "뇌속성",
-    chipText: "허셜 x4",
-    chipText2: "아인슈타나 x2",
-    chipText3: "",
-  },
-  {
-    typeIcon: "/assets/types/plazma.png",
-    typeBorderCls: "border-2 border-[#CC9900]",
-    grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/heisen2.png", memId: MID.he },
-      { img: "/assets/memory/heisen3.png", memId: MID.he },
-    ],
-    atkIcons: [
-      "/assets/memory/memoryatk1.png",
-      "/assets/memory/memoryatk2.png",
-      "/assets/memory/memoryatk3.png",
-    ],
-    atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailcore.webp",
+    atkLabel: "적색 스킬볼",
+    ultIcon: "/assets/skillball/lucidcore.webp",
     ultLabel: "아머형",
     tierBadge: { text: "전랭크", cls: "" },
-    typeName: "선속",
-    chipText: "허셜 x4",
-    chipText2: "하이젠 x4",
+    typeName: "결빙",
+    chipText: "리스턴 x4",
+    chipText2: "주원 x4",
     chipText3: "",
   },
   {
-    typeIcon: "/assets/types/burn.png",
-    typeBorderCls: "border-2 border-[#5a0f0f]",
+    typeIcon: "/assets/types/nihil.png",
+    typeBorderCls: "border-2 border-[#C00088]",
     grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/adolf2.webp", memId: MID.ad },
-      { img: "/assets/memory/adolf3.webp", memId: MID.ad },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/liston2.png", memId: MID.ls },
+      { img: "/assets/memory/liston3.png", memId: MID.ls },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -192,78 +165,28 @@ const slidesA = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailult.webp",
-    ultLabel: "필살기",
-    tierBadge: { text: "전랭크", cls: "" },
-    typeName: "연소",
-    chipText: "허셜 x4",
-    chipText2: "후루루 x4",
-    chipText3: "",
-  },
-  {
-    typeIcon: "/assets/types/fire.png",
-    typeBorderCls: "border-2 border-red-500",
-    grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/shake2.png", memId: MID.sh },
-      { img: "/assets/memory/shake3.png", memId: MID.sh },
-    ],
-    atkIcons: [
-      "/assets/memory/memoryatk1.png",
-      "/assets/memory/memoryatk2.png",
-      "/assets/memory/memoryatk3.png",
-    ],
-    atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailcore.webp",
+    ultIcon: "/assets/skillball/lucidcore.webp",
     ultLabel: "아머형",
     tierBadge: { text: "전랭크", cls: "" },
-    typeName: "화속성",
-    chipText: "허셜 x4",
-    chipText2: "셰익스피어 x4",
+    typeName: "공허",
+    chipText: "리스턴 x4",
+    chipText2: "주원 x4",
     chipText3: "",
-  }
+  },
 ];
 
 // 환통/격전점
 const slidesB = [
 {
-    typeIcon: "/assets/types/lightning.png",
-    typeBorderCls: "border-2 border-amber-300",
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/hers2.png", memId: MID.hs },
-      { img: "/assets/memory/hers3.png", memId: MID.hs },
-      { img: "/assets/memory/hers1.png", memId: MID.hs },
-      { img: "/assets/memory/heisen2.png", memId: MID.he },
-      { img: "/assets/memory/heisen3.png", memId: MID.he },
-    ],
-    atkIcons: [
-      "/assets/memory/memoryatk1.png",
-      "/assets/memory/memoryatk2.png",
-      "/assets/memory/memoryatk3.png",
-    ],
-    atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailult.webp",
-    ultLabel: "필살기",
-    tierBadge: { text: "전랭크", cls: "" },
-    typeName: "뇌속성",
-    chipText: "허셜 x4",
-    chipText2: "하이젠 x4",
-    chipText3: "",
-  },
-  {
-    typeIcon: "/assets/types/plazma.png",
-    typeBorderCls: "border-2 border-[#CC9900]",
-    grid: [
-      { img: "/assets/memory/davinci1.png", memId: MID.dv },
+      { img: "/assets/memory/jiyuan1.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan1.png", memId: MID.ji },
       { img: "/assets/memory/davinci2.png", memId: MID.dv },
       { img: "/assets/memory/davinci3.png", memId: MID.dv },
-      { img: "/assets/memory/davinci1.png", memId: MID.dv },
-      { img: "/assets/memory/heisen2.png", memId: MID.he },
-      { img: "/assets/memory/heisen3.png", memId: MID.he },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -271,20 +194,43 @@ const slidesB = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailcore.webp",
+    ultIcon: "/assets/skillball/lucidcore.webp",
     ultLabel: "아머형",
-    tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
-    typeName: "선속",
-    chipText: "다빈치 x4",
-    chipText2: "하이젠 x4",
+    tierBadge: { text: "전랭크", cls: "" },
+    typeName: "빙속성",
+    chipText: "주원 x4",
+    chipText2: "다빈치 x4",
     chipText3: "",
   },
   {
-    typeIcon: "/assets/types/lightnoise.png",
-    typeBorderCls: "border-2 border-yellow-200",
+    typeIcon: "/assets/types/freeze.png",
+    typeBorderCls: "border-2 border-blue-500",
     grid: [
-      { img: "/assets/memory/heisen1.png", memId: MID.he },
-      { img: "/assets/memory/heisen2.png", memId: MID.he },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/liston2.png", memId: MID.ls },
+      { img: "/assets/memory/liston3.png", memId: MID.ls },
+      { img: "/assets/memory/liston1.png", memId: MID.ls },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
+    ],
+    atkIcons: [
+      "/assets/skillball/lucidred.webp",
+    ],
+    atkLabel: "적색 스킬볼",
+    ultIcon: "/assets/skillball/lucidcore.webp",
+    ultLabel: "아머형",
+    tierBadge: { text: "전랭크", cls: "" },
+    typeName: "결빙",
+    chipText: "리스턴 x4",
+    chipText2: "주원 x4",
+    chipText3: "",
+  },
+  {
+    typeIcon: "/assets/types/nihil.png",
+    typeBorderCls: "border-2 border-[#C00088]",
+    grid: [
+       { img: "/assets/memory/jiyuan1.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
       { img: "/assets/memory/ein3.png", memId: MID.ein },
       { img: "/assets/memory/ein1.png", memId: MID.ein },
       { img: "/assets/memory/gloria2.png", memId: MID.gl },
@@ -296,13 +242,13 @@ const slidesB = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/startrailcore.webp",
+    ultIcon: "/assets/skillball/lucidcore.webp",
     ultLabel: "아머형",
-    tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
-    typeName: "습광",
-    chipText: "하이젠 x4",
+    tierBadge: { text: "전랭크", cls: "" },
+    typeName: "공허",
+    chipText: "주원 x4",
     chipText2: "아인 x2",
-    chipText3: "골고다(5) x2",
+    chipText3: "골로다(5) x2",
   },
 ];
 
@@ -323,89 +269,65 @@ const rankRows = [
 // 파티 박스
 // 파티 1
 const party1 = {
-  typeIcon: "/assets/types/lightning.png",
+  typeIcon: "/assets/types/ice.png",
   columns: [
     {
       slides: [
         {
-          img: "/assets/portrait/crimson2.png",
-          label: "루시아 · 심홍수영",
+          img: "/assets/portrait/lucid2.png",
+          label: "반즈 · 루시드",
           borderClass: "border-blue-500",
-          badges: [{ text: "대장" }],
-          to: "/char/crimsonweave",
-          roleIcons: [
-            "/assets/roleIcons/atk.png"
-          ],
-        },
-      ],
-    },
-    {
-      slides: [
-        {
-          img: "/assets/portrait/feral2.png",
-          label: "21호 · 페럴",
-          borderClass: "border-red-500",
-          to: "/char/feral",
-          roleIcons: [
-            "/assets/roleIcons/amp.png"
-          ],
-          badges: [{ text: "선발" }],
-        },
-        {
-          img: "/assets/portrait/parhelion2.png",
-          label: "이스마엘 · 환일",
-          borderClass: "border-red-500",
-          to: "/char/parhelion",
-          roleIcons: [
-            "/assets/roleIcons/observer.webp"
-          ],
-          badges: [{ text: "선발" }],
-        },
-      ],
-      showNav: true,
-    },
-    {
-      slides: [
-        {
-          img: "/assets/portrait/startrail2.png",
-          label: "나나미 · 망성",
-          borderClass: "border-yellow-400",
           roleIcons: [
             "/assets/roleIcons/arm.png"
           ],
         },
       ],
-      showNav: true,
+    },
+    {
+      slides: [
+        {
+          img: "/assets/portrait/shukra2.png",
+          label: "곡 · 계명",
+          borderClass: "border-red-500",
+          to: "/char/shukra",
+          badges: [{ text: "대장" }],
+          roleIcons: [
+            "/assets/roleIcons/atk.png"
+          ],
+        },
+      ],
+      showNav: false,
+    },
+    {
+      slides: [
+        {
+          img: "/assets/portrait/kaleido2.png",
+          label: "아이라 · 만화",
+          borderClass: "border-yellow-400",
+          to: "/char/kaleido",
+          badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
+          ],
+        },
+      ],
+      showNav: false,
     },
   ],
 };
 
 /* 파티 2  */
 const party2 = {
-  typeIcon: "/assets/types/burn.png",
+  typeIcon: "/assets/types/freeze.png",
   columns: [
     {
       slides: [
         {
-          img: "/assets/portrait/geiravor2.png",
-          label: "베라 · 작망",
+          img: "/assets/portrait/pianissimo2.png",
+          label: "세레나 · 희성",
           borderClass: "border-blue-500",
-          badges: [{ text: "선발" }],
-          to: "/char/geiravor",
-          roleIcons: [
-            "/assets/roleIcons/amp.png"
-          ],
-        },
-      ],
-    },
-    {
-      slides: [
-        {
-          img: "/assets/portrait/dante2.png",
-          label: "단테",
-          borderClass: "border-red-500",
-          to: "/char/dante",
           badges: [{ text: "대장" }],
+          to: "/char/pianissimo",
           roleIcons: [
             "/assets/roleIcons/atk.png"
           ],
@@ -415,11 +337,27 @@ const party2 = {
     {
       slides: [
         {
-          img: "/assets/portrait/startrail2.png",
-          label: "나나미 · 망성",
-          borderClass: "border-yellow-400",
+          img: "/assets/portrait/lucid2.png",
+          label: "반즈 · 루시드",
+          borderClass: "border-red-500",
           roleIcons: [
             "/assets/roleIcons/arm.png"
+          ],
+        },
+        
+      ],
+      showNav: false,
+    },
+    {
+      slides: [
+        {
+          img: "/assets/portrait/echo2.png",
+          label: "아리사 · 에코",
+          borderClass: "border-yellow-400",
+          to: "/char/echo",
+          badges: [{ text: "선발" }],
+          roleIcons: [
+            "/assets/roleIcons/amp.png"
           ],
         },
       ],
@@ -441,7 +379,7 @@ const hasParty2 = computed(
 const VIDEO_BASE = "https://pgr-video-proxy.fullmoon2009.workers.dev/video";
 const video = (name: string) => `${VIDEO_BASE}/${name}`;
 
-const charKey = "startrail";
+const charKey = "lucid";
 
 const myCoatings = computed(() =>
   coatingData.filter((c) => c.char === charKey)
@@ -454,17 +392,17 @@ const myCoatings = computed(() =>
     <div class="p-2 md:p-3 mx-auto"></div>
     <!-- 프로필 이미지 -->
     <HeroMosaic
-      leftTop="/assets/portrait/startrail1.png"
-      leftBottom="/assets/portrait/startrail2.png"
-      rightTall="/assets/standings/startrailS.png"
+      leftTop="/assets/portrait/lucid1.png"
+      leftBottom="/assets/portrait/lucid2.png"
+      rightTall="/assets/standings/lucidS.png"
       rightContainerClass="w-[125px] h-[256px]"
       rightFit="cover"
-      rightObjectPosition="45% 30%"
-      rightImgClass="scale-[2] origin-[48%_24%] translate-y-[23%]"
+      rightObjectPosition="55% 0%"
+      rightImgClass="scale-[2] origin-[45%_30%] translate-y-[70px]"
     />
 
     <!-- 이름 배지 -->
-    <NameBadge text="나나미 · 망성" />
+    <NameBadge text="반즈 · 루시드" />
 
     <div class="flex justify-center mt-2 mb-4">
       <div
@@ -506,21 +444,21 @@ const myCoatings = computed(() =>
         <AttrRoleCards
           :left="[
             {
-              src: '/assets/types/lightning.png',
-              label: '뇌속성',
-              border: 'border-amber-300',
+              src: '/assets/types/ice.png',
+              label: '빙속성',
+              border: 'border-cyan-300',
             },
             {
-              src: '/assets/types/burn.png',
-              label: '연소',
-              border: 'border-[#5a0f0f]',
+              src: '/assets/types/freeze.png',
+              label: '결빙',
+              border: 'border-blue-500',
             },
           ]"
           :right="{ src: '/assets/roleIcons/arm.png', label: '아머형' }"
         />
 
         <!-- 스킬 박스 -->
-        <CharacterSkills char-key="startrail" />
+        <CharacterSkills char-key="lucid" />
 
         <!-- 장비 & 의식 세팅 -->
         <div
@@ -533,35 +471,35 @@ const myCoatings = computed(() =>
             class="col-span-2 bg-black/30 rounded-md p-4 text-white space-y-4"
           >
             <WeaponSkills
-              weapon-id="chargeblade"
-              weapon-img="/assets/arms/chargeblade.png"
-              weapon-name="★6 찬란한 별"
+              weapon-id="revolver"
+              weapon-img="/assets/arms/revolver.png"
+              weapon-name="★6 영원한 낮"
               :skills="weaponSkills"
               weapon-box-class="w-[110px] h-[200px] md:w-[120px] md:h-[220px] overflow-hidden rounded-md border-2 border-orange-500"
               weapon-fit="cover"
-              weapon-object-position="48% 15%"
+              weapon-object-position="50% 15%"
               :weapon-zoom="1.3"
               weapon-transform-origin=""
             />
 
             <SupportPet
-              pet-img="/assets/pets/anglefish.webp"
-              pet-name="S · 아귀"
+              pet-img="/assets/pets/fox.webp"
+              pet-name="S · 서설"
               :skills="[
                 {
-                  img: '/assets/petskills/anglefish1.webp',
-                  label: '적염 회오리',
+                  img: '/assets/petskills/fox1.webp',
+                  label: '꿈의 수호',
                 },
                 {
-                  img: '/assets/petskills/anglefish2.webp',
-                  label: '우주의 힘',
+                  img: '/assets/petskills/fox2.webp',
+                  label: '순수한 마음',
                 },
                 {
-                  img: '/assets/petskills/anglefish3.webp',
-                  label: '뾰족한 송곳니',
+                  img: '/assets/petskills/fox3.webp',
+                  label: '서리의 은혜',
                 },
               ]"
-              modal-key="anglefish"
+              modal-key="fox"
             />
           </div>
 

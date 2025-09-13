@@ -47,5 +47,10 @@ export const weaponData: Record<string, WeaponTooltip> = {
     description: '공격력이 10% 증가한다. 필살-합심의 절단 시전 후 스킬볼이 3개 회복되며, 염뢰 형태 진입 시 쿨타임 상태가 아닌 초산 공간을 발동한다.'
   },
 
+  revolver: {
+    title: '순결의 꿈',
+    description: '공격력이 10% 증가한다. 질풍 속격, 얼음비 탄환, 눈보라의 춤의 기본 피해가 2배 증가한다.'
+  },
+
   
 }

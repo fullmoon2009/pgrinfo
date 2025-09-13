@@ -97,6 +97,7 @@ const fullBodyOf = (c: CoatingItem) =>
           </div>
 
           <!-- vertical 3개 -->
+           <div class="rounded-xl border border-white/10 p-2">
           <div class="grid grid-cols-3 gap-2">
             <div
               v-for="(img, i) in c.images.verticals || []"
@@ -105,7 +106,7 @@ const fullBodyOf = (c: CoatingItem) =>
             >
               <img
                 :src="img"
-                class="block w-full py-2 max-h-[210px] object-contain cursor-zoom-in"
+                class="block w-full py-2 max-h-[216px] object-contain cursor-zoom-in"
                 @click="openZoom(img)"
                 :alt="`${c.name} - ${normalBadge(i)}`"
               />
@@ -115,6 +116,7 @@ const fullBodyOf = (c: CoatingItem) =>
                 {{ normalBadge(i) }}
               </span>
             </div>
+          </div>
           </div>
         </div>
 
