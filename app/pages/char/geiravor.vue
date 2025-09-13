@@ -48,7 +48,7 @@ const pills = [
 // 장비 박스
 
 const weaponSkills = [
-  { id: "sunset", img: "/assets/wskills/sunset.png", label: "눈부신 석양" },
+  { id: "spear", img: "/assets/wskills/spear.png", label: "성광의 창" },
   { id: "amplight", img: "/assets/wskills/amplight.png", label: "초전도 축광" },
   { id: "count", img: "/assets/wskills/count.png", label: "죽음의 카운트다운" },
 ];
