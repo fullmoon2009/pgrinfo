@@ -384,4 +384,77 @@ export const coatingData: CoatingItem[] = [
     },
   },
 
+  // ===== 단심 (solacetune)
+  {
+    id: 'solacetune-special-03',             
+    char: 'solacetune',
+    type: 'special',
+    name: '봄날 선율',
+    release: '2025-06-06',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/solacetunespcoatbg3.jpg',
+      portraits: [
+        '/assets/coatings/solacetunespcoat3.png',
+        '/assets/coatings/solacetunespcoatw3.png',
+      ],
+      fullBody: '/assets/coatings/solacetunespcoats3.png',
+      long: '/assets/coatings/solacetunespcoatl3.jpg'
+    },
+  },
+  {
+    id: 'solacetune-special-02',             
+    char: 'solacetune',
+    type: 'special',
+    name: '아련한 푸른빛',
+    release: '2025-03-17',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/solacetunespcoatbg2.jpg',
+      portraits: [
+        '/assets/coatings/solacetunespcoat2.png',
+        '/assets/coatings/solacetunespcoatw2.png',
+      ],
+      fullBody: '/assets/coatings/solacetunespcoats2.png',
+      long: '/assets/coatings/solacetunespcoatl2.jpg'
+    },
+  },
+  {
+    id: 'solacetune-special-01',             
+    char: 'solacetune',
+    type: 'special',
+    name: '봄날 선율',
+    release: '2025-02-06',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/solacetunespcoatbg1.png',
+      portraits: [
+        '/assets/coatings/solacetunespcoat1.png',
+        '/assets/coatings/solacetunespcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/solacetunespcoats1.png',
+      long: '/assets/coatings/solacetunespcoatl1.jpg'
+    },
+  },
+  {
+    id: 'solacetune-normal',
+    char: 'solacetune',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-02-06',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/solacetunenmbg.jpeg',
+      verticals: [
+        '/assets/coatings/solacetunenm1.png',
+        '/assets/coatings/solacetunenm2.png',
+        '/assets/coatings/solacetunenm3.png'
+      ],
+    },
+  },
+
 ]
