@@ -444,7 +444,7 @@ export const coatingData: CoatingItem[] = [
     char: 'solacetune',
     type: 'normal',
     name: '초기 시리즈',
-    release: '2024-02-06',
+    release: '2025-02-06',
     price: '',
     tag: '',
     images: {
@@ -453,6 +453,134 @@ export const coatingData: CoatingItem[] = [
         '/assets/coatings/solacetunenm1.png',
         '/assets/coatings/solacetunenm2.png',
         '/assets/coatings/solacetunenm3.png'
+      ],
+    },
+  },
+
+  // ===== 계명 (shukra)
+  {
+    id: 'shukra-special-02',             
+    char: 'shukra',
+    type: 'special',
+    name: '희곡의 서막',
+    release: '2025-05-05',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/shukraspcoatbg2.jpg',
+      portraits: [
+        '/assets/coatings/shukraspcoat2.png',
+        '/assets/coatings/shukraspcoatw2.png',
+      ],
+      fullBody: '/assets/coatings/shukraspcoats2.png',
+      long: '/assets/coatings/shukraspcoatl2.jpg'
+    },
+  },
+  {
+    id: 'shukra-special-01',             
+    char: 'shukra',
+    type: 'special',
+    name: '불멸의 깃털',
+    release: '2024-11-15',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/shukraspcoatbg1.jpg',
+      portraits: [
+        '/assets/coatings/shukraspcoat1.png',
+        '/assets/coatings/shukraspcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/shukraspcoats1.png',
+    },
+  },
+  {
+    id: 'shukra-normal',
+    char: 'shukra',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-11-15',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/shukranmbg.png',
+      verticals: [
+        '/assets/coatings/shukranm1.png',
+        '/assets/coatings/shukranm2.png',
+        '/assets/coatings/shukranm3.png'
+      ],
+    },
+  },
+
+
+  // ===== 종언 (oblivion)
+  {
+    id: 'oblivion-gacha-01',             
+    char: 'oblivion',
+    type: 'gacha',
+    name: '타락한 달빛',
+    release: '2025-04-28',
+    price: '350 레인보우 카드',
+    tag: '가챠 코팅',
+    images: {
+      banner: '/assets/coatings/oblivionspcoatbg3.png',
+      portraits: [
+        '/assets/coatings/oblivionspcoat3.png',
+        '/assets/coatings/oblivionspcoatw3.png',
+      ],
+      fullBody: '/assets/coatings/oblivionspcoats3.png',
+      long: '/assets/coatings/oblivionspcoatl3.png'
+    },
+  },
+  {
+    id: 'oblivion-special-02',             
+    char: 'oblivion',
+    type: 'special',
+    name: '푸른빛 물결의 응시',
+    release: '2025-03-17',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/oblivionspcoatbg2.png',
+      portraits: [
+        '/assets/coatings/oblivionspcoat2.png',
+        '/assets/coatings/oblivionspcoatw2.png',
+      ],
+      fullBody: '/assets/coatings/oblivionspcoats2.png',
+      long: '/assets/coatings/oblivionspcoatl2.png'
+    },
+  },
+  {
+    id: 'oblivion-special-01',             
+    char: 'oblivion',
+    type: 'special',
+    name: '한겨울의 달빛',
+    release: '2024-12-23',
+    price: '168 레인보우 카드',
+    tag: '특수 코팅',
+    images: {
+      banner: '/assets/coatings/oblivionspcoatbg1.png',
+      portraits: [
+        '/assets/coatings/oblivionspcoat1.png',
+        '/assets/coatings/oblivionspcoatw1.png',
+      ],
+      fullBody: '/assets/coatings/oblivionspcoats1.png',
+      long: '/assets/coatings/oblivionspcoatl1.jpg'
+    },
+  },
+  {
+    id: 'oblivion-normal',
+    char: 'oblivion',
+    type: 'normal',
+    name: '초기 시리즈',
+    release: '2024-12-23',
+    price: '',
+    tag: '',
+    images: {
+      banner: '/assets/coatings/oblivionnmbg.png',
+      verticals: [
+        '/assets/coatings/oblivionnm1.png',
+        '/assets/coatings/oblivionnm2.png',
+        '/assets/coatings/oblivionnm3.png'
       ],
     },
   },

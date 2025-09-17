@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mx-auto mt-6 w-[70vw] md:w-[40vw] max-w-md rounded-md bg-[#0A0A23]/30 px-4 py-3">
+  <div class="mx-auto mt-6 w-[70vw] md:w-[430vw] max-w-md rounded-md bg-[#0A0A23]/30 px-4 py-3">
     <div :class="['grid gap-1 md:gap-2', (left?.length === 1 ? 'grid-cols-2' : 'grid-cols-3')]">
       
       <!-- 속성 아이콘 -->

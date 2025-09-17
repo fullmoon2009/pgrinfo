@@ -105,15 +105,15 @@ const MID = {
 
 const slidesA = [
   {
-    typeIcon: "/assets/types/physics.png",
-    typeBorderCls: "border-2 border-gray-400",
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/chang2.png", memId: MID.ch },
-      { img: "/assets/memory/chang3.png", memId: MID.ch },
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/patton2.png", memId: MID.pt },
-      { img: "/assets/memory/patton3.png", memId: MID.pt },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan2.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan3.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
+      { img: "/assets/memory/jiyuan2.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -121,51 +121,22 @@ const slidesA = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/solacetunecore.webp",
-    ultLabel: "아머형",
+    ultIcon: "/assets/skillball/shukrault.webp",
+    ultLabel: "필살기",
     tierBadge: { text: "전랭크", cls: "" },
-    typeName: "물리",
-    chipText: "장오자 x4",
-    chipText2: "패튼 x4",
+    typeName: "빙속성",
+    chipText: "희백안 x4",
+    chipText2: "주원 x4",
     chipText3: "",
   },
   {
-    typeIcon: "/assets/types/ultima.png",
-    typeBorderCls: "border-2 border-emerald-300",
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/chang2.png", memId: MID.ch },
-      { img: "/assets/memory/catherine3.png", memId: MID.ca },
-      { img: "/assets/memory/catherine1.png", memId: MID.ca },
-      { img: "/assets/memory/darwin2.png", memId: MID.dw },
-      { img: "/assets/memory/darwin3.png", memId: MID.dw },
-    ],
-    atkIcons: [
-      "/assets/memory/memoryatk1.png",
-      "/assets/memory/memoryatk2.png",
-      "/assets/memory/memoryatk3.png",
-    ],
-    atkLabel: "공격력",
-    ultIcon: "/assets/skillball/solacetunecore.webp",
-    ultLabel: "아머형",
-    tierBadge: { text: "SS3 이상", cls: "" },
-    typeName: "진의참",
-    chipText: "장오자 x4",
-    chipText2: "캐서린 x2",
-    chipText3: "다윈 x2",
-  }
-];
-
-// 환통/격전점
-const slidesB = [
-{
-    typeIcon: "/assets/types/physics.png",
-    typeBorderCls: "border-2 border-gray-400",
-    grid: [
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/chang2.png", memId: MID.ch },
-      { img: "/assets/memory/catherine3.png", memId: MID.ca },
-      { img: "/assets/memory/catherine1.png", memId: MID.ca },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan2.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan3.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
       { img: "/assets/memory/adolf2.webp", memId: MID.ad },
       { img: "/assets/memory/adolf3.webp", memId: MID.ad },
     ],
@@ -175,22 +146,26 @@ const slidesB = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/solacetunecore.webp",
-    ultLabel: "아머형",
-    tierBadge: { text: "전랭크", cls: "" },
-    typeName: "물리",
-    chipText: "장오자 x4",
-    chipText2: "캐서린 x2",
-    chipText3: "후루루 x2",
-  },
-  {
-    typeIcon: "/assets/types/physics.png",
-    typeBorderCls: "border-2 border-gray-400",
+    ultIcon: "/assets/skillball/shukrault.webp",
+    ultLabel: "필살기",
+    tierBadge: { text: "SSS 이상(3연궁)", cls: "text-yellow-500" },
+    typeName: "빙속성",
+    chipText: "희백안 x4",
+    chipText2: "후루루 x4",
+    chipText3: "",
+  }
+];
+
+// 환통/격전점
+const slidesB = [
+{
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/chang2.png", memId: MID.ch },
-      { img: "/assets/memory/catherine3.png", memId: MID.ca },
-      { img: "/assets/memory/catherine1.png", memId: MID.ca },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan2.png", memId: MID.jb },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan1.png", memId: MID.ji },
       { img: "/assets/memory/darwin2.png", memId: MID.dw },
       { img: "/assets/memory/darwin3.png", memId: MID.dw },
     ],
@@ -200,24 +175,24 @@ const slidesB = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/solacetunecore.webp",
-    ultLabel: "아머형",
-    tierBadge: { text: "SSS3/SSS+희성", cls: "text-yellow-500" },
-    typeName: "물리",
-    chipText: "장오자 x4",
-    chipText2: "캐서린 x2",
+    ultIcon: "/assets/skillball/shukrault.webp",
+    ultLabel: "필살기",
+    tierBadge: { text: "환통", cls: "" },
+    typeName: "빙속성",
+    chipText: "희백안 x4",
+    chipText2: "주원 x2",
     chipText3: "다윈 x2",
   },
   {
-    typeIcon: "/assets/types/ultima.png",
-    typeBorderCls: "border-2 border-emerald-300",
+    typeIcon: "/assets/types/ice.png",
+    typeBorderCls: "border-2 border-cyan-300",
     grid: [
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/chang2.png", memId: MID.ch },
-      { img: "/assets/memory/chang3.png", memId: MID.ch },
-      { img: "/assets/memory/chang1.png", memId: MID.ch },
-      { img: "/assets/memory/davinci2.png", memId: MID.dv },
-      { img: "/assets/memory/davinci3.png", memId: MID.dv },
+      { img: "/assets/memory/jiboan1.png", memId: MID.jb },
+      { img: "/assets/memory/jiboan2.png", memId: MID.jb },
+      { img: "/assets/memory/jiyuan3.png", memId: MID.ji },
+      { img: "/assets/memory/jiyuan1.png", memId: MID.ji },
+      { img: "/assets/memory/darwin2.png", memId: MID.dw },
+      { img: "/assets/memory/darwin3.png", memId: MID.dw },
     ],
     atkIcons: [
       "/assets/memory/memoryatk1.png",
@@ -225,13 +200,13 @@ const slidesB = [
       "/assets/memory/memoryatk3.png",
     ],
     atkLabel: "공격력",
-    ultIcon: "/assets/skillball/solacetunecore.webp",
-    ultLabel: "아머형",
-    tierBadge: { text: "SSS 이상", cls: "text-yellow-500" },
-    typeName: "진의참",
-    chipText: "장오자 x4",
-    chipText2: "다빈치 x4",
-    chipText3: "",
+    ultIcon: "/assets/skillball/shukrault.webp",
+    ultLabel: "필살기",
+    tierBadge: { text: "격전점", cls: "" },
+    typeName: "빙속성",
+    chipText: "희백안 x4",
+    chipText2: "주원 x2",
+    chipText3: "다윈 x2",
   }
 ];
 
@@ -381,7 +356,7 @@ const myCoatings = computed(() =>
       rightContainerClass="w-[125px] h-[256px]"
       rightFit="cover"
       rightObjectPosition="50% 0%"
-      rightImgClass="scale-[2] origin-[50%_30%] translate-y-[15px]"
+      rightImgClass="scale-[2] origin-[47%_30%] translate-y-[35px]"
     />
 
     <!-- 이름 배지 -->
